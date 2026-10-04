@@ -1,0 +1,59 @@
+annotation_task_name: "Blue Cart Check: Which bin does this go in?"
+task_dir: "."
+data_files:
+  - data/items.jsonl
+item_properties:
+  id_key: id
+  text_key: image
+media_directory: media
+
+instance_display:
+  fields:
+    - key: image
+      type: image
+      label: "Item photo"
+      display_options:
+        zoomable: true
+        object_fit: contain
+
+annotation_schemes:
+  - annotation_type: radio
+    name: label
+    description: "Under the City of Flint curbside recycling rules (see guidelines), where does this item go AS SHOWN in the photo?"
+    labels:
+      - name: accepted
+        tooltip: "Blue bin as it is: clean, empty, loose, accepted material."
+        key_value: "1"
+      - name: accepted_after_prep
+        tooltip: "Accepted material, but must be rinsed, emptied, flattened, or taken out of a bag first."
+        key_value: "2"
+      - name: not_accepted
+        tooltip: "Never the blue bin: landfill or special disposal (bags, cups, styrofoam, greasy boxes, electronics...)."
+        key_value: "3"
+      - name: cannot_determine
+        tooltip: "The photo does not show enough to decide (material unclear, can't see if dirty, item cut off, not covered by the rules)."
+        key_value: "4"
+    label_requirement:
+      required: true
+    sequential_key_binding: false
+
+  - annotation_type: radio
+    name: reason
+    description: "(Optional) Main reason for your choice"
+    labels:
+      - name: material
+      - name: contamination
+      - name: bagged
+      - name: form_factor
+      - name: hazard_or_electronics
+      - name: unclear
+
+output_annotation_dir: annotation_output/
+output_annotation_format: jsonl
+alert_time_each_instance: 10000000
+
+require_password: false
+
+user_config:
+  allow_all_users: true
+  users: []

@@ -1,0 +1,17 @@
+# privacy: original photos keep GPS/EXIF
+data/raw/
+# generated / per-person
+annotation/packs/
+annotation/returned/
+annotation/potato/annotation_output/
+**/project.sqlite
+**/layouts/
+# course material (instructor copyright): keep local only
+docs/course/
+# env
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+.DS_Store
+.env
