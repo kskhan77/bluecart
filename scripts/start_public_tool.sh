@@ -21,6 +21,9 @@ PORT=8010
 
 [ -f "$SERVER/config.yaml" ] || { echo "No $SERVER/config.yaml. Build it first:"; echo "  python scripts/make_hf_space.py --out $SERVER --no-backup"; exit 1; }
 [ -f "$SERVER/.secret_key" ] || python3 -c "import secrets; print(secrets.token_urlsafe(32))" > "$SERVER/.secret_key"
+
+# our login / register page (Potato has no setting for it; pip reinstalls would bring the stock page back)
+.venv/bin/python scripts/patch_login_page.py
 chmod 600 "$SERVER/.secret_key"
 
 # stop an older copy of this server, if any

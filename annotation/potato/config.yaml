@@ -12,11 +12,22 @@ media_directory: media
 annotation_codebook_url: /media/guidelines.html
 ui_language:
   codebook: "Guidelines"
-  # words on the login page
-  login_subtitle_username: "ARI 510 Machine Learning, Group 2. Type your UM uniqname to start. No password needed."
-  username_label: "Your uniqname"
-  username_placeholder: "for example: jsmith"
-  continue_button: "Start"
+  # words on the login page (the page itself is annotation/potato/login_page.html, installed by scripts/patch_login_page.py)
+  # pack version, no password:
+  login_subtitle_username: "ARI 510 Machine Learning, Group 2. Type your UM uniqname or email to start. No password needed."
+  continue_button: "Start labeling"
+  # hosted version, with accounts:
+  login_subtitle_password: "Pick your uniqname or UM email and a password you will remember. That is all we need."
+  sign_in_tab: "Sign in"
+  register_tab: "Create account"
+  username_label: "Your uniqname or UM email"
+  username_placeholder: "the uniqname or email you registered with"
+  choose_username_placeholder: "for example: jsmith or jsmith@umich.edu"
+  password_label: "Password"
+  create_password_placeholder: "any password you will remember, 6 characters or more"
+  sign_in_button: "Sign in and continue"
+  register_button: "Create account and start"
+  forgot_password: "Forgot your password? Email kshafiqu@umich.edu"
 
 # Welcome page (welcome.html): shown once to every annotator before the first photo.
 phases:

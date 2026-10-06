@@ -4,9 +4,20 @@
 **Labels (assigned by annotators, not included at collection time):** `accepted` · `accepted_after_prep` · `not_accepted` · `cannot_determine`. Annotators answer two questions per photo (what kind of item, and what state it is in); the label is computed from the two answers (`annotation/guidelines.md` Section 2).
 
 **Team:** Daud Jan · Hina Kramer · Khurram Shafique · Ian Slackta
-**Dataset link (UM access):** image files are in this repository (`data/images/`, `data/manifest.csv`). A Google Drive folder shared with University of Michigan accounts is not posted yet. Add that link on this line before the Canvas submission.
+**Dataset link (UM access):** https://github.com/kskhan77/bluecart (public, so every UM student can open it). The photos are in `data/images/`, one row per photo in `data/manifest.csv`, credits in `data/attribution.csv`.
 **License:** CC BY-NC-SA 4.0 (see `LICENSE.md`). The RealWaste photos require the non-commercial, share-alike terms.
-**Project Discord:** https://discord.gg/2t2DSNyBm
+**Annotation tool (hosted):** https://bluecart.khurramshafique.com · **Project Discord:** https://discord.gg/2t2DSNyBm
+
+**Phase 1a deliverables, where each one is (handout Section 6):**
+
+| | Deliverable | Where |
+|---|---|---|
+| (a) | Dataset link with UM access | this repository, `data/` folder (link above) |
+| (b) | Dataset description | this README, Sections 1 to 6 |
+| (c) | License | [`LICENSE.md`](LICENSE.md) |
+| (d) | Annotation instructions | [`annotation/HOW_TO_ANNOTATE.md`](annotation/HOW_TO_ANNOTATE.md) and the guidelines [`annotation/guidelines.md`](annotation/guidelines.md); annotators label at https://bluecart.khurramshafique.com |
+| (e) | Changes from proposal | [`CHANGES_FROM_PROPOSAL.md`](CHANGES_FROM_PROPOSAL.md) |
+| (f) | Custom annotation platform note | not applicable: we configured Potato, the handout's recommended tool. The AI help used along the way is logged in [`docs/AI_USE_LOG.md`](docs/AI_USE_LOG.md) |
 
 ---
 

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+{#
+  Blue Cart Check login page. Replaces Potato's own templates/home.html (installed by
+  scripts/patch_login_page.py, because Potato has no setting for the look of this page).
+  It keeps every form field, id and action Potato's server expects:
+    sign in      POST {{ url_prefix }}/auth      fields: action=login,  email, pass
+    register     POST {{ url_prefix }}/register  fields: action=signup, email, pass
+  Words come from the ui_language block in config.yaml; the defaults below are the fallback.
+#}
+{% if ui_lang is not defined %}
+{% set ui_lang = {
+    'login_title': 'Annotation Platform',
+    'login_subtitle_password': 'Sign in to continue',
+    'login_subtitle_username': 'Enter your username to continue',
+    'sign_in_tab': 'Sign in',
+    'register_tab': 'Create account',
+    'username_label': 'Username',
+    'password_label': 'Password',
+    'sign_in_button': 'Sign in',
+    'continue_button': 'Continue',
+    'register_button': 'Create account',
+    'forgot_password': 'Forgot your password?',
+    'username_placeholder': 'Enter your username',
+    'choose_username_placeholder': 'Choose a username',
+    'create_password_placeholder': 'Create a password',
+    'sign_in_with': 'Sign in with',
+    'or_divider': 'or',
+    'powered_by': 'Powered by',
+    'html_lang': 'en',
+    'html_dir': 'ltr'
+} %}
+{% endif %}
+<html lang="{{ ui_lang.html_lang|default('en') }}" dir="{{ ui_lang.html_dir|default('ltr') }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title|default(ui_lang.login_title|default("Annotation Platform")) }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/font-awesome-6.7.2/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    {% if oauth_providers %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/oauth.css') }}">
+    {% endif %}
+    <style>
+      :root { --bcc-blue: #1565c0; --bcc-blue-dark: #0f4f99; --bcc-ink: #14213d; --bcc-soft: #4a5568; --bcc-line: #d6dce8; --bcc-amber: #f2b632; }
+      html, body { margin: 0; min-height: 100%; }
+      body.bcc-login { background: radial-gradient(1200px 600px at 10% -10%, #dbe7fb 0%, rgba(219, 231, 251, 0) 60%), #f3f6fb; color: var(--bcc-ink);
+        font-family: var(--font-sans, 'Outfit', system-ui, -apple-system, 'Segoe UI', sans-serif); display: flex; flex-direction: column; min-height: 100vh; }
+      .bcc-shell { width: min(1060px, calc(100% - 32px)); margin: 40px auto 24px; display: grid; grid-template-columns: 1.08fr 1fr; background: #fff;
+        border-radius: 26px; overflow: hidden; box-shadow: 0 26px 70px rgba(20, 33, 61, 0.18); min-height: 640px; }
+      /* left: the project */
+      .bcc-hero { position: relative; overflow: hidden; color: #fff; padding: 46px 44px 40px; display: flex; flex-direction: column; gap: 18px;
+        background: linear-gradient(160deg, var(--bcc-blue-dark) 0%, var(--bcc-blue) 55%, #1e88e5 100%); }
+      .bcc-hero::before, .bcc-hero::after { content: ""; position: absolute; border-radius: 50%; background: rgba(255, 255, 255, 0.08); pointer-events: none; }
+      .bcc-hero::before { width: 420px; height: 420px; right: -160px; top: -180px; }
+      .bcc-hero::after { width: 300px; height: 300px; left: -120px; bottom: -140px; }
+      .bcc-hero > * { position: relative; }
+      .bcc-kicker { margin: 0; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--bcc-amber); }
+      .bcc-hero h1 { margin: 0; font-size: clamp(1.9rem, 2.6vw, 2.5rem); line-height: 1.12; font-weight: 800; color: #fff; }
+      .bcc-lead { margin: 0; font-size: 1.05rem; line-height: 1.5; color: #e4edfb; }
+      .bcc-facts { list-style: none; margin: 6px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+      .bcc-facts li { display: flex; align-items: center; gap: 12px; font-size: 0.98rem; color: #fff; }
+      .bcc-facts i { width: 36px; height: 36px; border-radius: 10px; background: rgba(255, 255, 255, 0.16); display: inline-flex; align-items: center; justify-content: center; font-size: 0.95rem; }
+      .bcc-photos { display: flex; gap: 10px; margin-top: auto; padding-top: 18px; }
+      .bcc-photos img { width: 86px; height: 86px; object-fit: cover; border-radius: 14px; border: 2px solid rgba(255, 255, 255, 0.6); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.22); background: #fff; }
+      .bcc-contact { margin: 14px 0 0; font-size: 0.85rem; color: #cfdcf3; }
+      .bcc-contact a { color: #fff; font-weight: 600; text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, 0.5); }
+      /* right: the forms */
+      .bcc-panel { padding: 40px 44px 32px; display: flex; flex-direction: column; justify-content: center; gap: 18px; }
+      .bcc-panel .potato-alert-error { border: 1px solid #f1b4b0; background: #fdecea; color: #8a1c15; border-radius: 12px; padding: 10px 14px; font-size: 0.95rem; }
+      .bcc-tabs { display: flex; background: #eef2f8; border-radius: 999px; padding: 4px; gap: 4px; }
+      .bcc-panel .potato-tab { flex: 1; border: 0; background: transparent; padding: 11px 10px; border-radius: 999px; font: inherit; font-weight: 600; font-size: 0.98rem; color: var(--bcc-soft); cursor: pointer; transition: background 0.15s ease, color 0.15s ease; box-shadow: none; }
+      .bcc-panel .potato-tab:hover { color: var(--bcc-ink); }
+      .bcc-panel .potato-tab.active { background: #fff; color: var(--bcc-blue); box-shadow: 0 2px 10px rgba(20, 33, 61, 0.1); }
+      .bcc-panel .potato-tab i { margin-right: 8px; }
+      .tab-content { display: none; }
+      .tab-content.active { display: block; animation: bcc-fade 0.22s ease-out; }
+      @keyframes bcc-fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+      .bcc-form h2 { margin: 6px 0 4px; font-size: 1.55rem; font-weight: 800; color: var(--bcc-ink); }
+      .bcc-hint { margin: 0 0 18px; color: var(--bcc-soft); font-size: 0.97rem; line-height: 1.5; }
+      .bcc-field { margin-bottom: 14px; }
+      .bcc-field label { display: block; font-size: 0.86rem; font-weight: 700; color: var(--bcc-ink); margin-bottom: 6px; }
+      .bcc-input { position: relative; }
+      .bcc-input > i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #8a93a6; font-size: 0.95rem; pointer-events: none; }
+      .bcc-input input { width: 100%; box-sizing: border-box; padding: 13px 46px 13px 44px; border: 1.5px solid var(--bcc-line); border-radius: 13px; background: #fff; color: var(--bcc-ink);
+        font: inherit; font-size: 1rem; transition: border-color 0.15s ease, box-shadow 0.15s ease; }
+      .bcc-input input::placeholder { color: #9aa3b5; }
+      .bcc-input input:focus { outline: none; border-color: var(--bcc-blue); box-shadow: 0 0 0 4px rgba(21, 101, 192, 0.15); }
+      .bcc-eye { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); border: 0; background: transparent; color: #8a93a6; width: 36px; height: 36px; border-radius: 10px; cursor: pointer; }
+      .bcc-eye:hover { background: #eef2f8; color: var(--bcc-ink); }
+      .bcc-btn { width: 100%; border: 0; border-radius: 13px; padding: 14px 16px; background: var(--bcc-blue); color: #fff; font: inherit; font-size: 1.03rem; font-weight: 700; cursor: pointer;
+        display: inline-flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 10px 24px rgba(21, 101, 192, 0.28); transition: background 0.15s ease, transform 0.08s ease; }
+      .bcc-btn:hover { background: var(--bcc-blue-dark); }
+      .bcc-btn:active { transform: translateY(1px); }
+      .bcc-btn.bcc-btn-go { background: #1f7a3d; box-shadow: 0 10px 24px rgba(31, 122, 61, 0.28); }
+      .bcc-btn.bcc-btn-go:hover { background: #17622f; }
+      .bcc-small { margin: 12px 0 0; text-align: center; font-size: 0.88rem; color: var(--bcc-soft); }
+      .bcc-small a { color: var(--bcc-blue); text-decoration: none; font-weight: 600; }
+      .bcc-switch { margin: 16px 0 0; text-align: center; font-size: 0.92rem; color: var(--bcc-soft); }
+      .bcc-switch button { border: 0; background: transparent; color: var(--bcc-blue); font: inherit; font-weight: 700; cursor: pointer; padding: 0 2px; }
+      .bcc-note { display: flex; gap: 10px; align-items: flex-start; margin: 14px 0 0; padding: 10px 12px; border-radius: 12px; background: #f3f6fb; color: var(--bcc-soft); font-size: 0.88rem; line-height: 1.45; }
+      .bcc-note i { color: var(--bcc-blue); margin-top: 3px; }
+      .oauth-providers { display: flex; flex-direction: column; gap: 8px; }
+      .oauth-divider { text-align: center; color: #9aa3b5; font-size: 0.85rem; margin: 6px 0; }
+      .bcc-footer { text-align: center; font-size: 0.82rem; color: #7c869b; padding: 0 16px 20px; }
+      .bcc-footer a { color: #5b6880; text-decoration: none; }
+      @media (max-width: 860px) {
+        .bcc-shell { grid-template-columns: 1fr; margin: 16px auto; min-height: 0; border-radius: 20px; }
+        .bcc-hero { padding: 28px 24px 24px; }
+        .bcc-photos { display: none; }
+        .bcc-panel { padding: 26px 22px 24px; }
+      }
+      @media (prefers-reduced-motion: reduce) { .tab-content.active { animation: none; } }
+    </style>
+</head>
+<body class="bcc-login">
+  <main class="bcc-shell">
+    <section class="bcc-hero" aria-label="About this task">
+      <p class="bcc-kicker">ARI 510 Machine Learning · Group 2 · University of Michigan-Flint</p>
+      <h1>{{ title|default(ui_lang.login_title|default("Annotation Platform")) }}</h1>
+      <p class="bcc-lead">Look at one photo of an everyday item at a time and answer two short questions. Your answers become the labels of a new dataset about the City of Flint's blue recycling cart.</p>
+      <ul class="bcc-facts">
+        <li><i class="fas fa-clock"></i> About one hour of labeling, at your own pace</li>
+        <li><i class="fas fa-list-ol"></i> Two short questions per photo, keys 1 to 7</li>
+        <li><i class="fas fa-cloud-arrow-up"></i> Nothing to install. Your answers save as you go</li>
+      </ul>
+      <div class="bcc-photos" aria-hidden="true">
+        <img src="{{ url_prefix }}/media/bcc_00047.jpg" alt="" onerror="this.style.display='none'">
+        <img src="{{ url_prefix }}/media/bcc_00234.jpg" alt="" onerror="this.style.display='none'">
+        <img src="{{ url_prefix }}/media/bcc_00591.jpg" alt="" onerror="this.style.display='none'">
+        <img src="{{ url_prefix }}/media/bcc_00107.jpg" alt="" onerror="this.style.display='none'">
+      </div>
+      <p class="bcc-contact">Questions or problems? <a href="mailto:kshafiqu@umich.edu">kshafiqu@umich.edu</a> (Khurram Shafique)</p>
+    </section>
+
+    <section class="bcc-panel">
+      {% if login_error %}
+      <div class="potato-alert potato-alert-error" role="alert">
+        <i class="fas fa-exclamation-circle me-1"></i> {{ login_error }}
+      </div>
+      {% endif %}
+
+      {% if oauth_providers %}
+      <div class="oauth-providers">
+        {% for provider in oauth_providers %}
+        <a href="{{ provider.login_url }}" class="oauth-login-btn {{ provider.button_class }}">
+          <i class="{{ provider.icon_class }}"></i>
+          <span>{{ ui_lang.sign_in_with|default('Sign in with') }} {{ provider.display_name }}</span>
+        </a>
+        {% endfor %}
+      </div>
+      {% if allow_local_login or require_password %}
+      <div class="oauth-divider"><span>{{ ui_lang.or_divider|default('or') }}</span></div>
+      {% endif %}
+      {% endif %}
+
+      {% if not oauth_providers or allow_local_login or require_password %}
+      {% if require_password %}
+      <div class="bcc-tabs potato-tabs" role="tablist">
+        <button class="potato-tab active" id="login-tab" role="tab" type="button" onclick="switchTab('login')"><i class="fas fa-right-to-bracket"></i>{{ ui_lang.sign_in_tab|default('Sign in') }}</button>
+        <button class="potato-tab" id="register-tab" role="tab" type="button" onclick="switchTab('register')"><i class="fas fa-user-plus"></i>{{ ui_lang.register_tab|default('Create account') }}</button>
+      </div>
+      {% endif %}
+
+      <!-- Sign in -->
+      <div class="tab-content active" id="login-content">
+        <form class="bcc-form" method="POST" action="{{ url_prefix }}/auth" autocomplete="on">
+          <input type="hidden" name="action" value="login">
+          {% if require_password %}
+          <h2>Welcome back</h2>
+          <p class="bcc-hint">Use the uniqname or email you registered with. You continue exactly where you stopped.</p>
+          {% else %}
+          <h2>Start labeling</h2>
+          <p class="bcc-hint">{{ ui_lang.login_subtitle_username|default('Enter your username to continue') }}</p>
+          {% endif %}
+          <div class="bcc-field">
+            <label for="login-email">{{ ui_lang.username_label|default('Username') }}</label>
+            <div class="bcc-input"><i class="fas fa-user"></i>
+              <input id="login-email" name="email" type="text" class="potato-form-input" autocomplete="username"
+                     placeholder="{{ ui_lang.username_placeholder|default('Enter your username') }}" value="{{ login_email|default('') }}" required>
+            </div>
+          </div>
+          {% if require_password %}
+          <div class="bcc-field">
+            <label for="login-pass">{{ ui_lang.password_label|default('Password') }}</label>
+            <div class="bcc-input"><i class="fas fa-lock"></i>
+              <input id="login-pass" name="pass" type="password" class="potato-form-input" autocomplete="current-password" placeholder="your password" required>
+              <button type="button" class="bcc-eye" title="Show or hide the password" aria-label="Show or hide the password" onclick="toggleEye('login-pass', this)"><i class="fas fa-eye"></i></button>
+            </div>
+          </div>
+          {% endif %}
+          <button type="submit" class="bcc-btn potato-form-submit">
+            {% if require_password %}{{ ui_lang.sign_in_button|default('Sign in') }}{% else %}{{ ui_lang.continue_button|default('Continue') }}{% endif %}
+            <i class="fas fa-arrow-right"></i>
+          </button>
+          {% if require_password %}
+          <p class="bcc-small"><a href="{{ url_prefix }}/forgot-password">{{ ui_lang.forgot_password|default('Forgot your password?') }}</a></p>
+          <p class="bcc-switch">First time here? <button type="button" onclick="switchTab('register')">Create your account</button></p>
+          {% endif %}
+        </form>
+      </div>
+
+      {% if require_password %}
+      <!-- Create account -->
+      <div class="tab-content" id="register-content">
+        <form class="bcc-form" method="POST" action="{{ url_prefix }}/register" autocomplete="on">
+          <input type="hidden" name="action" value="signup">
+          <h2>First time here?</h2>
+          <p class="bcc-hint">{{ ui_lang.login_subtitle_password|default('Pick a username and a password you will remember. That is all we need.') }}</p>
+          <div class="bcc-field">
+            <label for="register-email">{{ ui_lang.username_label|default('Username') }}</label>
+            <div class="bcc-input"><i class="fas fa-id-badge"></i>
+              <input id="register-email" name="email" type="text" class="potato-form-input" autocomplete="username"
+                     placeholder="{{ ui_lang.choose_username_placeholder|default('Choose a username') }}" required>
+            </div>
+          </div>
+          <div class="bcc-field">
+            <label for="register-pass">{{ ui_lang.password_label|default('Password') }}</label>
+            <div class="bcc-input"><i class="fas fa-key"></i>
+              <input id="register-pass" name="pass" type="password" class="potato-form-input" autocomplete="new-password"
+                     placeholder="{{ ui_lang.create_password_placeholder|default('Create a password') }}" required>
+              <button type="button" class="bcc-eye" title="Show or hide the password" aria-label="Show or hide the password" onclick="toggleEye('register-pass', this)"><i class="fas fa-eye"></i></button>
+            </div>
+          </div>
+          <button type="submit" class="bcc-btn bcc-btn-go potato-form-submit">{{ ui_lang.register_button|default('Create account') }} <i class="fas fa-arrow-right"></i></button>
+          <div class="bcc-note"><i class="fas fa-circle-info"></i><span>One account per person, please. After a short welcome page you label the 30 shared photos first, then more, for about one hour. Nothing to send back.</span></div>
+          <p class="bcc-switch">Already registered? <button type="button" onclick="switchTab('login')">Sign in</button></p>
+        </form>
+      </div>
+      {% endif %}
+      {% endif %}
+    </section>
+  </main>
+
+  <footer class="bcc-footer">
+    Blue Cart Check · Group 2 · {{ ui_lang.powered_by|default('Powered by') }} <a href="https://potatoannotator.com/" target="_blank" rel="noopener noreferrer">Potato</a>
+    &middot; <a href="https://github.com/davidjurgens/potato" target="_blank" rel="noopener noreferrer">GitHub</a>
+  </footer>
+
+  <script>
+    function switchTab(tabName) {
+      document.querySelectorAll('.potato-tab').forEach(function (tab) { tab.classList.remove('active'); });
+      document.querySelectorAll('.tab-content').forEach(function (content) { content.classList.remove('active'); });
+      var tab = document.getElementById(tabName + '-tab'), content = document.getElementById(tabName + '-content');
+      if (tab) { tab.classList.add('active'); }
+      if (content) { content.classList.add('active'); var first = content.querySelector('input[type=text]'); if (first) { first.focus(); } }
+    }
+    function toggleEye(id, btn) {
+      var input = document.getElementById(id), icon = btn.querySelector('i');
+      var show = input.type === 'password';
+      input.type = show ? 'text' : 'password';
+      icon.className = show ? 'fas fa-eye-slash' : 'fas fa-eye';
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      var errorElement = document.querySelector('.potato-alert-error');
+      if ((errorElement && errorElement.textContent.toLowerCase().includes('registration')) || window.location.hash === '#register') {
+        switchTab('register');
+      } else {
+        var first = document.getElementById('login-email'); if (first && !first.value) { first.focus(); }
+      }
+    });
+  </script>
+</body>
+</html>
