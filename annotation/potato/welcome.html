@@ -27,6 +27,9 @@
   .bcc-w .go button { background: #1565c0; color: #fff; border: 0; border-radius: 12px; padding: 14px 34px; font-size: 1.15rem; font-weight: 700; cursor: pointer; }
   .bcc-w .go button:hover { background: #0f4f99; }
   .bcc-w .go small { display: block; margin-top: 8px; color: #4a5160; }
+  .bcc-w .video { margin: 16px 0 4px; border: 1px solid #d6dce8; border-radius: 14px; padding: 10px 12px 8px; background: #fff; }
+  .bcc-w .video video { display: block; width: 100%; max-height: 430px; border-radius: 10px; background: #000; }
+  .bcc-w .video p { margin: 8px 0 0; font-size: 0.92rem; color: #4a5160; }
 </style>
 
 <div class="bcc-w">
@@ -34,6 +37,12 @@
   <p class="lead">You will look at photos of everyday items and help us answer one question:
     <b>does this item go in the City of Flint's blue recycling cart?</b></p>
   <p>Your answers become the labels of a new dataset. Later, a computer model will learn from them. Thank you for helping.</p>
+
+  <!-- the two-minute tutorial; the block hides itself where the video file is not available (zip packs) -->
+  <div class="video" id="bcc-welcome-video">
+    <video controls preload="metadata" src="/media/tutorial.webm" onerror="document.getElementById('bcc-welcome-video').style.display='none'"></video>
+    <p><b>Prefer to watch?</b> Two minutes: creating your account, your first photos, and what every button does. The same video is behind the round <b>?</b> button.</p>
+  </div>
 
   <h2>What you will do</h2>
   <div class="grid">

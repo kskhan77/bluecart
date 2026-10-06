@@ -509,8 +509,9 @@ custom_footer_html: |
     <h4><span class="fas fa-circle-question"></span> Need help? <button type="button" class="bcc-close" title="Close" aria-label="Close">&times;</button></h4>
     <div class="bcc-help-links">
       <a href="/media/how_it_works.html" target="_blank" rel="noopener"><span class="fas fa-list-ol"></span><b>How it works</b><small>The welcome page again: the two steps, an example, who we are.</small><span class="bcc-n">1</span></a>
-      <a href="/media/guidelines.html" target="_blank" rel="noopener"><span class="fas fa-book-open"></span><b>Full guidelines</b><small>Flint's rules word for word, the decision table, examples.</small><span class="bcc-n">2</span></a>
-      <a href="/media/demo/index.html" target="_blank" rel="noopener"><span class="fas fa-photo-film"></span><b>Demo page</b><small>Screenshots of every screen and a short video of the tool.</small><span class="bcc-n">3</span></a>
+      <a href="/media/tutorial.webm" target="_blank" rel="noopener" class="bcc-video-link"><span class="fas fa-circle-play"></span><b>Watch the tutorial</b><small>Two minutes: create your account, your first photos, every button.</small><span class="bcc-n">2</span></a>
+      <a href="/media/guidelines.html" target="_blank" rel="noopener"><span class="fas fa-book-open"></span><b>Full guidelines</b><small>Flint's rules word for word, the decision table, examples.</small><span class="bcc-n">3</span></a>
+      <a href="/media/demo/index.html" target="_blank" rel="noopener"><span class="fas fa-photo-film"></span><b>Demo page</b><small>Screenshots of every screen and a short video of the tool.</small><span class="bcc-n">4</span></a>
     </div>
     <p class="bcc-help-keys"><b>Keys</b>
       <span class="bcc-kset"><kbd data-key="1">1</kbd><kbd data-key="2">2</kbd><kbd data-key="3">3</kbd> Step 1</span>
@@ -689,6 +690,11 @@ custom_footer_html: |
         try {
           if (!sessionStorage.getItem("bcc-hello")) { helpBtn.classList.add("bcc-hello"); sessionStorage.setItem("bcc-hello", "1"); }
         } catch (err) { helpBtn.classList.add("bcc-hello"); }
+        /* the tutorial video ships with the hosted tool only; hide its link where the file is missing (zip packs) */
+        var videoLink = panel.querySelector(".bcc-video-link");
+        if (videoLink && window.fetch) {
+          fetch(videoLink.getAttribute("href"), { method: "HEAD" }).then(function (r) { if (!r.ok) { videoLink.style.display = "none"; } }).catch(function () { videoLink.style.display = "none"; });
+        }
       }
 
       /* a new photo: the Step 1 keys wave. Step 2 appears: its keys wave. Step 2 keys are grey while hidden */

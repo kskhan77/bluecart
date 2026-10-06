@@ -104,6 +104,9 @@ def add_help_pages(media, with_video):
     media.mkdir(parents=True, exist_ok=True)
     welcome = (POTATO / "welcome.html").read_text(encoding="utf-8")
     (media / "how_it_works.html").write_text(how_it_works_html(welcome), encoding="utf-8")
+    tutorial = REPO / "docs" / "figures" / "tool_tutorial.webm"              # the annotator tutorial video (hosted tool only)
+    if with_video and tutorial.exists():
+        shutil.copy(tutorial, media / "tutorial.webm")
 
     demo = REPO / "docs" / "PROJECT_DEMO.html"
     if not demo.exists():
@@ -116,9 +119,9 @@ def add_help_pages(media, with_video):
             continue
         shutil.copy(p, media / "demo" / "figures" / p.name)
     if not with_video:
-        page = re.sub(r"<video[^>]*tool_demo\.webm[^>]*>\s*</video>",
-                      "<p><i>The 2-minute video is not in this pack, to keep the zip small. "
-                      "It is <code>docs/figures/tool_demo.webm</code> in the project repository.</i></p>", page)
+        page = re.sub(r"<video[^>]*tool_[a-z_]+\.webm[^>]*>\s*</video>",
+                      "<p><i>The video is not in this pack, to keep the zip small. "
+                      "It is in <code>docs/figures/</code> in the project repository.</i></p>", page)
     (media / "demo" / "index.html").write_text(page, encoding="utf-8")
 
 
