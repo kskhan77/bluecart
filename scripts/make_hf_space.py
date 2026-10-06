@@ -161,6 +161,11 @@ def main():
     ap.add_argument("--out", default=str(DEFAULT_OUT), help="where to build the folder (default deploy/hf_space)")
     ap.add_argument("--no-backup", action="store_true",
                     help="leave out the Hugging Face backup, for a server that runs on this computer")
+    ap.add_argument("--keep-photo-list", action="store_true",
+                    help="rebuild a RUNNING server with exactly the photos it already serves (same list, same shared set); "
+                         "photos added to the manifest since are left out until the next round")
+    ap.add_argument("--fresh", action="store_true",
+                    help="allow the shared set to change even though the folder already has one (starts a new round)")
     args = ap.parse_args()
     OUT = Path(args.out)
 
@@ -168,7 +173,29 @@ def main():
         rows = list(csv.DictReader(f))
     ids = [r["id"] for r in rows]
     path_of = {r["id"]: r["image_path"] for r in rows}
+    previous_list = OUT / "data" / "items.jsonl"
+    previous_shared = OUT / "shared_ids.json"
+    if args.keep_photo_list:
+        if not (previous_list.exists() and previous_shared.exists()):
+            raise SystemExit(f"--keep-photo-list needs an existing {previous_list} and {previous_shared}.")
+        served = [json.loads(l)["id"] for l in previous_list.open(encoding="utf-8")]
+        missing = [i for i in served if i not in path_of]
+        if missing:
+            raise SystemExit(f"{len(missing)} photos the server serves are no longer in the manifest (e.g. {missing[:3]}); cannot keep the list.")
+        left_out = len(ids) - len(served)
+        ids = served
+        print(f"keeping the photo list the server already serves: {len(ids)} photos"
+              + (f" ({left_out} newer manifest photos left out until the next round)" if left_out else ""))
     shared, fraction = shared_ids(ids, args.shared, args.seed)
+    if previous_shared.exists() and not args.fresh:
+        old = json.load(previous_shared.open(encoding="utf-8")).get("shared_ids", [])
+        if old and set(old) != set(shared):
+            raise SystemExit("REFUSED: this rebuild would change the shared photos that everyone labels "
+                             f"({len(set(old) - set(shared))} of the current {len(old)} would drop out), because the photo list changed. "
+                             "Potato samples the shared set from the whole list, so people who already labeled the old shared photos "
+                             "would no longer share them with new annotators.\n"
+                             "  * to update a running server without changing its photos:  add --keep-photo-list\n"
+                             "  * to start a new round with the new photos and a new shared set: add --fresh")
     if args.per_annotator <= len(shared):
         raise SystemExit(f"--per-annotator ({args.per_annotator}) must be larger than the shared set ({len(shared)}).")
     if args.labels_per_photo < 1:
@@ -190,11 +217,16 @@ def main():
     (OUT / "data").mkdir(parents=True, exist_ok=True)
     (OUT / "media").mkdir(exist_ok=True)
 
-    # shared photos first, then the rest in a fixed shuffled order (so one source does not come all at once)
-    rest = [i for i in ids if i not in set(shared)]
-    random.Random(args.seed + 1).shuffle(rest)
+    # shared photos first, then the rest in a fixed shuffled order (so one source does not come all at once);
+    # with --keep-photo-list the previous order is kept exactly, so running annotators' positions do not move
+    if args.keep_photo_list:
+        order = ids
+    else:
+        rest = [i for i in ids if i not in set(shared)]
+        random.Random(args.seed + 1).shuffle(rest)
+        order = shared + rest
     with (OUT / "data" / "items.jsonl").open("w", encoding="utf-8") as f:
-        for image_id in shared + rest:
+        for image_id in order:
             f.write(json.dumps({"id": image_id, "image": f"/media/{image_id}.jpg"}) + "\n")
             shutil.copy(REPO / "data" / path_of[image_id], OUT / "media" / f"{image_id}.jpg")
 

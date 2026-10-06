@@ -13,10 +13,10 @@ Status column last updated **Oct 6, 2026 (morning)**. ✅ done · 🟡 partly ·
 
 | # | requirement (handout §) | file / action | owner | status |
 |---|---|---|---|---|
-| R1 | Data stored in an easy-to-access way: folder of files or csv/json (§2) | `data/images/` + `data/manifest.csv` | Daud | 🟡 617 photos: 77 team photos (Ian's set only) + 540 from two existing datasets and Wikimedia Commons. Daud's, Hina's and Khurram's own photo sets are still missing |
+| R1 | Data stored in an easy-to-access way: folder of files or csv/json (§2) | `data/images/` + `data/manifest.csv` | Daud | 🟡 648 photos: 108 team photos (Ian 77, Hina 31 added Oct 6) + 540 from two existing datasets and Wikimedia Commons. Daud's and Khurram's own photo sets are still missing |
 | R2 | Respect terms of service; check source licenses (§2) | credits in `data/attribution.csv`; RealWaste kept as CC BY-NC-SA 4.0 | Daud | ✅ 540 sourced images, each with a credit row. RealWaste's NC-SA license is now the dataset license |
 | R3 | Choose a dataset license (§2) | `LICENSE.md` (CC BY-NC-SA 4.0) | Daud | ✅ locked Oct 6 so the RealWaste images can stay |
-| R4 | README: source, **reproducible collection procedure**, format, what one instance is, total count, collection dates, sampling, missing data (§2) | `README.md` §1–4 | Daud + Khurram | ✅ 617 images, 77 team / 540 sourced, dates 2026-09-28 to 2026-10-04 |
+| R4 | README: source, **reproducible collection procedure**, format, what one instance is, total count, collection dates, sampling, missing data (§2) | `README.md` §1–4 | Daud + Khurram | ✅ 648 images, 108 team / 540 sourced, dates 2026-09-28 to 2026-10-06 |
 | R5 | README: **estimated time to label one item** (time yourself during internal annotation) (§2) | `README.md` §5, `scripts/labeling_time.py` | Hina (pilot) | ✅ median 6 s on 160 photos (Oct 5); plan with 15–20 s for a first-time annotator |
 | R6 | Guidelines: concise overview of the job (§3.1) | `annotation/guidelines.md` §1 | Hina | ✅ draft |
 | R7 | Guidelines: label set with short descriptions (§3.1) | §2 | Hina | ✅ draft |

@@ -21,7 +21,7 @@ REPO = Path(__file__).resolve().parents[1]
 def repo(tmp_path):
     dst = tmp_path / "repo"
     # never copy raw downloads or photos into the throwaway repo: they are large and can hold GPS data
-    shutil.copytree(REPO, dst, ignore=shutil.ignore_patterns(".git", ".venv", "images", "packs", "returned", "course", "raw", "figures"))
+    shutil.copytree(REPO, dst, ignore=shutil.ignore_patterns(".git", ".venv", "images", "packs", "returned", "course", "raw", "figures", "deploy"))
     (dst / "data" / "images").mkdir(parents=True, exist_ok=True)
     (dst / "data" / "manifest.csv").write_text(
         "id,image_path,width,height,source,source_url,license,attribution,capture_date,"
@@ -189,10 +189,13 @@ def test_two_step_answers_become_one_label(tmp_path):
         "bcc_00002": pick(cart="not_blue_cart", condition="ready"),     # changed mind: old Step 2 answer left behind
         "bcc_00003": pick(cart="blue_cart"),                            # Step 2 not answered yet
         "bcc_00004": pick(label="accepted"),                            # older one-question format
+        # a reason that was chosen and then CLEARED in the tool: Potato keeps a "not selected" marker (value false)
+        "bcc_00005": pick(cart="blue_cart", condition="ready") + [[{"schema": "reason", "name": "material"}, False]],
     }}))
     df = ca.load(tmp_path / "returned").set_index("id")
-    assert dict(df.label) == {"bcc_00001": "accepted_after_prep", "bcc_00002": "not_accepted", "bcc_00004": "accepted"}
+    assert dict(df.label) == {"bcc_00001": "accepted_after_prep", "bcc_00002": "not_accepted", "bcc_00004": "accepted", "bcc_00005": "accepted"}
     assert df.loc["bcc_00002", "condition"] == "" and df.loc["bcc_00001", "reason"] == "bagged"
+    assert df.loc["bcc_00005", "reason"] == ""                       # the cleared reason is not counted
 
 
 def test_sourced_images_keep_original_author_and_get_credit_rows(repo):

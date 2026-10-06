@@ -38,7 +38,7 @@ Each item is a JPEG photo of a single everyday item (a can, a box, a cable, a cu
 
 | | |
 |---|---|
-| Photos in the dataset now | 617 (more of our own photos are still being added) |
+| Photos in the dataset now | 648 (108 our own, 540 from open datasets). The current labeling round in the tool uses the first 617; Hina's 31 own photos, added on Oct 6, join the next round. |
 | Photos per annotator | 200 = 30 shared photos that every annotator labels + the next 170 photos that still need a label. Every photo is labeled by 2 people. |
 | Time per photo | About 6 seconds median for us (160-photo pilot on Oct 5, from `python scripts/labeling_time.py`). We plan with 15 to 20 seconds for a first-time annotator, so 200 photos is about one hour. |
 | Time per annotator | About 1 hour, including reading the welcome page |

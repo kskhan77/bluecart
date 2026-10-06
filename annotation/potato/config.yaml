@@ -152,13 +152,27 @@ annotation_schemes:
   - annotation_type: radio
     name: reason
     description: "(Optional) Main reason for your choice"
+    # The stored values (name) stay as in the guidelines; displayed_label is the friendlier text on the chip,
+    # tooltip is the hover text. The small ? button on every chip (added by the script below) opens a fuller explanation with examples.
     labels:
       - name: material
+        displayed_label: "Material"
+        tooltip: "What it is made of decided your answer: paper, cardboard, metal, glass and rigid plastic are blue cart kinds; plastic film, Styrofoam, ceramic and textiles never are."
       - name: contamination
+        displayed_label: "Dirty or greasy"
+        tooltip: "Food, grease or liquid on or in the item decided your answer: a jar with sauce needs a rinse, a greasy pizza box is ruined."
       - name: bagged
+        displayed_label: "In a plastic bag"
+        tooltip: "The items sit inside a plastic bag, so they must come out first. The bag itself never goes in the blue cart."
       - name: form_factor
+        displayed_label: "Shape or size"
+        tooltip: "The shape decided it, not the material: cups, lids, straws, cutlery, film and wrap are not accepted even when the plastic is; a big unflattened box needs prep."
       - name: hazard_or_electronics
+        displayed_label: "Hazard or electronics"
+        tooltip: "Batteries, cords, cables, hoses, electronics or chemicals: never the blue cart. They endanger workers and jam the machines."
       - name: unclear
+        displayed_label: "Unclear photo"
+        tooltip: "The photo itself blocked the decision: blurry, cut off, too small or dark, or no single main item."
 
 # Look and layout. Everything here is plain CSS; it changes how the page looks, not what is saved.
 #  * wide screen: photo on the left, rules + questions on the right; narrow screen: stacked, questions first
@@ -198,18 +212,94 @@ custom_footer_html: |
     /* ---------- key legend under the questions: three groups, each key is also a button ---------- */
     .bcc-keys { max-width: 1480px; margin: 12px auto 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 16px; color: #4a5160; font-size: 0.84rem; }
     .bcc-kgroup { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 4px; padding: 4px 10px 4px 12px; border: 1px solid #d6dce8; border-radius: 999px; background: rgba(255, 255, 255, 0.75); }
-    .bcc-klabel { font-weight: 700; color: #1565c0; font-size: 0.72rem; letter-spacing: 0.05em; text-transform: uppercase; margin-right: 4px; }
+    .bcc-klabel { font-weight: 700; color: #1565c0; font-size: 0.72rem; letter-spacing: 0.05em; text-transform: uppercase; margin-right: 4px; white-space: nowrap; }
     .bcc-key { --c: #4a5160; display: inline-flex; align-items: center; gap: 6px; border: 0; background: transparent; color: #1f2430; font: inherit; padding: 2px 7px 2px 3px; border-radius: 8px; cursor: pointer; transition: opacity .2s ease, background .15s ease; }
     .bcc-key:hover { background: rgba(21, 101, 192, 0.1); }
     .bcc-key kbd { border-color: var(--c); color: var(--c); }
     .bcc-key.bcc-off { opacity: 0.4; }                                  /* Step 2 keys while Step 2 is not shown */
+    .bcc-now { display: none; }                                         /* the "press these now" pill is desktop-only */
+
+    /* desktop with a keyboard: ONE full-width bar directly under the top menu. The group that works
+       right now is bright, the others are dimmed. Previous / Next are real buttons at the end. */
+    html.bcc-desktop .bcc-keys {
+      position: sticky; top: 0; z-index: 1800; max-width: none; width: 100%; box-sizing: border-box; margin: 0 0 10px; padding: 6px 18px;
+      display: flex; flex-wrap: nowrap; align-items: center; justify-content: center; gap: 6px 12px;
+      background: #0e1524; color: #fff; border-bottom: 3px solid #ffb300;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28); font-size: 0.9rem;
+    }
+    @media (max-width: 1499px) { html.bcc-desktop .bcc-keys { flex-wrap: wrap; } }   /* under 1500 px wide: two tidy rows instead of clipping */
+    html.bcc-desktop .bcc-now { display: inline-flex; align-items: center; white-space: nowrap; color: #ffe6a3; font-weight: 800; font-size: 0.95rem;
+      padding: 4px 12px; border-radius: 999px; background: rgba(255, 179, 0, 0.14); margin-right: 2px; }
+    /* groups are muted by colour, not opacity, so a CHOSEN key can stay bright inside a muted group */
+    html.bcc-desktop .bcc-kgroup { flex-wrap: nowrap; background: transparent; border-color: rgba(255, 255, 255, 0.18); color: rgba(255, 255, 255, 0.5); padding: 3px 8px 3px 10px;
+      transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease; }
+    html.bcc-desktop .bcc-kgroup.bcc-live { background: rgba(255, 255, 255, 0.08); border-color: #ffb300; color: #fff; }
+    html.bcc-desktop .bcc-klabel { color: #9ec1ef; }
+    html.bcc-desktop .bcc-kgroup:not(.bcc-live) .bcc-klabel { color: rgba(158, 193, 239, 0.55); }
+    html.bcc-desktop .bcc-key { color: inherit; font-weight: 700; white-space: nowrap; padding: 2px 6px 2px 2px; }
+    html.bcc-desktop .bcc-key:hover { background: rgba(255, 255, 255, 0.12); }
+    html.bcc-desktop .bcc-key.bcc-off { opacity: 1; }                   /* the group is muted instead of single keys */
+    /* every digit stays black on a white key. Key 3 is gray and key 1 is dark blue, so coloring the digit made it disappear */
+    html.bcc-desktop .bcc-keys kbd {
+      min-width: 1.9em; font-size: 1rem; line-height: 1.35; padding: 2px 7px;
+      background: #fff !important; color: #111 !important; -webkit-text-fill-color: #111 !important;
+      border-color: #111 !important; opacity: 1 !important; transition: transform 0.15s ease;
+    }
+    html.bcc-desktop .bcc-kgroup:not(.bcc-live) .bcc-key:not(.bcc-chosen) kbd { background: #c9d0dc !important; color: #3a4150 !important; -webkit-text-fill-color: #3a4150 !important; border-color: #3a4150 !important; }
+    /* the answer that is chosen for this photo: the key takes the card's colour, grows, and gets a check mark */
+    html.bcc-desktop .bcc-keys .bcc-key.bcc-chosen { color: #fff; }
+    html.bcc-desktop .bcc-keys .bcc-key.bcc-chosen kbd { background: var(--c) !important; color: #fff !important; -webkit-text-fill-color: #fff !important; border-color: #fff !important;
+      transform: scale(1.22); margin: 0 4px; box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.28), 0 3px 0 rgba(0, 0, 0, 0.35); }
+    .bcc-key.bcc-chosen::after { content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900; font-size: 0.75em; color: #ffb300; margin-left: 2px; }
+    .bcc-key.bcc-chosen kbd { background: var(--c); color: #fff; border-color: var(--c); transform: scale(1.12); }   /* tablet legend */
+    @keyframes bcc-pop-key { 0% { transform: scale(1); } 50% { transform: scale(1.5); } 100% { transform: scale(1.22); } }
+    html.bcc-desktop .bcc-keys kbd.bcc-pop-key { animation: bcc-pop-key 0.4s ease-out; }
+    html.bcc-desktop .bcc-kgroup[data-group="next"] { border: 0; padding: 0; gap: 8px; margin-left: 4px; }
+    html.bcc-desktop .bcc-kgroup[data-group="next"] .bcc-klabel { display: none; }
+    html.bcc-desktop .bcc-kgroup[data-group="next"] .bcc-key { border: 1.5px solid rgba(255, 255, 255, 0.45); border-radius: 999px; padding: 4px 12px 4px 7px; }
+    html.bcc-desktop .bcc-kgroup[data-group="next"] .bcc-key[data-key="arrowright"] { background: #ffb300; color: #111; border-color: #ffb300; }
+    html.bcc-desktop .bcc-kgroup[data-group="next"] .bcc-key[data-key="arrowright"]:hover { background: #ffc733; }
+    html.bcc-desktop .bcc-kgroup[data-group="next"].bcc-live .bcc-key[data-key="arrowright"] { box-shadow: 0 0 0 3px rgba(255, 179, 0, 0.35); }
+    #notification-container { top: 110px !important; }
+
+    /* ---------- phones: a fixed Previous / Next bar at the bottom, no keys (there is no keyboard) ---------- */
+    @media (max-width: 860px) {
+      .bcc-keys { position: fixed; left: 0; right: 0; bottom: 0; z-index: 1800; max-width: none; margin: 0; padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
+        background: #0e1524; border-top: 3px solid #ffb300; box-shadow: 0 -6px 18px rgba(0, 0, 0, 0.25); gap: 8px; flex-wrap: nowrap; }
+      .bcc-kgroup[data-group="step1"], .bcc-kgroup[data-group="step2"], .bcc-now { display: none; }
+      .bcc-kgroup[data-group="next"] { flex: 1; display: flex; flex-wrap: nowrap; border: 0; background: transparent; padding: 0; gap: 10px; }
+      .bcc-kgroup[data-group="next"] .bcc-klabel { display: none; }
+      .bcc-kgroup[data-group="next"] .bcc-key { flex: 1; justify-content: center; padding: 12px 10px; border-radius: 12px; font-size: 1.05rem; font-weight: 700; color: #fff; border: 1.5px solid rgba(255, 255, 255, 0.45); }
+      .bcc-kgroup[data-group="next"] .bcc-key[data-key="arrowright"] { background: #ffb300; color: #111; border-color: #ffb300; }
+      .bcc-kgroup[data-group="next"] .bcc-key kbd { border: 0 !important; background: transparent !important; color: inherit !important; -webkit-text-fill-color: inherit !important; font-size: 1.15rem; padding: 0; min-width: 0; }
+      body { padding-bottom: 84px !important; }
+      .bcc-help-btn { bottom: 96px; right: 16px; width: 52px; height: 52px; }
+      .bcc-help-panel { bottom: 158px; right: 16px; }
+      #next-btn { margin-right: 0 !important; }
+      /* tighter cards; the key badges mean nothing without a keyboard */
+      #cart .shadcn-radio-label, #condition .shadcn-radio-label { padding: 8px 4px 6px; font-size: 0.86rem; }
+      #cart .shadcn-radio-label::after, #condition .shadcn-radio-label::after { font-size: 0.68rem; }
+      #cart .keybinding-badge, #condition .keybinding-badge { display: none; }
+      #reason .shadcn-radio-options { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+      .bcc-credit { font-size: 0.8rem; }
+      /* the rules box folds up; the small button in its title opens it */
+      #rules.bcc-collapsed .display-content { display: none; }
+    }
+    .bcc-rules-toggle { margin-left: 8px; border: 1px solid #c9d3e6; background: #fff; color: #1565c0; border-radius: 999px; padding: 1px 10px; font: inherit; font-size: 0.78rem; font-weight: 700; cursor: pointer; }
+    /* "Clear ×" in the title of the optional reason, shown only while a reason is chosen */
+    .bcc-clear { display: none; margin-left: 10px; border: 1px solid #c9d3e6; background: #fff; color: #b3261e; border-radius: 999px; padding: 1px 10px; font: inherit; font-size: 0.78rem; font-weight: 700; cursor: pointer; vertical-align: middle; }
+    .bcc-clear:hover { background: #fde2e1; border-color: #b3261e; }
+    @media (min-width: 861px) { .bcc-rules-toggle { display: none; } }
 
     /* ---------- keycaps: the legend, the help panel and the badge on every card ---------- */
     .bcc-keys kbd, .bcc-help-panel kbd, #cart .keybinding-badge, #condition .keybinding-badge {
       display: inline-block; min-width: 1.6em; text-align: center; border: 1px solid #b9c1d1; border-bottom-width: 3px; border-radius: 6px;
       padding: 0 5px; background: #fff; color: #1f2430; font-weight: 700; font-size: 0.82em; line-height: 1.5; position: relative;
     }
-    #cart .shadcn-radio-input:checked + .shadcn-radio-label .keybinding-badge, #condition .shadcn-radio-input:checked + .shadcn-radio-label .keybinding-badge { background: rgba(255, 255, 255, 0.2); color: #fff; border-color: rgba(255, 255, 255, 0.7); }
+    #cart .shadcn-radio-input:checked + .shadcn-radio-label .keybinding-badge, #condition .shadcn-radio-input:checked + .shadcn-radio-label .keybinding-badge,
+    #cart .keybinding-badge, #condition .keybinding-badge {
+      background: #fff !important; color: #111 !important; -webkit-text-fill-color: #111 !important; border-color: #111 !important; opacity: 1 !important;
+    }
     /* a key is pressed (keyboard or mouse): the keycap goes down and lights up, the chosen card pops */
     @keyframes bcc-press { 0% { transform: translateY(0); } 35% { transform: translateY(3px); border-bottom-width: 1px; } 100% { transform: translateY(0); border-bottom-width: 3px; } }
     @keyframes bcc-glow { 0% { box-shadow: 0 0 0 0 rgba(255, 179, 0, 0.9); } 100% { box-shadow: 0 0 0 9px rgba(255, 179, 0, 0); } }
@@ -242,6 +332,7 @@ custom_footer_html: |
     #cart .shadcn-radio-input, #condition .shadcn-radio-input, #reason .shadcn-radio-input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
     #cart .shadcn-radio-label, #condition .shadcn-radio-label {
       --c: #6b7280;
+      position: relative;
       display: flex; flex-direction: column; align-items: center; gap: 3px; height: 100%; width: 100%; margin: 0;
       padding: 9px 6px 7px; text-align: center; cursor: pointer;
       border: 2px solid var(--c); border-radius: 14px; background: #fff; color: #1f2430;
@@ -253,7 +344,12 @@ custom_footer_html: |
       font-family: "Font Awesome 6 Free"; font-weight: 900; font-size: 1.8rem; line-height: 1.1; color: var(--c); margin-bottom: 2px;
     }
     #cart .shadcn-radio-label::after, #condition .shadcn-radio-label::after { order: 2; font-weight: 400; font-size: 0.74rem; line-height: 1.2; color: #4a5160; }
-    #cart .keybinding-badge, #condition .keybinding-badge { order: 3; margin: 2px 0 0; }
+    /* the key on each card: a real keycap in the corner, large enough to read at a glance */
+    #cart .keybinding-badge, #condition .keybinding-badge {
+      position: absolute; top: 6px; right: 6px; z-index: 1; order: 3; margin: 0;
+      min-width: 1.9em; font-size: 1.05rem; line-height: 1.35; padding: 1px 7px;
+      box-shadow: 0 2px 0 #8b93a3;
+    }
     /* chosen card: filled with its colour */
     #cart .shadcn-radio-input:checked + .shadcn-radio-label, #condition .shadcn-radio-input:checked + .shadcn-radio-label { background: var(--c); color: #fff; box-shadow: 0 0 0 3px rgba(255, 179, 0, 0.75); }
     #cart .shadcn-radio-input:checked + .shadcn-radio-label::before, #condition .shadcn-radio-input:checked + .shadcn-radio-label::before,
@@ -335,6 +431,27 @@ custom_footer_html: |
     .bcc-help-keys .bcc-kset kbd { margin-right: 1px; }
     .bcc-help-keys small { flex-basis: 100%; color: #4a5160; }
 
+    /* ---------- the small ? on every answer: opens a card with meaning, examples and when to pick it ---------- */
+    .bcc-info-btn { position: absolute; z-index: 2; width: 22px; height: 22px; border-radius: 50%; border: 1px solid #b9c1d1; background: #fff; color: #1565c0;
+      font: 700 0.8rem/20px system-ui, sans-serif; text-align: center; cursor: pointer; padding: 0; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12); transition: background .15s ease, color .15s ease, transform .1s ease; }
+    .bcc-info-btn:hover, .bcc-info-btn.open { background: #1565c0; color: #fff; border-color: #1565c0; transform: scale(1.08); }
+    #cart .bcc-info-btn, #condition .bcc-info-btn { top: 6px; left: 6px; }
+    #reason .bcc-info-btn { top: 50%; right: 7px; transform: translateY(-50%); }
+    #reason .bcc-info-btn:hover, #reason .bcc-info-btn.open { transform: translateY(-50%) scale(1.08); }
+    #reason .shadcn-radio-label { padding-right: 36px; }
+    .bcc-info-pop { position: fixed; z-index: 2100; width: 340px; max-width: calc(100vw - 24px); background: #fff; color: #1f2430; border: 1px solid #c9d3e6; border-radius: 14px;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.26); padding: 12px 14px 13px; font-size: 0.9rem; line-height: 1.45; display: none; }
+    .bcc-info-pop.open { display: block; animation: bcc-fadeup 0.16s ease-out; }
+    .bcc-info-pop h5 { margin: 0 0 6px; font-size: 1rem; color: #1565c0; display: flex; align-items: center; gap: 8px; padding-right: 28px; }
+    .bcc-info-pop h5 kbd { margin-left: auto; }
+    .bcc-info-pop .bcc-close { position: absolute; top: 8px; right: 10px; border: 0; background: transparent; color: #4a5160; font-size: 1.25rem; line-height: 1; cursor: pointer; padding: 0 4px; }
+    .bcc-info-pop p { margin: 5px 0 0; }
+    .bcc-info-pop b.bcc-lbl { display: block; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: #6b7280; margin-top: 9px; }
+    .bcc-info-pop .bcc-ex { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px; }
+    .bcc-info-pop .bcc-ex span { padding: 2px 9px; border-radius: 999px; background: #eef2f8; border: 1px solid #d6dce8; font-size: 0.82rem; }
+    .bcc-info-pop .bcc-not { color: #b3261e; }
+    .bcc-info-pop kbd { display: inline-block; min-width: 1.6em; text-align: center; border: 1px solid #b9c1d1; border-bottom-width: 3px; border-radius: 6px; padding: 0 5px; background: #fff; color: #1f2430; font-weight: 700; font-size: 0.82em; }
+
     /* ---------- page layout ---------- */
     @media (min-width: 1200px) {
       .container-fluid { max-width: 1480px !important; }
@@ -350,20 +467,41 @@ custom_footer_html: |
     @media (max-width: 640px) {
       #condition .shadcn-radio-options, #reason .shadcn-radio-options { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
     }
-    /* short screens (small laptops): flatter cards with the icon on the left, so both steps fit without scrolling */
-    @media (max-height: 760px) {
+    /* laptops and desktops with a short window (anything under 900 px tall, which is most 1080p screens at 125%):
+       flatter cards with the icon on the left, a tighter rules box and a shorter photo, so everything fits without scrolling */
+    @media (max-height: 900px) {
+      #rules fieldset { padding: 5px 10px 6px; }
+      #rules legend { font-size: 0.88rem; }
+      #rules .display-content { font-size: 0.74rem; line-height: 1.3; }
+      .bcc-row { margin: 0 0 4px; gap: 3px; }
+      .display-type-image .display-field-content { max-height: 62vh; }
+      img.display-image { max-height: 58vh !important; }
+      form#cart, form#condition, form#reason { padding-top: 3px !important; padding-bottom: 5px !important; }
+      #reason .shadcn-radio-options { gap: 6px; }
+      #reason .shadcn-radio-label { padding: 3px 10px; font-size: 0.8rem; }
       #condition .shadcn-radio-options { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
-      #cart .shadcn-radio-options, #condition .shadcn-radio-options { gap: 7px; }
+      #cart .shadcn-radio-options, #condition .shadcn-radio-options { gap: 6px; }
       #cart .shadcn-radio-label, #condition .shadcn-radio-label {
         display: grid; grid-template-columns: auto 1fr auto; grid-template-areas: "icon title key" "icon sub key";
-        column-gap: 9px; row-gap: 0; align-items: center; text-align: left; padding: 6px 10px;
+        column-gap: 9px; row-gap: 0; align-items: center; text-align: left; padding: 5px 10px;
       }
       #cart .shadcn-radio-label::before, #condition .shadcn-radio-label::before { grid-area: icon; font-size: 1.45rem; margin: 0; }
       #cart .shadcn-radio-label::after, #condition .shadcn-radio-label::after { grid-area: sub; }
-      #cart .keybinding-badge, #condition .keybinding-badge { grid-area: key; margin: 0; }
+      #cart .keybinding-badge, #condition .keybinding-badge { position: static; grid-area: key; margin: 0; font-size: 1rem; min-width: 1.8em; }
       .bcc-note, .bcc-how { display: none; }
-      #annotation-forms .annotation_schema { gap: 8px !important; }
-      .bcc-status { padding: 5px 12px; min-height: 2.2em; font-size: 0.92rem; }
+      #annotation-forms .annotation_schema { gap: 6px !important; }
+      .bcc-status { padding: 4px 12px; min-height: 2em; font-size: 0.92rem; }
+    }
+    /* phones: one card per row with the icon on the left, so the titles do not break into three lines */
+    @media (max-width: 640px) {
+      #cart .shadcn-radio-options, #condition .shadcn-radio-options { grid-template-columns: 1fr !important; gap: 6px; }
+      #cart .shadcn-radio-label, #condition .shadcn-radio-label {
+        display: grid; grid-template-columns: auto 1fr; grid-template-areas: "icon title" "icon sub";
+        column-gap: 12px; row-gap: 0; align-items: center; text-align: left; padding: 8px 14px; font-size: 0.98rem;
+      }
+      #cart .shadcn-radio-label::before, #condition .shadcn-radio-label::before { grid-area: icon; font-size: 1.5rem; margin: 0; }
+      #cart .shadcn-radio-label::after, #condition .shadcn-radio-label::after { grid-area: sub; font-size: 0.76rem; }
+      .bcc-status { font-size: 0.92rem; }
     }
   </style>
   <button type="button" class="bcc-help-btn" title="Help" aria-label="Help" aria-expanded="false" aria-controls="bcc-help"><span class="fas fa-circle-question"></span></button>
@@ -384,18 +522,19 @@ custom_footer_html: |
   </div>
   <!-- key legend: each key is also a button (for tablets); the script below lights them up when pressed -->
   <div class="bcc-keys" aria-label="Keyboard keys">
-    <span class="bcc-kgroup"><span class="bcc-klabel">Step 1</span>
+    <span class="bcc-now" id="bcc-now">Press 1, 2, or 3</span>
+    <span class="bcc-kgroup" data-group="step1"><span class="bcc-klabel">Step 1</span>
       <button type="button" class="bcc-key" data-key="1" style="--c:#1565c0" title="Press 1"><kbd>1</kbd> Blue cart</button>
       <button type="button" class="bcc-key" data-key="2" style="--c:#1b1f27" title="Press 2"><kbd>2</kbd> Not blue cart</button>
       <button type="button" class="bcc-key" data-key="3" style="--c:#6b7280" title="Press 3"><kbd>3</kbd> Can't tell</button>
     </span>
-    <span class="bcc-kgroup"><span class="bcc-klabel">Step 2</span>
+    <span class="bcc-kgroup" data-group="step2"><span class="bcc-klabel">Step 2</span>
       <button type="button" class="bcc-key" data-key="4" style="--c:#1f7a3d" title="Press 4"><kbd>4</kbd> Ready</button>
       <button type="button" class="bcc-key" data-key="5" style="--c:#b26a00" title="Press 5"><kbd>5</kbd> Needs prep</button>
       <button type="button" class="bcc-key" data-key="6" style="--c:#b3261e" title="Press 6"><kbd>6</kbd> Ruined</button>
       <button type="button" class="bcc-key" data-key="7" style="--c:#6b7280" title="Press 7"><kbd>7</kbd> Can't see</button>
     </span>
-    <span class="bcc-kgroup"><span class="bcc-klabel">Photos</span>
+    <span class="bcc-kgroup" data-group="next"><span class="bcc-klabel">Photos</span>
       <button type="button" class="bcc-key" data-key="arrowleft" title="Press the left arrow"><kbd>&larr;</kbd> Previous</button>
       <button type="button" class="bcc-key" data-key="arrowright" title="Press the right arrow"><kbd>&rarr;</kbd> Next</button>
     </span>
@@ -447,6 +586,22 @@ custom_footer_html: |
        hidden. Also opens and closes the help panel. Display only: Potato still does all the saving. */
     (function () {
       var motionOk = !(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+      var desktopQ = window.matchMedia("(hover: hover) and (pointer: fine) and (min-width: 1000px)");
+      function placeBar() {
+        var bar = document.querySelector(".bcc-keys");
+        var on = desktopQ.matches;
+        document.documentElement.classList.toggle("bcc-desktop", on);
+        if (!bar) { return; }
+        bar.style.top = "";
+        document.body.style.paddingTop = "";
+        if (on) {
+          var nav = document.querySelector(".potato-navbar");
+          if (nav && bar.previousElementSibling !== nav) { nav.insertAdjacentElement("afterend", bar); }
+        }
+      }
+      desktopQ.addEventListener("change", placeBar);
+      document.addEventListener("DOMContentLoaded", placeBar);
+      placeBar();
       function keyOf(e) {
         var k = (e.key || "").toLowerCase();
         return (k === "arrowright" || k === "arrowleft" || /^[1-7]$/.test(k)) ? k : "";
@@ -547,10 +702,163 @@ custom_footer_html: |
         }
         var s2 = step2Shown();
         ["4", "5", "6", "7"].forEach(function (k) { legendButtons(k).forEach(function (b) { b.classList.toggle("bcc-off", !s2); }); });
+        /* mark the chosen answers in the legend: the key takes the card's colour and grows */
+        ["1", "2", "3", "4", "5", "6", "7"].forEach(function (k) {
+          var radio = document.querySelector('#annotation-forms input[data-key="' + k + '"]');
+          var on = !!(radio && radio.checked && (k < "4" || s2));
+          legendButtons(k).forEach(function (b) {
+            if (b.classList.contains("bcc-chosen") === on) { return; }
+            b.classList.toggle("bcc-chosen", on);
+            var cap = b.querySelector("kbd");
+            if (on && cap && motionOk) { flash([cap], "bcc-pop-key", 420); }
+          });
+        });
         if (s2 && !step2Was && !document.querySelector("#condition input:checked")) { wave(["4", "5", "6", "7"]); }
         step2Was = s2;
+        /* desktop bar: say which keys work for this photo, and light only that group */
+        var now = document.getElementById("bcc-now");
+        if (now) {
+          var cart = document.querySelector("#cart input:checked");
+          var cond = document.querySelector("#condition input:checked");
+          var mode = "step1", msg = "Now: press 1, 2 or 3";
+          if (cart && cart.value === "blue_cart" && s2 && !cond) { mode = "step2"; msg = "Now: press 4, 5, 6 or 7"; }
+          else if (cart && (cart.value !== "blue_cart" || cond)) { mode = "next"; msg = "Now: → for the next photo"; }
+          if (now.textContent !== msg) { now.textContent = msg; }
+          Array.prototype.forEach.call(document.querySelectorAll(".bcc-kgroup"), function (g) {
+            g.classList.toggle("bcc-live", g.getAttribute("data-group") === mode);
+          });
+        }
+        rulesToggle();
       }
-      setInterval(tick, 150);
+      /* phones: the rules box starts folded, with a small button in its title to open it (remembered for the session) */
+      function rulesToggle() {
+        var rules = document.querySelector("form#rules"), legend = rules && rules.querySelector("legend");
+        if (!legend || legend.querySelector(".bcc-rules-toggle")) { return; }
+        var open = false;
+        try { open = sessionStorage.getItem("bcc-rules-open") === "1"; } catch (err) { open = false; }
+        var btn = document.createElement("button");
+        btn.type = "button"; btn.className = "bcc-rules-toggle";
+        function paint() { rules.classList.toggle("bcc-collapsed", !open); btn.textContent = open ? "Hide" : "Show rules"; }
+        btn.addEventListener("click", function () {
+          open = !open; paint();
+          try { sessionStorage.setItem("bcc-rules-open", open ? "1" : "0"); } catch (err) {}
+        });
+        legend.appendChild(btn); paint();
+      }
+
+      /* the small ? on every answer: what it means, examples, when to pick it. Text follows annotation/guidelines.md. */
+      var INFO = {
+        cart_blue_cart_radio: { t: "Blue cart item", k: "1", m: "The KIND of item is one Flint recycles: paper, cartons and cardboard; cans, foil trays and empty aerosol cans; plastic bottles, jugs, jars, tubs and rigid clamshells; glass bottles and jars.",
+          ex: ["cereal box", "soda can", "milk jug", "pickle jar", "greasy pizza box (still cardboard)"], w: "Pick it for the material even when the item is dirty or bagged. Its state is Step 2." },
+        cart_not_blue_cart_radio: { t: "Never the blue cart", k: "2", m: "The item is a kind Flint never takes, whatever its state: bags, wrap, cups, Styrofoam, cutlery, food, batteries, electronics, cords, hoses, ceramic, hangers, clothes.",
+          ex: ["coffee cup", "plastic grocery bag", "phone charger", "AA battery", "styrofoam tray"], w: "Pick it when the item itself is the problem. Trash, or a special drop-off." },
+        cart_cannot_tell_radio: { t: "Can't tell", k: "3", m: "The photo itself blocks the decision: you can't identify the item or its material, it is cut off or blurry, or there is no single main item.",
+          ex: ["shiny wrapper: foil or plastic film?", "blurry photo", "half an item at the edge", "a pile with no main item"], w: "If you are about 70% sure, pick an answer instead. Use this only when the photo is the problem." },
+        condition_ready_radio: { t: "Ready", k: "4", m: "Empty, reasonably clean, loose and, if it is a big box, flattened. Light printing, a label or a small dry crumb still count as clean. A cap on an empty bottle is fine.",
+          ex: ["empty can", "rinsed jar", "flat cereal box", "empty water bottle with cap"], w: "Pick it when it can go in the blue cart exactly as it is." },
+        condition_needs_prep_radio: { t: "Needs prep first", k: "5", m: "Accepted material, but one quick fix first: food or liquid left inside, a big box that is not flattened, or accepted items inside a plastic bag.",
+          ex: ["jar with sauce left", "half-full bottle", "cans inside a bag", "unflattened moving box"], w: "Pick it when a rinse, emptying, flattening or unbagging would make it ready." },
+        condition_ruined_radio: { t: "Ruined", k: "6", m: "Paper or cardboard with grease or food soaked INTO it. It cannot be rinsed, so it goes in the trash.",
+          ex: ["greasy pizza box bottom", "oily paper plate", "soaked paper bag"], w: "Only for paper and cardboard. A dirty plastic, glass or metal container can be rinsed: that is Needs prep." },
+        condition_cannot_tell_radio: { t: "Can't see enough", k: "7", m: "It is a blue cart kind, but the photo does not show its state: a closed container you can't see into, too small, too dark.",
+          ex: ["closed tub, lid on", "box seen only from the outside", "tiny or dark photo"], w: "Pick it when the state is hidden, not when the item is simply dirty." },
+        reason_material_radio: { t: "Material", m: "What it is made of decided your answer.", ex: ["cardboard: blue cart", "Styrofoam: never", "ceramic mug: never"], w: "The material alone settled Step 1." },
+        reason_contamination_radio: { t: "Dirty or greasy", m: "Food, grease or liquid on or in the item decided your answer.", ex: ["jar with sauce: needs prep", "greasy pizza box: ruined", "half-full bottle: needs prep"], w: "The dirt settled Step 2." },
+        reason_bagged_radio: { t: "In a plastic bag", m: "The items sit inside a plastic bag, so they must come out first. The bag itself never goes in the blue cart.", ex: ["cans in a tied grocery bag", "paper in a trash bag"], w: "Blue cart item, then Needs prep." },
+        reason_form_factor_radio: { t: "Shape or size", m: "The shape decided it, not the material: cups, lids, straws, cutlery, film and wrap are not accepted even when the plastic is. A huge box that is not flattened needs prep.", ex: ["plastic cup", "straw", "stretch wrap", "giant unflattened box"], w: "Same material as an accepted item, but the shape makes the difference." },
+        reason_hazard_or_electronics_radio: { t: "Hazard or electronics", m: "Batteries, cords, cables, hoses, electronics or chemicals. They endanger workers and wrap around the sorting machines.", ex: ["AA battery", "USB cable", "garden hose", "old phone"], w: "Never the blue cart; these have their own drop-offs." },
+        reason_unclear_radio: { t: "Unclear photo", m: "The photo itself blocked the decision.", ex: ["blurry", "cut off", "too dark", "no single main item"], w: "Pairs with Can't tell or Can't see enough." }
+      };
+      var pop = document.createElement("div"); pop.className = "bcc-info-pop"; pop.setAttribute("role", "dialog");
+      document.addEventListener("DOMContentLoaded", function () { document.body.appendChild(pop); });
+      if (document.body) { document.body.appendChild(pop); }
+      var popFor = null;
+      function closePop() { pop.classList.remove("open"); if (popFor) { popFor.classList.remove("open"); } popFor = null; }
+      function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;"); }
+      function openPop(btn, info) {
+        if (popFor === btn) { closePop(); return; }
+        closePop();
+        pop.innerHTML = "<button type=\"button\" class=\"bcc-close\" aria-label=\"Close\">&times;</button>" +
+          "<h5>" + esc(info.t) + (info.k ? "<kbd>" + info.k + "</kbd>" : "") + "</h5>" +
+          "<p>" + esc(info.m) + "</p>" +
+          "<b class=\"bcc-lbl\">Examples</b><div class=\"bcc-ex\">" + info.ex.map(function (x) { return "<span>" + esc(x) + "</span>"; }).join("") + "</div>" +
+          "<b class=\"bcc-lbl\">Pick it when</b><p>" + esc(info.w) + "</p>";
+        pop.querySelector(".bcc-close").addEventListener("click", closePop);
+        pop.classList.add("open"); btn.classList.add("open"); popFor = btn;
+        var r = btn.getBoundingClientRect(), w = Math.min(340, window.innerWidth - 24);
+        var left = Math.max(12, Math.min(r.left - 10, window.innerWidth - w - 12));
+        var top = r.bottom + 8;
+        pop.style.left = left + "px"; pop.style.top = top + "px";
+        var h = pop.offsetHeight;
+        if (top + h > window.innerHeight - 8) { pop.style.top = Math.max(8, r.top - h - 8) + "px"; }   /* no room below: open above */
+      }
+      document.addEventListener("click", function (e) {
+        if (pop.classList.contains("open") && !pop.contains(e.target) && !(e.target.closest && e.target.closest(".bcc-info-btn"))) { closePop(); }
+      });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape") { closePop(); } });
+      function infoButtons() {
+        Array.prototype.forEach.call(document.querySelectorAll("#annotation-forms .shadcn-radio-option:not(.bcc-has-info)"), function (opt) {
+          var input = opt.querySelector("input"); var info = input && INFO[input.id];
+          opt.classList.add("bcc-has-info");
+          if (!info) { return; }
+          var b = document.createElement("button");
+          b.type = "button"; b.className = "bcc-info-btn"; b.textContent = "?";
+          b.title = "What does this mean?"; b.setAttribute("aria-label", "What does " + info.t + " mean?");
+          b.addEventListener("click", function (e) { e.preventDefault(); e.stopPropagation(); openPop(b, info); });
+          b.addEventListener("mousedown", function (e) { e.preventDefault(); });   /* keep the card from reacting */
+          opt.appendChild(b);
+        });
+      }
+      /* Clearing an answer. A radio button cannot be unticked in a browser, so: the optional reason can be cleared
+         by clicking the chosen chip again or with the Clear button in its title; and Step 2 is cleared by itself
+         when Step 1 changes to "Never the blue cart" or "Can't tell", so no stale state answer stays in the data.
+         Potato stores a cleared option as a "not selected" marker (value false), which our scripts ignore. */
+      function clearSchema(schemaId) {
+        var checked = document.querySelector("#" + schemaId + " input:checked");
+        if (!checked) { return; }
+        var schema = checked.getAttribute("schema"), labelName = checked.getAttribute("label_name");
+        checked.checked = false;
+        try { if (typeof currentAnnotations !== "undefined" && currentAnnotations && currentAnnotations[schema]) { delete currentAnnotations[schema]; } } catch (err) {}
+        var id = null;
+        try { id = (typeof currentInstance !== "undefined" && currentInstance) ? currentInstance.id : null; } catch (err) {}
+        if (!id) { return; }
+        var body = { instance_id: id, annotations: {}, client_timestamp: new Date().toISOString() };
+        body.annotations[schema + ":::" + labelName] = false;
+        fetch("/updateinstance", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) })
+          .catch(function () {});
+      }
+      var reasonWasChecked = false;
+      document.addEventListener("mousedown", function (e) {
+        var lbl = e.target.closest && e.target.closest("#reason .shadcn-radio-label");
+        var input = lbl && lbl.previousElementSibling;
+        reasonWasChecked = !!(input && input.type === "radio" && input.checked);
+      }, true);
+      document.addEventListener("click", function (e) {
+        var lbl = e.target.closest && e.target.closest("#reason .shadcn-radio-label");
+        if (!lbl || !reasonWasChecked) { return; }
+        e.preventDefault(); e.stopPropagation();             /* second click on the chosen chip: clear it */
+        reasonWasChecked = false;
+        clearSchema("reason");
+      }, true);
+      document.addEventListener("change", function (e) {
+        var input = e.target;
+        if (input && input.type === "radio" && input.closest && input.closest("#cart") && input.checked && input.value !== "blue_cart") {
+          setTimeout(function () { clearSchema("condition"); }, 50);   /* after Potato has saved Step 1 */
+        }
+      }, true);
+      function clearButton() {
+        var legend = document.querySelector("form#reason legend");
+        if (!legend) { return; }
+        var btn = legend.querySelector(".bcc-clear");
+        if (!btn) {
+          btn = document.createElement("button");
+          btn.type = "button"; btn.className = "bcc-clear"; btn.innerHTML = "Clear &times;"; btn.title = "Remove the chosen reason";
+          btn.addEventListener("click", function (e) { e.preventDefault(); e.stopPropagation(); clearSchema("reason"); });
+          legend.appendChild(btn);
+        }
+        btn.style.display = document.querySelector("#reason input:checked") ? "inline-block" : "none";
+      }
+      setInterval(function () { tick(); infoButtons(); clearButton(); }, 150);
     })();
   </script>
 

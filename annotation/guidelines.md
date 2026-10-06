@@ -53,7 +53,16 @@ You don't pick this. We compute it from your two answers.
 | Never the blue cart | (not asked) | `not_accepted` |
 | Can't tell | (not asked) | `cannot_determine` |
 
-**Optional "reason" field:** pick the main reason for your choice (material / contamination / bagged / form factor / hazard or electronics / unclear). It helps us improve these guidelines. Skip it if you're unsure.
+**Optional "reason" field:** pick the main reason for your choice. It helps us improve these guidelines. Skip it if you're unsure. In the tool each reason has a small **?** button with examples.
+
+| Reason (stored value) | Shown as | Pick it when |
+|---|---|---|
+| `material` | Material | What the item is made of settled Step 1: cardboard is a blue cart kind, Styrofoam or a ceramic mug never is. |
+| `contamination` | Dirty or greasy | Food, grease or liquid on or in the item settled Step 2: a jar with sauce needs prep, a greasy pizza box is ruined. |
+| `bagged` | In a plastic bag | Accepted items sit inside a plastic bag and must come out first (Blue cart item, then Needs prep). |
+| `form_factor` | Shape or size | The shape decided it, not the material: cups, lids, straws, cutlery, film and wrap are not accepted even when the plastic is; a huge unflattened box needs prep. |
+| `hazard_or_electronics` | Hazard or electronics | Batteries, cords, cables, hoses, electronics or chemicals: never the blue cart. |
+| `unclear` | Unclear photo | The photo itself blocked the decision: blurry, cut off, too dark, or no single main item. |
 
 ---
 

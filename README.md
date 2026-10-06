@@ -27,13 +27,13 @@ One instance = **one JPEG photo of a single everyday item** (or a small group of
 ## 2. Size and composition
 | | Count |
 |---|---|
-| Total images | 617 |
-| Team-photographed | 77 (12%), all by Ian Slackta, category set `hard` |
-| Sourced | 540 (88%): RealWaste 360, Kaggle Drinking Waste 160, Wikimedia Commons 20 |
-| Category sets: containers / paper / disposables / hard | 340 / 140 / 0 / 137 |
-| Collection dates | 2026-09-28 to 2026-10-04 |
+| Total images | 648 |
+| Team-photographed | 108 (17%): 77 by Ian Slackta (category set `hard`), 31 by Hina Kramer (category set `paper`, added 2026-10-06) |
+| Sourced | 540 (83%): RealWaste 360, Kaggle Drinking Waste 160, Wikimedia Commons 20 |
+| Category sets: containers / paper / disposables / hard | 340 / 171 / 0 / 137 |
+| Collection dates | 2026-09-28 to 2026-10-06 |
 
-Responsibility sets are written in the `notes` column: Daud Jan 175, Hina Kramer 115, Khurram Shafique 185, Ian Slackta 142. Ian's 142 are his 77 phone photos plus 65 sourced images. The other three sets are sourced images that member is responsible for. There are no `disposables` rows yet, because Khurram's own campus-disposables photos are not in the dataset.
+Responsibility sets are written in the `notes` column: Daud Jan 175, Hina Kramer 146, Khurram Shafique 185, Ian Slackta 142. Hina's 146 are her 31 phone photos plus 115 sourced images. Ian's 142 are his 77 phone photos plus 65 sourced images. The other three sets are sourced images that member is responsible for. There are no `disposables` rows yet, because Khurram's own campus-disposables photos are not in the dataset.
 
 ## 3. Files and format
 ```
@@ -95,7 +95,7 @@ Rules followed: one item per photo (except bagged-group shots); vary background 
 
 **Sampling.** For the team photos, every file in `data/raw/ian/` was kept except byte-identical duplicates, which the script skips. No separate count was kept of shots discarded before that folder was handed in. The 540 sourced images are a described sample, not the whole source dataset: RealWaste and Kaggle rows were drawn at random with a fixed seed (seed 42, then seed 7 for the containers round). The 20 Wikimedia photos were chosen by hand (one everyday item, no people, CC0 / public domain / CC BY only).
 
-**Missing data.** `source_url` is blank for team photos on purpose. `setting` is `other` for all 617 rows, because both the team batch and the sourced batches were ingested with that one setting. `item_count` is 1 for every row and was not checked photo by photo on the sourced images. Fourteen team photos had no EXIF date, so `capture_date` is the file date and `notes` says so. Sourced `capture_date` values are the download date (2026-10-04), not the day the original photographer took the picture. Six rows are flagged `REVIEW:` and still included: `bcc_00040` (part of a person at the edge), `bcc_00025`, `bcc_00026`, and `bcc_00073` (looking into a bin), `bcc_00410` and `bcc_00413` (a shoe tip). They were left in because annotators have already started on the live tool.
+**Missing data.** `source_url` is blank for team photos on purpose. `setting` is `other` for all 648 rows, because both the team batch and the sourced batches were ingested with that one setting. `item_count` is 1 for every row and was not checked photo by photo on the sourced images. Fourteen team photos had no EXIF date, so `capture_date` is the file date and `notes` says so. Sourced `capture_date` values are the download date (2026-10-04), not the day the original photographer took the picture. Six rows are flagged `REVIEW:` and still included: `bcc_00040` (part of a person at the edge), `bcc_00025`, `bcc_00026`, and `bcc_00073` (looking into a bin), `bcc_00410` and `bcc_00413` (a shoe tip). They were left in because annotators have already started on the live tool.
 
 ## 5. Estimated labeling time
 From our timed internal pilot on Oct 5, 2026 (160 photos, 3 team annotators, measured with `scripts/labeling_time.py` from the tool's click log): **about 6 seconds per photo** (median; mean 11 s), so roughly **300 to 500 photos per hour** for someone who already knows the rules. Classmates who see the guidelines for the first time will be slower, so we plan with **about 200 photos per hour**, including reading the welcome page. Hard cases (cup vs. tub, residue) take longer.
@@ -104,7 +104,7 @@ From our timed internal pilot on Oct 5, 2026 (160 photos, 3 team annotators, mea
 About 6 external annotators × 1 hour (each student in the class annotates for two other teams), plus the four of us as internal annotators, all on the hosted tool at https://bluecart.khurramshafique.com.
 - **Agreement set:** 30 photos labeled by **every** annotator (up to 10 labels each) for inter-annotator agreement and a majority-vote check in Phase 2.
 - **Coverage with a second opinion:** every other photo is labeled by **2** annotators. Each annotator gets the 30 shared photos and then the next 170 photos that still need a label, 200 in total, about one hour.
-- **Result:** when 7 annotators finish, all 617 photos have 2 labels and the 30 shared ones have up to 10. With only 6 classmates, 540 photos have 2 labels and the team labels the remaining 77. Where the two labels disagree (about a quarter of the photos in our pilot), a team member adds a third label, so every photo ends with a majority.
+- **Result:** when 7 annotators finish, all 617 photos of the current round have 2 labels (Hina's 31 photos, added on 2026-10-06, join the next round so the shared set stays fixed) and the 30 shared ones have up to 10. With only 6 classmates, 540 photos have 2 labels and the team labels the remaining 77. Where the two labels disagree (about a quarter of the photos in our pilot), a team member adds a third label, so every photo ends with a majority.
 
 Why: two labels per photo keep every photo checkable and give the two annotators per image our proposal promised, while fitting the roughly 6 classmate-hours the handout predicts for our class size. Three labels everywhere would need about 9 hours we will not get; one label would leave the disagreements we saw in the pilot undetected.
 

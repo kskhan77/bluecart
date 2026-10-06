@@ -87,7 +87,11 @@ def load(returned):
         state = json.loads(f.read_text(encoding="utf-8"))
         for item, pairs in (state.get("instance_id_to_label_to_value") or {}).items():
             picked = {}                      # question name -> chosen option
-            for key, _value in pairs:        # key = {"schema": "cart", "name": "blue_cart"}
+            for key, value in pairs:         # key = {"schema": "cart", "name": "blue_cart"}
+                # Potato stores a CLEARED option as a "not selected" marker (value false or ""),
+                # and media data under names starting with "_": neither is an answer.
+                if value in (None, False, "") or str(key.get("name", "")).startswith("_"):
+                    continue
                 picked[key["schema"]] = key["name"]
             row = to_row(item, state.get("user_id", f.parent.name), picked)
             if row:
