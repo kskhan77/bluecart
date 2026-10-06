@@ -13,6 +13,8 @@ Input = one phone photo of an everyday item. Labels (assigned by human annotator
 | `not_accepted` | never the blue cart (bags, cups, styrofoam, greasy paper, electronics, ...) |
 | `cannot_determine` | the photo doesn't show enough to decide |
 
+Annotators do not pick these four labels directly. The tool asks two questions (Step 1 `cart`: blue_cart / not_blue_cart / cannot_tell; Step 2 `condition`, only for blue_cart: ready / needs_prep / ruined / cannot_tell) and `derive_label()` in `scripts/compute_agreement.py` maps the answers to the label.
+
 Ground-truth rule source: City of Flint curbside program (Priority Waste), cross-checked with UM-Flint campus guidance. The rules are versioned in `annotation/guidelines.md`.
 Primary metric: **macro-F1** (4 classes). Safety gate: **recall on `not_accepted`**. Also report accuracy, per-class P/R, and the 4×4 confusion matrix.
 
@@ -36,7 +38,8 @@ data/manifest.csv       one row per image (schema in README.md §3)
 data/attribution.csv    source/author/license for every non-team image
 annotation/guidelines.md        annotator rules (owner: Hina)
 annotation/HOW_TO_ANNOTATE.md   annotator setup steps
-annotation/potato/config.yaml   Potato annotation tool config (tested with potato-annotation 2.9.x)
+annotation/potato/welcome.html  welcome page shown once after login (team, instructor and TA names are here and in the page footer in config.yaml); the pack/space scripts also serve it again as media/how_it_works.html for the round help button
+annotation/potato/config.yaml   Potato annotation tool config (tested with potato-annotation 2.9.4). Its rules cheat sheet must stay in sync with guidelines.md
 annotation/packs/       generated per-annotator zips (gitignored)
 annotation/returned/    annotators' annotation_output folders (gitignored until anonymized)
 scripts/                pipeline (see Commands)
@@ -49,10 +52,15 @@ Always activate the venv first: `source .venv/bin/activate`
 | task | command |
 |---|---|
 | add photos | `python scripts/prepare_images.py --input data/raw/<folder> --photographer "Name" --category-set <containers/paper/disposables/hard> --setting <kitchen/office/bin_station/outdoor/dining/other>` |
+| divide the open-dataset photos between the four members' sets (writes "assigned to ... set" into manifest notes) | `python scripts/assign_sets.py --ian 142 --hina 115 --daud 175 --khurram 185` |
 | dataset stats + charts | `python scripts/dataset_stats.py` |
 | PCA / k-means / near-dupes | `python scripts/explore_embeddings.py [--features resnet]` |
 | annotator packs | `python scripts/make_annotation_packs.py --agreement 100 --batch 150 --external 5 --internal 1` |
 | run annotation tool locally | `cd annotation/packs/internal_01 && potato start config.yaml -p 8000` |
+| see the labels given so far (table + photo review page) | `python scripts/show_labels.py` |
+| seconds per photo (pilot timing) | `python scripts/labeling_time.py` |
+| build the Hugging Face Space folder (optional hosting, see docs/HUGGINGFACE_HOSTING.md) | `python scripts/make_hf_space.py --backup-repo <hf-name>/blue-cart-check-annotations` |
+| start the PUBLIC tool at https://bluecart.khurramshafique.com (port 8010 + Cloudflare tunnel) | `bash scripts/start_public_tool.sh` |
 | agreement + majority labels (Phase 2) | `python scripts/compute_agreement.py` |
 | group-safe splits | `python scripts/make_splits.py --test 0.2 --val 0.1` |
 | tests | `pytest -q` |
@@ -62,7 +70,7 @@ Always activate the venv first: `source .venv/bin/activate`
 1. **Privacy:** never commit `data/raw/`; every image must go through `prepare_images.py` (strips EXIF/GPS). No faces, names, addresses. If an image shows one, flag it, don't "fix" it silently.
 2. **No labels at collection time.** Never add a label/expected-label column to `manifest.csv`. Labels only come from annotation (`data/labels_majority.csv`).
 3. **Item groups:** the same physical object in several states shares an `item_group_id` (raw files named `cup07__clean.jpg`, `cup07__dirty.jpg`). Splits must keep groups together, so use `make_splits.py`, never a plain random split.
-4. **Licenses:** only CC0 / CC BY third-party images; every one gets a row in `data/attribution.csv`. Dataset = CC BY 4.0, code = MIT.
+4. **Licenses:** every non-team image gets a row in `data/attribution.csv` with its real author. The dataset is CC BY-NC-SA 4.0 because the RealWaste images require it. Code = MIT. Do not put a team member's name in `attribution` for an image the team did not take.
 5. **Don't change the label set or decision rules** after the internal pilot without updating `CHANGES_FROM_PROPOSAL.md` and bumping the guidelines version.
 6. **Test-set hygiene:** never tune on the test split. Model selection uses validation or cross-validation (StratifiedGroupKFold).
 7. **AI disclosure:** the course allows AI tools but requires disclosure. When you (Claude) write or substantially change a deliverable, add a line to `docs/AI_USE_LOG.md` (date, what, how prompted).

@@ -1,0 +1,96 @@
+<!--
+  Welcome page: shown ONCE to every annotator, right after they log in and before the first photo.
+  Potato loads this file because of the "phases" block in config.yaml.
+  KEEP IN SYNC with annotation/guidelines.md if the two steps or the rules change.
+-->
+<style>
+  .bcc-w { max-width: 940px; margin: 0 auto; padding: 8px 6px 24px; color: #1f2430; font-size: 1.02rem; line-height: 1.55; }
+  .bcc-w h1 { font-size: 1.9rem; margin: 6px 0 4px; }
+  .bcc-w h2 { font-size: 1.2rem; margin: 26px 0 10px; }
+  .bcc-w .lead { font-size: 1.15rem; color: #333a48; margin: 0 0 6px; }
+  .bcc-w .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+  .bcc-w .step { border: 2px solid #d6dce8; border-radius: 14px; padding: 12px 14px; background: #fff; }
+  .bcc-w .step .n { display: inline-block; width: 1.8em; height: 1.8em; line-height: 1.8em; text-align: center; border-radius: 50%; background: #1565c0; color: #fff; font-weight: 700; margin-right: 6px; }
+  .bcc-w .step b { font-size: 1.02rem; }
+  .bcc-w .step p { margin: 6px 0 0; font-size: 0.93rem; color: #4a5160; }
+  .bcc-w .pick { border: 2px solid var(--c); border-radius: 12px; padding: 9px 12px; background: #fff; display: flex; gap: 10px; align-items: center; }
+  .bcc-w .pick .fas { font-size: 1.5rem; color: var(--c); width: 1.4em; text-align: center; }
+  .bcc-w .pick b { display: block; } .bcc-w .pick span.s { font-size: 0.88rem; color: #4a5160; }
+  .bcc-w kbd { display: inline-block; min-width: 1.5em; text-align: center; border: 1px solid #b9c1d1; border-bottom-width: 3px; border-radius: 6px; padding: 0 6px; background: #fff !important; color: #1f2430 !important; font-weight: 700; font-size: 0.85rem; margin-left: 4px; }
+  .bcc-w .note { background: #fff7df; border-left: 5px solid #e0a100; border-radius: 8px; padding: 10px 14px; margin: 10px 0; }
+  .bcc-w .example { background: rgba(110, 120, 170, 0.09); border: 1px solid rgba(110, 120, 170, 0.3); border-radius: 12px; padding: 12px 16px; }
+  .bcc-w ul { margin: 6px 0; padding-left: 1.2em; } .bcc-w li { margin: 4px 0; }
+  .bcc-w .who { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+  .bcc-w .who div { border: 1px solid #d6dce8; border-radius: 12px; padding: 10px 14px; background: #fff; font-size: 0.95rem; }
+  .bcc-w .who b { display: block; color: #1565c0; margin-bottom: 2px; }
+  .bcc-w .go { text-align: center; margin: 28px 0 6px; }
+  .bcc-w .go button { background: #1565c0; color: #fff; border: 0; border-radius: 12px; padding: 14px 34px; font-size: 1.15rem; font-weight: 700; cursor: pointer; }
+  .bcc-w .go button:hover { background: #0f4f99; }
+  .bcc-w .go small { display: block; margin-top: 8px; color: #4a5160; }
+</style>
+
+<div class="bcc-w">
+  <h1><span class="fas fa-recycle" style="color:#1565c0"></span> Welcome to Blue Cart Check</h1>
+  <p class="lead">You will look at photos of everyday items and help us answer one question:
+    <b>does this item go in the City of Flint's blue recycling cart?</b></p>
+  <p>Your answers become the labels of a new dataset. Later, a computer model will learn from them. Thank you for helping.</p>
+
+  <h2>What you will do</h2>
+  <div class="grid">
+    <div class="step"><span class="n">1</span><b>Look at the photo</b><p>Judge the main item, exactly as it looks. You can zoom in.</p></div>
+    <div class="step"><span class="n">2</span><b>Step 1: the kind of item</b><p>Is it a kind Flint recycles (blue bin), a kind it never takes (black bin), or can't you tell?</p></div>
+    <div class="step"><span class="n">3</span><b>Step 2: its state</b><p>Only for blue bin items: is it ready, does it need a quick fix, or is it ruined?</p></div>
+    <div class="step"><span class="n">4</span><b>Next photo</b><p>Press <kbd>&rarr;</kbd>. Your answers are saved automatically.</p></div>
+  </div>
+
+  <h2>Step 1: what KIND of item is it?</h2>
+  <div class="grid">
+    <div class="pick" style="--c:#1565c0"><span class="fas fa-trash-can"></span><div><b>Blue cart item <kbd>1</kbd></b><span class="s">Paper, cardboard, cans, foil trays, plastic bottles, jugs and tubs, glass bottles and jars.</span></div></div>
+    <div class="pick" style="--c:#1b1f27"><span class="fas fa-trash-can"></span><div><b>Never the blue cart <kbd>2</kbd></b><span class="s">Bags, cups, styrofoam, food, batteries, electronics, cords, and anything else not on the blue list.</span></div></div>
+    <div class="pick" style="--c:#6b7280"><span class="fas fa-circle-question"></span><div><b>Can't tell <kbd>3</kbd></b><span class="s">Blurry, cut off, or no single main item.</span></div></div>
+  </div>
+
+  <h2>Step 2: what STATE is it in? (only after the blue bin)</h2>
+  <div class="grid">
+    <div class="pick" style="--c:#1f7a3d"><span class="fas fa-circle-check"></span><div><b>Ready <kbd>4</kbd></b><span class="s">Empty, clean, loose, flat.</span></div></div>
+    <div class="pick" style="--c:#b26a00"><span class="fas fa-faucet-drip"></span><div><b>Needs prep first <kbd>5</kbd></b><span class="s">Rinse it, empty it, flatten it, or take it out of the bag.</span></div></div>
+    <div class="pick" style="--c:#b3261e"><span class="fas fa-pizza-slice"></span><div><b>Ruined <kbd>6</kbd></b><span class="s">Grease or food soaked into paper or cardboard.</span></div></div>
+    <div class="pick" style="--c:#6b7280"><span class="fas fa-eye-slash"></span><div><b>Can't see enough <kbd>7</kbd></b><span class="s">The photo does not show its state.</span></div></div>
+  </div>
+
+  <h2>An example</h2>
+  <div class="example">
+    <b>A greasy pizza box.</b> Step 1: it is cardboard, so choose the <b>blue bin</b>. Step 2: the grease has soaked in, so choose <b>Ruined</b>.
+    The tool then shows your answer: <b>Not accepted</b>. A clean, flat pizza box would be blue bin, then <b>Ready</b>: <b>Accepted</b>.
+  </div>
+
+  <h2>Three things to remember</h2>
+  <div class="note">
+    <ul>
+      <li><b>Use Flint's rules, not your hometown's.</b> Flint takes foil trays and empty aerosol cans. It does not take cups.</li>
+      <li><b>Judge only what you can see</b> in the photo. Don't guess what the item looked like before.</li>
+      <li><b>If you are about 70% sure, pick the answer.</b> Use "can't tell" only when the photo itself blocks the decision.</li>
+    </ul>
+  </div>
+
+  <h2>Good to know</h2>
+  <ul>
+    <li>Plan about <b>one hour</b>. Stop after an hour even if photos are left.</li>
+    <li>The rules are always on screen. The <b>Guidelines</b> button (top right) opens the full rules with examples.</li>
+    <li>A line above Step 1 always tells you what to do next and what your answer means.</li>
+    <li>If you close the browser, log in with the <b>same name</b> and you continue where you stopped.</li>
+  </ul>
+
+  <h2>Who we are</h2>
+  <div class="who">
+    <div><b>The project</b>Blue Cart Check, Group 2<br>ARI 510 Machine Learning<br>University of Michigan-Flint, Fall 2026</div>
+    <div><b>Group 2 members</b>Daud Jan<br>Hina Kramer<br>Khurram Shafique<br>Ian Slackta</div>
+    <div><b>Teaching staff</b>Instructor: Prof. Steven Wilson<br>Teaching assistant: Micah Helzerman</div>
+    <div><b>Questions or problems?</b>Khurram Shafique<br><a href="mailto:kshafiqu@umich.edu" style="color:#1565c0">kshafiqu@umich.edu</a></div>
+  </div>
+
+  <form class="go" method="POST" action="/instructions">
+    <button type="submit">Start labeling <span class="fas fa-arrow-right"></span></button>
+    <small>You can open this page again any time: the round <b>?</b> button at the bottom right, then <b>How it works</b>.</small>
+  </form>
+</div>

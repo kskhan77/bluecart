@@ -1,1 +1,541 @@
 id,source,source_url,title,author,license,license_url,downloaded_on
+bcc_00078,realwaste,https://github.com/sam-single/realwaste,Cardboard_101.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00079,realwaste,https://github.com/sam-single/realwaste,Cardboard_11.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00080,realwaste,https://github.com/sam-single/realwaste,Cardboard_110.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00081,realwaste,https://github.com/sam-single/realwaste,Cardboard_112.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00082,realwaste,https://github.com/sam-single/realwaste,Cardboard_113.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00083,realwaste,https://github.com/sam-single/realwaste,Cardboard_119.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00084,realwaste,https://github.com/sam-single/realwaste,Cardboard_135.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00085,realwaste,https://github.com/sam-single/realwaste,Cardboard_139.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00086,realwaste,https://github.com/sam-single/realwaste,Cardboard_141.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00087,realwaste,https://github.com/sam-single/realwaste,Cardboard_143.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00088,realwaste,https://github.com/sam-single/realwaste,Cardboard_146.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00089,realwaste,https://github.com/sam-single/realwaste,Cardboard_150.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00090,realwaste,https://github.com/sam-single/realwaste,Cardboard_156.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00091,realwaste,https://github.com/sam-single/realwaste,Cardboard_163.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00092,realwaste,https://github.com/sam-single/realwaste,Cardboard_170.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00093,realwaste,https://github.com/sam-single/realwaste,Cardboard_172.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00094,realwaste,https://github.com/sam-single/realwaste,Cardboard_190.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00095,realwaste,https://github.com/sam-single/realwaste,Cardboard_199.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00096,realwaste,https://github.com/sam-single/realwaste,Cardboard_2.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00097,realwaste,https://github.com/sam-single/realwaste,Cardboard_20.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00098,realwaste,https://github.com/sam-single/realwaste,Cardboard_201.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00099,realwaste,https://github.com/sam-single/realwaste,Cardboard_206.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00100,realwaste,https://github.com/sam-single/realwaste,Cardboard_211.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00101,realwaste,https://github.com/sam-single/realwaste,Cardboard_220.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00102,realwaste,https://github.com/sam-single/realwaste,Cardboard_225.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00103,realwaste,https://github.com/sam-single/realwaste,Cardboard_227.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00104,realwaste,https://github.com/sam-single/realwaste,Cardboard_234.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00105,realwaste,https://github.com/sam-single/realwaste,Cardboard_254.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00106,realwaste,https://github.com/sam-single/realwaste,Cardboard_256.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00107,realwaste,https://github.com/sam-single/realwaste,Cardboard_258.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00108,realwaste,https://github.com/sam-single/realwaste,Cardboard_264.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00109,realwaste,https://github.com/sam-single/realwaste,Cardboard_266.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00110,realwaste,https://github.com/sam-single/realwaste,Cardboard_273.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00111,realwaste,https://github.com/sam-single/realwaste,Cardboard_274.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00112,realwaste,https://github.com/sam-single/realwaste,Cardboard_292.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00113,realwaste,https://github.com/sam-single/realwaste,Cardboard_294.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00114,realwaste,https://github.com/sam-single/realwaste,Cardboard_305.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00115,realwaste,https://github.com/sam-single/realwaste,Cardboard_310.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00116,realwaste,https://github.com/sam-single/realwaste,Cardboard_331.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00117,realwaste,https://github.com/sam-single/realwaste,Cardboard_346.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00118,realwaste,https://github.com/sam-single/realwaste,Cardboard_350.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00119,realwaste,https://github.com/sam-single/realwaste,Cardboard_353.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00120,realwaste,https://github.com/sam-single/realwaste,Cardboard_358.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00121,realwaste,https://github.com/sam-single/realwaste,Cardboard_365.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00122,realwaste,https://github.com/sam-single/realwaste,Cardboard_370.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00123,realwaste,https://github.com/sam-single/realwaste,Cardboard_371.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00124,realwaste,https://github.com/sam-single/realwaste,Cardboard_377.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00125,realwaste,https://github.com/sam-single/realwaste,Cardboard_378.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00126,realwaste,https://github.com/sam-single/realwaste,Cardboard_384.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00127,realwaste,https://github.com/sam-single/realwaste,Cardboard_389.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00128,realwaste,https://github.com/sam-single/realwaste,Cardboard_394.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00129,realwaste,https://github.com/sam-single/realwaste,Cardboard_399.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00130,realwaste,https://github.com/sam-single/realwaste,Cardboard_410.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00131,realwaste,https://github.com/sam-single/realwaste,Cardboard_420.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00132,realwaste,https://github.com/sam-single/realwaste,Cardboard_422.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00133,realwaste,https://github.com/sam-single/realwaste,Cardboard_429.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00134,realwaste,https://github.com/sam-single/realwaste,Cardboard_435.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00135,realwaste,https://github.com/sam-single/realwaste,Cardboard_439.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00136,realwaste,https://github.com/sam-single/realwaste,Cardboard_440.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00137,realwaste,https://github.com/sam-single/realwaste,Cardboard_449.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00138,realwaste,https://github.com/sam-single/realwaste,Cardboard_450.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00139,realwaste,https://github.com/sam-single/realwaste,Cardboard_55.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00140,realwaste,https://github.com/sam-single/realwaste,Cardboard_56.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00141,realwaste,https://github.com/sam-single/realwaste,Cardboard_57.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00142,realwaste,https://github.com/sam-single/realwaste,Cardboard_66.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00143,realwaste,https://github.com/sam-single/realwaste,Cardboard_74.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00144,realwaste,https://github.com/sam-single/realwaste,Cardboard_81.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00145,realwaste,https://github.com/sam-single/realwaste,Cardboard_85.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00146,realwaste,https://github.com/sam-single/realwaste,Cardboard_92.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00147,realwaste,https://github.com/sam-single/realwaste,Cardboard_95.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00148,realwaste,https://github.com/sam-single/realwaste,Paper_101.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00149,realwaste,https://github.com/sam-single/realwaste,Paper_11.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00150,realwaste,https://github.com/sam-single/realwaste,Paper_110.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00151,realwaste,https://github.com/sam-single/realwaste,Paper_112.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00152,realwaste,https://github.com/sam-single/realwaste,Paper_113.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00153,realwaste,https://github.com/sam-single/realwaste,Paper_119.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00154,realwaste,https://github.com/sam-single/realwaste,Paper_135.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00155,realwaste,https://github.com/sam-single/realwaste,Paper_139.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00156,realwaste,https://github.com/sam-single/realwaste,Paper_141.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00157,realwaste,https://github.com/sam-single/realwaste,Paper_143.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00158,realwaste,https://github.com/sam-single/realwaste,Paper_146.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00159,realwaste,https://github.com/sam-single/realwaste,Paper_150.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00160,realwaste,https://github.com/sam-single/realwaste,Paper_156.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00161,realwaste,https://github.com/sam-single/realwaste,Paper_163.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00162,realwaste,https://github.com/sam-single/realwaste,Paper_170.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00163,realwaste,https://github.com/sam-single/realwaste,Paper_172.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00164,realwaste,https://github.com/sam-single/realwaste,Paper_190.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00165,realwaste,https://github.com/sam-single/realwaste,Paper_199.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00166,realwaste,https://github.com/sam-single/realwaste,Paper_2.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00167,realwaste,https://github.com/sam-single/realwaste,Paper_20.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00168,realwaste,https://github.com/sam-single/realwaste,Paper_201.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00169,realwaste,https://github.com/sam-single/realwaste,Paper_206.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00170,realwaste,https://github.com/sam-single/realwaste,Paper_211.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00171,realwaste,https://github.com/sam-single/realwaste,Paper_220.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00172,realwaste,https://github.com/sam-single/realwaste,Paper_225.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00173,realwaste,https://github.com/sam-single/realwaste,Paper_227.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00174,realwaste,https://github.com/sam-single/realwaste,Paper_234.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00175,realwaste,https://github.com/sam-single/realwaste,Paper_254.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00176,realwaste,https://github.com/sam-single/realwaste,Paper_256.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00177,realwaste,https://github.com/sam-single/realwaste,Paper_258.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00178,realwaste,https://github.com/sam-single/realwaste,Paper_264.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00179,realwaste,https://github.com/sam-single/realwaste,Paper_273.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00180,realwaste,https://github.com/sam-single/realwaste,Paper_274.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00181,realwaste,https://github.com/sam-single/realwaste,Paper_292.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00182,realwaste,https://github.com/sam-single/realwaste,Paper_294.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00183,realwaste,https://github.com/sam-single/realwaste,Paper_305.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00184,realwaste,https://github.com/sam-single/realwaste,Paper_310.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00185,realwaste,https://github.com/sam-single/realwaste,Paper_331.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00186,realwaste,https://github.com/sam-single/realwaste,Paper_346.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00187,realwaste,https://github.com/sam-single/realwaste,Paper_350.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00188,realwaste,https://github.com/sam-single/realwaste,Paper_353.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00189,realwaste,https://github.com/sam-single/realwaste,Paper_358.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00190,realwaste,https://github.com/sam-single/realwaste,Paper_370.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00191,realwaste,https://github.com/sam-single/realwaste,Paper_371.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00192,realwaste,https://github.com/sam-single/realwaste,Paper_377.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00193,realwaste,https://github.com/sam-single/realwaste,Paper_378.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00194,realwaste,https://github.com/sam-single/realwaste,Paper_384.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00195,realwaste,https://github.com/sam-single/realwaste,Paper_389.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00196,realwaste,https://github.com/sam-single/realwaste,Paper_394.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00197,realwaste,https://github.com/sam-single/realwaste,Paper_399.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00198,realwaste,https://github.com/sam-single/realwaste,Paper_410.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00199,realwaste,https://github.com/sam-single/realwaste,Paper_420.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00200,realwaste,https://github.com/sam-single/realwaste,Paper_422.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00201,realwaste,https://github.com/sam-single/realwaste,Paper_429.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00202,realwaste,https://github.com/sam-single/realwaste,Paper_435.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00203,realwaste,https://github.com/sam-single/realwaste,Paper_439.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00204,realwaste,https://github.com/sam-single/realwaste,Paper_440.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00205,realwaste,https://github.com/sam-single/realwaste,Paper_449.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00206,realwaste,https://github.com/sam-single/realwaste,Paper_450.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00207,realwaste,https://github.com/sam-single/realwaste,Paper_470.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00208,realwaste,https://github.com/sam-single/realwaste,Paper_471.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00209,realwaste,https://github.com/sam-single/realwaste,Paper_472.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00210,realwaste,https://github.com/sam-single/realwaste,Paper_481.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00211,realwaste,https://github.com/sam-single/realwaste,Paper_49.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00212,realwaste,https://github.com/sam-single/realwaste,Paper_50.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00213,realwaste,https://github.com/sam-single/realwaste,Paper_57.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00214,realwaste,https://github.com/sam-single/realwaste,Paper_6.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00215,realwaste,https://github.com/sam-single/realwaste,Paper_74.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00216,realwaste,https://github.com/sam-single/realwaste,Paper_90.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00217,realwaste,https://github.com/sam-single/realwaste,Paper_98.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00218,realwaste,https://github.com/sam-single/realwaste,Glass_11.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00219,realwaste,https://github.com/sam-single/realwaste,Glass_110.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00220,realwaste,https://github.com/sam-single/realwaste,Glass_112.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00221,realwaste,https://github.com/sam-single/realwaste,Glass_113.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00222,realwaste,https://github.com/sam-single/realwaste,Glass_139.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00223,realwaste,https://github.com/sam-single/realwaste,Glass_141.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00224,realwaste,https://github.com/sam-single/realwaste,Glass_146.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00225,realwaste,https://github.com/sam-single/realwaste,Glass_150.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00226,realwaste,https://github.com/sam-single/realwaste,Glass_163.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00227,realwaste,https://github.com/sam-single/realwaste,Glass_190.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00228,realwaste,https://github.com/sam-single/realwaste,Glass_2.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00229,realwaste,https://github.com/sam-single/realwaste,Glass_20.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00230,realwaste,https://github.com/sam-single/realwaste,Glass_201.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00231,realwaste,https://github.com/sam-single/realwaste,Glass_206.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00232,realwaste,https://github.com/sam-single/realwaste,Glass_211.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00233,realwaste,https://github.com/sam-single/realwaste,Glass_225.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00234,realwaste,https://github.com/sam-single/realwaste,Glass_292.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00235,realwaste,https://github.com/sam-single/realwaste,Glass_294.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00236,realwaste,https://github.com/sam-single/realwaste,Glass_331.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00237,realwaste,https://github.com/sam-single/realwaste,Glass_350.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00238,realwaste,https://github.com/sam-single/realwaste,Glass_358.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00239,realwaste,https://github.com/sam-single/realwaste,Glass_371.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00240,realwaste,https://github.com/sam-single/realwaste,Glass_377.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00241,realwaste,https://github.com/sam-single/realwaste,Glass_394.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00242,realwaste,https://github.com/sam-single/realwaste,Glass_399.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00243,realwaste,https://github.com/sam-single/realwaste,Glass_410.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00244,realwaste,https://github.com/sam-single/realwaste,Glass_44.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00245,realwaste,https://github.com/sam-single/realwaste,Glass_50.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00246,realwaste,https://github.com/sam-single/realwaste,Glass_60.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00247,realwaste,https://github.com/sam-single/realwaste,Glass_62.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00248,realwaste,https://github.com/sam-single/realwaste,Metal_104.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00249,realwaste,https://github.com/sam-single/realwaste,Metal_121.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00250,realwaste,https://github.com/sam-single/realwaste,Metal_123.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00251,realwaste,https://github.com/sam-single/realwaste,Metal_126.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00252,realwaste,https://github.com/sam-single/realwaste,Metal_128.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00253,realwaste,https://github.com/sam-single/realwaste,Metal_18.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00254,realwaste,https://github.com/sam-single/realwaste,Metal_185.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00255,realwaste,https://github.com/sam-single/realwaste,Metal_193.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00256,realwaste,https://github.com/sam-single/realwaste,Metal_201.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00257,realwaste,https://github.com/sam-single/realwaste,Metal_227.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00258,realwaste,https://github.com/sam-single/realwaste,Metal_242.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00259,realwaste,https://github.com/sam-single/realwaste,Metal_246.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00260,realwaste,https://github.com/sam-single/realwaste,Metal_282.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00261,realwaste,https://github.com/sam-single/realwaste,Metal_30.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00262,realwaste,https://github.com/sam-single/realwaste,Metal_301.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00263,realwaste,https://github.com/sam-single/realwaste,Metal_304.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00264,realwaste,https://github.com/sam-single/realwaste,Metal_313.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00265,realwaste,https://github.com/sam-single/realwaste,Metal_324.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00266,realwaste,https://github.com/sam-single/realwaste,Metal_352.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00267,realwaste,https://github.com/sam-single/realwaste,Metal_355.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00268,realwaste,https://github.com/sam-single/realwaste,Metal_412.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00269,realwaste,https://github.com/sam-single/realwaste,Metal_486.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00270,realwaste,https://github.com/sam-single/realwaste,Metal_489.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00271,realwaste,https://github.com/sam-single/realwaste,Metal_512.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00272,realwaste,https://github.com/sam-single/realwaste,Metal_565.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00273,realwaste,https://github.com/sam-single/realwaste,Metal_601.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00274,realwaste,https://github.com/sam-single/realwaste,Metal_616.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00275,realwaste,https://github.com/sam-single/realwaste,Metal_642.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00276,realwaste,https://github.com/sam-single/realwaste,Metal_643.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00277,realwaste,https://github.com/sam-single/realwaste,Metal_654.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00278,realwaste,https://github.com/sam-single/realwaste,Metal_689.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00279,realwaste,https://github.com/sam-single/realwaste,Metal_699.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00280,realwaste,https://github.com/sam-single/realwaste,Metal_722.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00281,realwaste,https://github.com/sam-single/realwaste,Metal_742.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00282,realwaste,https://github.com/sam-single/realwaste,Metal_746.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00283,realwaste,https://github.com/sam-single/realwaste,Metal_76.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00284,realwaste,https://github.com/sam-single/realwaste,Metal_779.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00285,realwaste,https://github.com/sam-single/realwaste,Metal_782.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00286,realwaste,https://github.com/sam-single/realwaste,Metal_783.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00287,realwaste,https://github.com/sam-single/realwaste,Metal_88.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00288,realwaste,https://github.com/sam-single/realwaste,Plastic_104.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00289,realwaste,https://github.com/sam-single/realwaste,Plastic_121.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00290,realwaste,https://github.com/sam-single/realwaste,Plastic_123.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00291,realwaste,https://github.com/sam-single/realwaste,Plastic_126.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00292,realwaste,https://github.com/sam-single/realwaste,Plastic_128.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00293,realwaste,https://github.com/sam-single/realwaste,Plastic_18.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00294,realwaste,https://github.com/sam-single/realwaste,Plastic_184.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00295,realwaste,https://github.com/sam-single/realwaste,Plastic_185.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00296,realwaste,https://github.com/sam-single/realwaste,Plastic_189.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00297,realwaste,https://github.com/sam-single/realwaste,Plastic_193.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00298,realwaste,https://github.com/sam-single/realwaste,Plastic_201.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00299,realwaste,https://github.com/sam-single/realwaste,Plastic_227.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00300,realwaste,https://github.com/sam-single/realwaste,Plastic_242.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00301,realwaste,https://github.com/sam-single/realwaste,Plastic_246.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00302,realwaste,https://github.com/sam-single/realwaste,Plastic_282.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00303,realwaste,https://github.com/sam-single/realwaste,Plastic_298.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00304,realwaste,https://github.com/sam-single/realwaste,Plastic_30.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00305,realwaste,https://github.com/sam-single/realwaste,Plastic_301.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00306,realwaste,https://github.com/sam-single/realwaste,Plastic_304.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00307,realwaste,https://github.com/sam-single/realwaste,Plastic_313.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00308,realwaste,https://github.com/sam-single/realwaste,Plastic_324.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00309,realwaste,https://github.com/sam-single/realwaste,Plastic_352.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00310,realwaste,https://github.com/sam-single/realwaste,Plastic_355.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00311,realwaste,https://github.com/sam-single/realwaste,Plastic_409.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00312,realwaste,https://github.com/sam-single/realwaste,Plastic_412.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00313,realwaste,https://github.com/sam-single/realwaste,Plastic_45.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00314,realwaste,https://github.com/sam-single/realwaste,Plastic_486.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00315,realwaste,https://github.com/sam-single/realwaste,Plastic_489.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00316,realwaste,https://github.com/sam-single/realwaste,Plastic_512.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00317,realwaste,https://github.com/sam-single/realwaste,Plastic_565.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00318,realwaste,https://github.com/sam-single/realwaste,Plastic_601.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00319,realwaste,https://github.com/sam-single/realwaste,Plastic_616.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00320,realwaste,https://github.com/sam-single/realwaste,Plastic_642.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00321,realwaste,https://github.com/sam-single/realwaste,Plastic_643.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00322,realwaste,https://github.com/sam-single/realwaste,Plastic_654.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00323,realwaste,https://github.com/sam-single/realwaste,Plastic_689.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00324,realwaste,https://github.com/sam-single/realwaste,Plastic_699.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00325,realwaste,https://github.com/sam-single/realwaste,Plastic_722.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00326,realwaste,https://github.com/sam-single/realwaste,Plastic_742.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00327,realwaste,https://github.com/sam-single/realwaste,Plastic_746.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00328,realwaste,https://github.com/sam-single/realwaste,Plastic_76.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00329,realwaste,https://github.com/sam-single/realwaste,Plastic_779.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00330,realwaste,https://github.com/sam-single/realwaste,Plastic_782.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00331,realwaste,https://github.com/sam-single/realwaste,Plastic_783.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00332,realwaste,https://github.com/sam-single/realwaste,Plastic_8.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00333,realwaste,https://github.com/sam-single/realwaste,Plastic_802.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00334,realwaste,https://github.com/sam-single/realwaste,Plastic_842.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00335,realwaste,https://github.com/sam-single/realwaste,Plastic_845.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00336,realwaste,https://github.com/sam-single/realwaste,Plastic_900.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00337,realwaste,https://github.com/sam-single/realwaste,Plastic_921.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00338,realwaste,https://github.com/sam-single/realwaste,Miscellaneous Trash_11.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00339,realwaste,https://github.com/sam-single/realwaste,Miscellaneous Trash_110.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00340,realwaste,https://github.com/sam-single/realwaste,Miscellaneous Trash_112.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00341,realwaste,https://github.com/sam-single/realwaste,Miscellaneous Trash_113.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00342,realwaste,https://github.com/sam-single/realwaste,Miscellaneous Trash_139.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00343,realwaste,https://github.com/sam-single/realwaste,Miscellaneous Trash_141.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00344,realwaste,https://github.com/sam-single/realwaste,Miscellaneous Trash_146.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00345,realwaste,https://github.com/sam-single/realwaste,Miscellaneous Trash_150.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00346,realwaste,https://github.com/sam-single/realwaste,Miscellaneous Trash_163.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00347,realwaste,https://github.com/sam-single/realwaste,Miscellaneous Trash_190.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00348,realwaste,https://github.com/sam-single/realwaste,Miscellaneous Trash_2.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00349,realwaste,https://github.com/sam-single/realwaste,Miscellaneous Trash_201.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00350,realwaste,https://github.com/sam-single/realwaste,Miscellaneous Trash_206.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00351,realwaste,https://github.com/sam-single/realwaste,Miscellaneous Trash_211.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00352,realwaste,https://github.com/sam-single/realwaste,Miscellaneous Trash_225.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00353,realwaste,https://github.com/sam-single/realwaste,Miscellaneous Trash_292.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00354,realwaste,https://github.com/sam-single/realwaste,Miscellaneous Trash_294.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00355,realwaste,https://github.com/sam-single/realwaste,Miscellaneous Trash_331.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00356,realwaste,https://github.com/sam-single/realwaste,Miscellaneous Trash_350.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00357,realwaste,https://github.com/sam-single/realwaste,Miscellaneous Trash_358.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00358,realwaste,https://github.com/sam-single/realwaste,Miscellaneous Trash_371.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00359,realwaste,https://github.com/sam-single/realwaste,Miscellaneous Trash_377.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00360,realwaste,https://github.com/sam-single/realwaste,Miscellaneous Trash_394.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00361,realwaste,https://github.com/sam-single/realwaste,Miscellaneous Trash_399.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00362,realwaste,https://github.com/sam-single/realwaste,Miscellaneous Trash_410.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00363,realwaste,https://github.com/sam-single/realwaste,Miscellaneous Trash_422.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00364,realwaste,https://github.com/sam-single/realwaste,Miscellaneous Trash_429.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00365,realwaste,https://github.com/sam-single/realwaste,Miscellaneous Trash_439.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00366,realwaste,https://github.com/sam-single/realwaste,Miscellaneous Trash_440.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00367,realwaste,https://github.com/sam-single/realwaste,Miscellaneous Trash_64.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00368,realwaste,https://github.com/sam-single/realwaste,Food Organics_11.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00369,realwaste,https://github.com/sam-single/realwaste,Food Organics_146.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00370,realwaste,https://github.com/sam-single/realwaste,Food Organics_150.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00371,realwaste,https://github.com/sam-single/realwaste,Food Organics_163.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00372,realwaste,https://github.com/sam-single/realwaste,Food Organics_201.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00373,realwaste,https://github.com/sam-single/realwaste,Food Organics_211.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00374,realwaste,https://github.com/sam-single/realwaste,Food Organics_225.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00375,realwaste,https://github.com/sam-single/realwaste,Food Organics_394.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00376,realwaste,https://github.com/sam-single/realwaste,Food Organics_69.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00377,realwaste,https://github.com/sam-single/realwaste,Food Organics_70.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00378,realwaste,https://github.com/sam-single/realwaste,Textile Trash_11.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00379,realwaste,https://github.com/sam-single/realwaste,Textile Trash_139.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00380,realwaste,https://github.com/sam-single/realwaste,Textile Trash_146.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00381,realwaste,https://github.com/sam-single/realwaste,Textile Trash_150.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00382,realwaste,https://github.com/sam-single/realwaste,Textile Trash_163.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00383,realwaste,https://github.com/sam-single/realwaste,Textile Trash_201.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00384,realwaste,https://github.com/sam-single/realwaste,Textile Trash_211.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00385,realwaste,https://github.com/sam-single/realwaste,Textile Trash_225.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00386,realwaste,https://github.com/sam-single/realwaste,Textile Trash_64.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00387,realwaste,https://github.com/sam-single/realwaste,Textile Trash_85.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00388,realwaste,https://github.com/sam-single/realwaste,Vegetation_11.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00389,realwaste,https://github.com/sam-single/realwaste,Vegetation_146.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00390,realwaste,https://github.com/sam-single/realwaste,Vegetation_150.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00391,realwaste,https://github.com/sam-single/realwaste,Vegetation_163.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00392,realwaste,https://github.com/sam-single/realwaste,Vegetation_201.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00393,realwaste,https://github.com/sam-single/realwaste,Vegetation_211.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00394,realwaste,https://github.com/sam-single/realwaste,Vegetation_225.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00395,realwaste,https://github.com/sam-single/realwaste,Vegetation_394.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00396,realwaste,https://github.com/sam-single/realwaste,Vegetation_46.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00397,realwaste,https://github.com/sam-single/realwaste,Vegetation_48.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00398,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"AluCan1,013.jpg",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00399,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"AluCan1,051.jpg",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00400,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"AluCan1,054.jpg",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00401,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"AluCan1,061.jpg",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00402,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan102.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00403,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan204.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00404,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan216.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00405,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan232.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00406,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan25.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00407,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan300.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00408,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan338.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00409,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan410.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00410,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan447.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00411,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan450.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00412,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan456.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00413,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan473.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00414,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan496.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00415,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan551.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00416,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan557.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00417,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan671.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00418,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan818.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00419,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan822.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00420,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan823.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00421,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan872.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00422,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan976.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00423,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"Glass1,051.JPG",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00424,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"Glass1,054.JPG",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00425,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"Glass1,061.JPG",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00426,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"Glass1,065.JPG",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00427,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"Glass1,178.JPG",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00428,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"Glass1,191.JPG",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00429,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"Glass1,209.JPG",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00430,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"Glass1,228.JPG",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00431,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"Glass1,285.JPG",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00432,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,Glass194.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00433,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,Glass254.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00434,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,Glass258.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00435,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,Glass264.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00436,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,Glass285.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00437,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,Glass312.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00438,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,Glass381.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00439,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,Glass387.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00440,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,Glass66.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00441,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,Glass664.JPG,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00442,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,Glass713.JPG,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00443,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,Glass82.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00444,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,Glass895.JPG,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00445,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,Glass924.JPG,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00446,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,Glass976.JPG,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00447,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,Glass979.JPG,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00448,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"HDPEM1,013.JPG",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00449,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM119.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00450,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM121.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00451,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM128.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00452,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM131.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00453,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM233.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00454,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM245.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00455,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM261.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00456,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM279.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00457,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM33.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00458,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM36.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00459,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM367.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00460,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM44.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00461,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM476.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00462,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM48.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00463,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM485.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00464,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM501.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00465,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM524.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00466,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM580.JPG,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00467,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM586.JPG,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00468,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM70.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00469,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM847.JPG,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00470,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM851.JPG,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00471,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM852.JPG,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00472,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM900.JPG,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00473,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"PET1,051.jpg",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00474,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"PET1,054.jpg",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00475,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"PET1,061.jpg",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00476,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"PET1,065.jpg",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00477,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"PET1,178.jpg",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00478,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"PET1,191.jpg",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00479,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"PET1,209.jpg",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00480,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"PET1,228.jpg",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00481,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"PET1,285.jpg",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00482,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"PET1,407.jpg",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00483,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"PET1,447.jpg",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00484,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"PET1,457.jpg",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00485,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"PET1,476.jpg",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00486,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"PET1,501.jpg",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00487,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"PET1,563.jpg",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00488,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,PET356.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00489,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,PET526.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00490,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,PET608.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00491,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,PET641.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00492,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,PET701.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00493,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,PET724.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00494,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,PET801.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00495,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,PET822.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00496,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,PET877.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00497,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,PET958.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00498,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan112.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00499,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan132.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00500,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan150.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00501,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan173.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00502,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan178.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00503,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan202.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00504,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan217.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00505,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan321.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00506,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan44.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00507,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan641.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00508,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan718.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00509,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan772.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00510,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan815.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00511,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan844.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00512,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,AluCan980.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00513,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"Glass1,076.JPG",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00514,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"Glass1,098.JPG",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00515,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"Glass1,118.JPG",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00516,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"Glass1,148.JPG",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00517,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"Glass1,176.JPG",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00518,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"Glass1,192.JPG",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00519,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"Glass1,308.JPG",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00520,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,Glass244.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00521,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,Glass477.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00522,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,Glass56.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00523,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,Glass613.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00524,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,Glass686.JPG,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00525,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,Glass824.JPG,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00526,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,Glass878.JPG,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00527,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,Glass964.JPG,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00528,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM141.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00529,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM161.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00530,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM18.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00531,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM201.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00532,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM206.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00533,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM231.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00534,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM246.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00535,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM350.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00536,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM469.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00537,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM516.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00538,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM670.JPG,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00539,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM747.JPG,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00540,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM800.JPG,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00541,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM844.JPG,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00542,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,HDPEM873.JPG,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00543,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"PET1,076.jpg",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00544,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"PET1,098.jpg",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00545,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"PET1,118.jpg",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00546,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"PET1,148.jpg",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00547,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"PET1,176.jpg",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00548,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"PET1,192.jpg",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00549,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"PET1,308.jpg",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00550,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"PET1,439.jpg",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00551,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"PET1,663.jpg",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00552,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,"PET1,748.jpg",Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00553,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,PET300.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00554,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,PET531.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00555,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,PET589.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00556,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,PET685.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00557,kaggle_drinking_waste,https://www.kaggle.com/datasets/arkadiyhacks/drinking-waste-classification,PET825.jpg,Arkadiy Serezhkin,CC0-1.0,https://creativecommons.org/publicdomain/zero/1.0/,2026-10-04
+bcc_00558,realwaste,https://github.com/sam-single/realwaste,Glass_120.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00559,realwaste,https://github.com/sam-single/realwaste,Glass_132.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00560,realwaste,https://github.com/sam-single/realwaste,Glass_142.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00561,realwaste,https://github.com/sam-single/realwaste,Glass_169.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00562,realwaste,https://github.com/sam-single/realwaste,Glass_248.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00563,realwaste,https://github.com/sam-single/realwaste,Glass_268.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00564,realwaste,https://github.com/sam-single/realwaste,Glass_281.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00565,realwaste,https://github.com/sam-single/realwaste,Glass_346.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00566,realwaste,https://github.com/sam-single/realwaste,Glass_368.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00567,realwaste,https://github.com/sam-single/realwaste,Glass_4.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00568,realwaste,https://github.com/sam-single/realwaste,Metal_133.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00569,realwaste,https://github.com/sam-single/realwaste,Metal_143.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00570,realwaste,https://github.com/sam-single/realwaste,Metal_152.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00571,realwaste,https://github.com/sam-single/realwaste,Metal_166.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00572,realwaste,https://github.com/sam-single/realwaste,Metal_179.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00573,realwaste,https://github.com/sam-single/realwaste,Metal_186.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00574,realwaste,https://github.com/sam-single/realwaste,Metal_238.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00575,realwaste,https://github.com/sam-single/realwaste,Metal_297.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00576,realwaste,https://github.com/sam-single/realwaste,Metal_398.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00577,realwaste,https://github.com/sam-single/realwaste,Metal_436.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00578,realwaste,https://github.com/sam-single/realwaste,Metal_463.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00579,realwaste,https://github.com/sam-single/realwaste,Metal_567.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00580,realwaste,https://github.com/sam-single/realwaste,Metal_593.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00581,realwaste,https://github.com/sam-single/realwaste,Metal_636.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00582,realwaste,https://github.com/sam-single/realwaste,Metal_7.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00583,realwaste,https://github.com/sam-single/realwaste,Plastic_133.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00584,realwaste,https://github.com/sam-single/realwaste,Plastic_143.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00585,realwaste,https://github.com/sam-single/realwaste,Plastic_152.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00586,realwaste,https://github.com/sam-single/realwaste,Plastic_166.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00587,realwaste,https://github.com/sam-single/realwaste,Plastic_186.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00588,realwaste,https://github.com/sam-single/realwaste,Plastic_238.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00589,realwaste,https://github.com/sam-single/realwaste,Plastic_297.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00590,realwaste,https://github.com/sam-single/realwaste,Plastic_398.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00591,realwaste,https://github.com/sam-single/realwaste,Plastic_436.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00592,realwaste,https://github.com/sam-single/realwaste,Plastic_463.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00593,realwaste,https://github.com/sam-single/realwaste,Plastic_567.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00594,realwaste,https://github.com/sam-single/realwaste,Plastic_593.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00595,realwaste,https://github.com/sam-single/realwaste,Plastic_636.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00596,realwaste,https://github.com/sam-single/realwaste,Plastic_7.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00597,realwaste,https://github.com/sam-single/realwaste,Plastic_856.jpg,Sam Single et al. (RealWaste),CC-BY-NC-SA-4.0,https://creativecommons.org/licenses/by-nc-sa/4.0/,2026-10-04
+bcc_00598,wikimedia,https://commons.wikimedia.org/wiki/File:HK_%E9%A6%99%E6%B8%AF%E8%88%AA%E7%A9%BA_HongKong_Airlines_%E9%A3%9B%E6%A9%9F%E9%A4%90_in-flight_meal_food_%E8%93%AE%E8%93%89%E5%8C%85_Lotus_seed_bun_with_%E9%8B%81%E7%AE%94%E7%B4%99%E8%A2%8B_disposable_aluminium_foil_January_2025_R12S_42.jpg,foilpack01__a.jpg,Naha Mama Pavilionz,CC0-1.0,http://creativecommons.org/publicdomain/zero/1.0/deed.en,2026-10-04
+bcc_00599,wikimedia,https://commons.wikimedia.org/wiki/File:HK_%E9%A6%99%E6%B8%AF%E8%88%AA%E7%A9%BA_HongKong_Airlines_%E9%A3%9B%E6%A9%9F%E9%A4%90_in-flight_meal_food_%E8%93%AE%E8%93%89%E5%8C%85_Lotus_seed_bun_with_%E9%8B%81%E7%AE%94%E7%B4%99%E8%A2%8B_disposable_aluminium_foil_January_2025_R12S_03.jpg,foilpack01__b.jpg,Naha Mama Pavilionz,CC0-1.0,http://creativecommons.org/publicdomain/zero/1.0/deed.en,2026-10-04
+bcc_00600,wikimedia,https://commons.wikimedia.org/wiki/File:HK_%E9%A6%99%E6%B8%AF%E8%88%AA%E7%A9%BA_HongKong_Airlines_%E9%A3%9B%E6%A9%9F%E9%A4%90_in-flight_meal_food_%E8%93%AE%E8%93%89%E5%8C%85_Lotus_seed_bun_with_%E9%8B%81%E7%AE%94%E7%B4%99%E8%A2%8B_disposable_aluminium_foil_January_2025_R12S_06.jpg,foilpack01__c.jpg,Naha Mama Pavilionz,CC0-1.0,http://creativecommons.org/publicdomain/zero/1.0/deed.en,2026-10-04
+bcc_00601,wikimedia,https://commons.wikimedia.org/wiki/File:HK_%E9%A6%99%E6%B8%AF%E8%88%AA%E7%A9%BA_HongKong_Airlines_%E9%A3%9B%E6%A9%9F%E9%A4%90_in-flight_meal_food_%E8%93%AE%E8%93%89%E5%8C%85_Lotus_seed_bun_with_%E9%8B%81%E7%AE%94%E7%B4%99%E8%A2%8B_disposable_aluminium_foil_January_2025_R12S_02.jpg,foilpack01__d.jpg,Naha Mama Pavilionz,CC0-1.0,http://creativecommons.org/publicdomain/zero/1.0/deed.en,2026-10-04
+bcc_00602,wikimedia,https://commons.wikimedia.org/wiki/File:HK_%E9%A6%99%E6%B8%AF%E8%88%AA%E7%A9%BA_HongKong_Airlines_%E9%A3%9B%E6%A9%9F%E9%A4%90_in-flight_meal_food_%E8%93%AE%E8%93%89%E5%8C%85_Lotus_seed_bun_with_%E9%8B%81%E7%AE%94%E7%B4%99%E8%A2%8B_disposable_aluminium_foil_January_2025_R12S_07.jpg,foilpack01__e.jpg,Naha Mama Pavilionz,CC0-1.0,http://creativecommons.org/publicdomain/zero/1.0/deed.en,2026-10-04
+bcc_00603,wikimedia,https://commons.wikimedia.org/wiki/File:Aerosolcan_pullution.jpg,spraycan01.jpg,T3rminatr,Public-Domain,,2026-10-04
+bcc_00604,wikimedia,https://commons.wikimedia.org/wiki/File:Eckerd_Spray_Starch_(24544614703).jpg,spraycan02.jpg,Infrogmation of New Orleans from New Orleans,CC-BY-2.0,https://creativecommons.org/licenses/by/2.0,2026-10-04
+bcc_00605,wikimedia,https://commons.wikimedia.org/wiki/File:Bombe_a%C3%A9rosol_0852b.JPG,spraycan03.jpg,Szyx (ArséniureDeGallium),CC-BY-3.0,https://creativecommons.org/licenses/by/3.0,2026-10-04
+bcc_00606,wikimedia,https://commons.wikimedia.org/wiki/File:Canned-air.jpg,spraycan04.jpg,Although,Public-Domain,,2026-10-04
+bcc_00607,wikimedia,https://commons.wikimedia.org/wiki/File:Can_opened_with_side_opener.jpg,tincan01.jpg,Ll1324,CC0-1.0,http://creativecommons.org/publicdomain/zero/1.0/deed.en,2026-10-04
+bcc_00608,wikimedia,https://commons.wikimedia.org/wiki/File:Ejemplo_bordonado_2.JPG,tincan02.jpg,Ana Royo,CC-BY-3.0,https://creativecommons.org/licenses/by/3.0,2026-10-04
+bcc_00609,wikimedia,https://commons.wikimedia.org/wiki/File:20130307-OC-RBN-4167_(8577512647).jpg,glassjar01.jpg,U.S. Department of Agriculture Bob Nichols/Photographer/United States Department,Public-Domain,,2026-10-04
+bcc_00610,wikimedia,https://commons.wikimedia.org/wiki/File:Cola_-_Thai_Restaurant.jpg,glassjar02.jpg,Tony Webster,CC-BY-2.0,https://creativecommons.org/licenses/by/2.0,2026-10-04
+bcc_00611,wikimedia,https://commons.wikimedia.org/wiki/File:Cukrov%C3%AD_z_lineck%C3%A9ho_t%C4%9Bsta.jpg,plasticbox01.jpg,Dezidor,CC-BY-3.0,https://creativecommons.org/licenses/by/3.0,2026-10-04
+bcc_00612,wikimedia,https://commons.wikimedia.org/wiki/File:Butter_single_portion_in_container.JPG,plasticbox02.jpg,User:Mattes,Public-Domain,,2026-10-04
+bcc_00613,wikimedia,https://commons.wikimedia.org/wiki/File:HOMANN_Resi-Schmelz2.jpg,tub01__a.jpg,Seli82,CC0-1.0,http://creativecommons.org/publicdomain/zero/1.0/deed.en,2026-10-04
+bcc_00614,wikimedia,https://commons.wikimedia.org/wiki/File:HOMANN_Resi-Schmelz1.jpg,tub01__b.jpg,Seli82,CC0-1.0,http://creativecommons.org/publicdomain/zero/1.0/deed.en,2026-10-04
+bcc_00615,wikimedia,https://commons.wikimedia.org/wiki/File:Brelett_Oliven.jpg,tub02.jpg,Alasdair McLellan,Public-Domain,,2026-10-04
+bcc_00616,wikimedia,https://commons.wikimedia.org/wiki/File:Brelett_550g.jpg,tub03.jpg,Alasdair McLellan,Public-Domain,,2026-10-04
+bcc_00617,wikimedia,https://commons.wikimedia.org/wiki/File:L%C3%A4tta_-_(halbfettmargarine).JPG,tub04.jpg,Capun,CC0-1.0,http://creativecommons.org/publicdomain/zero/1.0/deed.en,2026-10-04

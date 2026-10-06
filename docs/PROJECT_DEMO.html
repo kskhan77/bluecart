@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blue Cart Check: simple guide and demo</title>
+<style>
+  :root { --blue: #1565c0; --black: #1b1f27; --ink: #1f2430; --soft: #4a5160; --line: #d6dce8; --bg: #f4f6fa; --card: #ffffff;
+          --green: #1f7a3d; --amber: #b26a00; --red: #b3261e; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.6 system-ui, "Segoe UI", Roboto, sans-serif; }
+  header { background: var(--blue); color: #fff; padding: 34px 20px 28px; }
+  header .wrap, main { max-width: 980px; margin: 0 auto; }
+  header h1 { margin: 0 0 6px; font-size: 2rem; line-height: 1.2; }
+  header p { margin: 0; font-size: 1.1rem; opacity: .95; }
+  header a { color: #fff; }
+  main { padding: 18px 20px 70px; }
+  nav { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 6px; }
+  nav a { text-decoration: none; color: var(--blue); background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 5px 14px; font-size: .92rem; font-weight: 600; }
+  section { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px 24px; margin: 18px 0; }
+  h2 { margin: 0 0 10px; font-size: 1.45rem; line-height: 1.25; }
+  h2 .n { display: inline-block; width: 1.9em; height: 1.9em; line-height: 1.9em; text-align: center; border-radius: 50%; background: var(--blue); color: #fff; font-size: .95rem; margin-right: 8px; vertical-align: 2px; }
+  h3 { margin: 22px 0 6px; font-size: 1.12rem; }
+  p { margin: 8px 0; }
+  a { color: var(--blue); }
+  .note { background: #fff7df; border-left: 5px solid #e0a100; border-radius: 8px; padding: 10px 14px; margin: 14px 0; font-size: .96rem; }
+  .big { font-size: 1.2rem; font-weight: 600; }
+  table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: .95rem; }
+  th, td { border: 1px solid var(--line); padding: 8px 11px; text-align: left; vertical-align: top; }
+  th { background: #eaf0f9; }
+  code { background: #eef1f6; border-radius: 5px; padding: 1px 6px; font-size: .9em; }
+  pre { background: #10151f; color: #e8ecf4; border-radius: 10px; padding: 12px 14px; overflow-x: auto; font-size: .9rem; margin: 10px 0; }
+  figure { margin: 16px 0; }
+  figure img, video { display: block; width: 100%; border: 1px solid var(--line); border-radius: 12px; background: #000; }
+  figure img { background: #fff; }
+  figcaption { font-size: .9rem; color: var(--soft); margin-top: 6px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin: 12px 0; }
+  .c { border: 2px solid var(--c, var(--line)); border-radius: 14px; padding: 12px 14px; }
+  .c b { display: block; color: var(--c, var(--ink)); font-size: 1.05rem; }
+  .c span { font-size: .92rem; color: var(--soft); }
+  .key { display: inline-block; min-width: 1.6em; text-align: center; border: 1px solid #b9c1d1; border-bottom-width: 3px; border-radius: 6px; padding: 0 6px; background: #fff; font-weight: 700; font-size: .9rem; }
+  .done { color: var(--green); font-weight: 700; } .part { color: var(--amber); font-weight: 700; } .todo { color: var(--red); font-weight: 700; }
+  ol.steps { padding-left: 1.3em; } ol.steps li { margin: 7px 0; }
+  .who td:first-child { font-weight: 700; white-space: nowrap; }
+  .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; margin: 10px 0; }
+  .two div { border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; background: #f9fbfe; }
+  .two b.t { display: block; color: var(--blue); font-size: 1.02rem; margin-bottom: 4px; }
+  @media (max-width: 600px) { body { font-size: 16px; } section { padding: 16px; } }
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <h1>Blue Cart Check: simple guide and demo</h1>
+  <p>ARI 510 · Group 2 · Project Phase 1a · what the project is, how the labeling tool works, and how it meets the requirements</p>
+  <p style="margin-top:8px;font-size:1rem">The tool is live for the class at <a href="https://bluecart.khurramshafique.com">bluecart.khurramshafique.com</a>. Project Discord: <a href="https://discord.gg/2t2DSNyBm">discord.gg/2t2DSNyBm</a>. Last updated Oct 6, 2026.</p>
+</div></header>
+<main>
+<nav>
+  <a href="#project">1 The project</a><a href="#photos">2 The photos</a><a href="#demo">3 Demo video</a>
+  <a href="#steps">4 The tool, step by step</a><a href="#label">5 From answers to a label</a>
+  <a href="#see">6 See the answers</a><a href="#req">7 Phase 1a requirements</a>
+</nav>
+<div class="note"><b>Please note:</b> the video and the screenshots on this page were recorded on Oct 5 on a test copy of the tool, with made-up users
+(<code>demo_user</code>, <code>demo_a</code>, <code>demo_b</code>). The answers picked in them are clicks made to show the buttons.
+They are <b>not</b> real labels.</div>
+
+<section id="project">
+  <h2><span class="n">1</span>The project in simple words</h2>
+  <p class="big">One question: does this item go in Flint's blue recycling cart?</p>
+  <ol class="steps">
+    <li><b>We take photos</b> of everyday items: bottles, boxes, cups, cables, bags.</li>
+    <li><b>People look at each photo</b> and answer two small questions about it. These people are called <i>annotators</i>. They are our classmates and us.</li>
+    <li><b>From their answers we get one label per photo</b>, for example "accepted" or "not accepted".</li>
+    <li><b>Later, a computer model learns</b> from the photos and labels, so it can answer the question for a new photo.</li>
+  </ol>
+  <p><b>Phase 1a</b> is the first half of this: collect the photos, write the rules for the annotators, build the tool they will use, and present it in class.</p>
+  <p>The rules come from the City of Flint and its waste company, Priority Waste. They are special: for example, Flint takes foil trays and empty aerosol cans, but it does <b>not</b> take plastic cups. That is why annotators must follow our written rules and not what they do at home.</p>
+</section>
+
+<section id="photos">
+  <h2><span class="n">2</span>Who collects which photos</h2>
+  <p>The tool holds <b>617 photos</b>. Each of us is responsible for one set. Only <b>77</b> were taken by the team (Ian, Sep 28–29). The other <b>540</b> come from RealWaste (360), the Kaggle Drinking Waste set (160), and Wikimedia Commons (20). Those keep their original authors in <code>data/attribution.csv</code>. The set each person is responsible for is in the notes column of <code>data/manifest.csv</code>.</p>
+  <table class="who">
+    <tr><th>Person</th><th>What they are responsible for</th><th>In the tool now</th></tr>
+    <tr><td>Daud</td><td>Containers: plastic bottles, jugs, tubs, glass jars, cans, foil trays, aerosol cans</td><td><span class="part">175 sourced photos</span><br>metal containers (55), glass containers (40), glass bottles (40), cans (20), foil containers, spray cans, jars and tubs (20). None of these were taken by Daud.</td></tr>
+    <tr><td>Hina</td><td>Paper and cardboard: boxes, pizza boxes, newspaper, cartons, paper cups</td><td><span class="part">115 sourced photos</span><br>cardboard (70), paper (45), from RealWaste. None of these were taken by Hina.</td></tr>
+    <tr><td>Khurram</td><td>Campus disposables: coffee cups, plastic cups, lids, straws, cutlery, packets, styrofoam, takeout boxes, water bottles</td><td><span class="part">185 sourced photos</span><br>plastic packaging (60), water bottles (40), milk jugs (40), cans (20), paper (25). His own campus photos are not in yet.</td></tr>
+    <tr><td>Ian</td><td>The "never" and hard cases: plastic bags, bagged recyclables, bubble wrap, hangers, cords and cables, batteries and small electronics, ceramic, unclear photos</td><td><span class="done">142 photos</span><br>77 taken by Ian (cords, batteries, bags, hangers, and other never-items), plus 65 sourced (mixed trash 30, food waste 10, textiles 10, garden waste 10, plastic 5).</td></tr>
+  </table>
+  <p>Daud, Hina, and Khurram can still add their own phone photos with <code>prepare_images.py</code>. That adds rows. It does not change who took the 540 sourced photos.</p>
+</section>
+
+<section id="demo">
+  <h2><span class="n">3</span>Watch the demo (100 seconds)</h2>
+  <p>A real recording of the current tool in a browser, made on Oct 5. The dark bar at the bottom explains each step: logging in, the welcome page, Step 1 and Step 2 with the keys, going back, zooming, the key legend, the help button, the guidelines page and the admin dashboard.</p>
+  <video controls preload="metadata" src="figures/tool_demo.webm"></video>
+</section>
+
+<section id="steps">
+  <h2><span class="n">4</span>The tool, step by step</h2>
+
+  <h3>Start: two ways to open the tool</h3>
+  <div class="two">
+    <div><b class="t">The shared link (what the team uses now)</b>Open <a href="https://bluecart.khurramshafique.com">bluecart.khurramshafique.com</a>, choose <b>Register</b>, pick a username and a password. Nothing to install and nothing to send back: the tool runs on Khurram's computer and the link reaches it through a Cloudflare tunnel. Everyone gets the same 30 photos first, then the next 170 that still need a label, 200 in total. Every photo is labeled by 2 people.</div>
+    <div><b class="t">Your own copy (the zip pack)</b>Unzip the pack, run <code>potato start config.yaml -p 8000</code>, open <code>http://localhost:8000</code> in Chrome and type your uniqname. No password. If you come back later with the same name, you continue where you stopped. At the end you zip the <code>annotation_output</code> folder and send it to us.</div>
+  </div>
+  <figure><img src="figures/tool_1_login.png" alt="The login page of the pack version"><figcaption>The login page of the pack version.</figcaption></figure>
+  <p>The first time, a <b>welcome page</b> explains the task and the two steps on one screen. It also lists Group 2, the instructor and the teaching assistant. Press <b>Start labeling</b> to continue. You can read it again any time: round <b>?</b> button, then <b>How it works</b>.</p>
+  <figure><img src="figures/tool_1b_welcome.png" alt="The welcome page"></figure>
+
+  <h3>What you see</h3>
+  <p>The <b>photo</b> is on the left. On the right, from top to bottom: the <b>rules box</b>, a <b>status line</b>, <b>Step 1</b>, <b>Step 2</b> and an optional <b>reason</b>. The status line always says what to do next, and after you answer it shows what your two answers mean. Under the questions is the <b>key legend</b>, and at the bottom right the round <b>help button</b>.</p>
+  <figure><img src="figures/tool_2_photo_and_rules.png" alt="The annotation screen">
+    <figcaption>The rules box lists the kinds of items Flint takes in the blue cart, and the kinds it never takes.</figcaption></figure>
+
+  <h3>Step 1: what KIND of item is it?</h3>
+  <div class="cards">
+    <div class="c" style="--c: var(--blue)"><b>Blue bin · key 1</b><span>It is a kind of item Flint recycles: paper, cardboard, cans, foil trays, plastic bottles, jugs, tubs, glass bottles, jars.</span></div>
+    <div class="c" style="--c: var(--black)"><b>Black bin · key 2</b><span>It is a kind Flint never takes in the blue cart: bags, cups, styrofoam, food, batteries, electronics, cords, and anything else not on the blue list.</span></div>
+    <div class="c" style="--c: #6b7280"><b>Question mark · key 3</b><span>You can't tell what the item is: blurry, cut off, or no single main item.</span></div>
+  </div>
+  <p>In Step 1 you only think about the <b>kind</b> of item, not whether it is clean. A pizza box is cardboard, so it is a blue bin kind, even if it is greasy.</p>
+
+  <h3>Step 2: what STATE is it in? (only after the blue bin)</h3>
+  <div class="cards">
+    <div class="c" style="--c: var(--green)"><b>Ready · key 4</b><span>Empty, clean, loose, flat. It can go in the blue cart now.</span></div>
+    <div class="c" style="--c: var(--amber)"><b>Needs prep first · key 5</b><span>One quick fix first: rinse it, empty it, flatten the box, or take it out of the plastic bag.</span></div>
+    <div class="c" style="--c: var(--red)"><b>Ruined · key 6</b><span>Grease or food has soaked into paper or cardboard. Example: a greasy pizza box. It goes in the trash.</span></div>
+    <div class="c" style="--c: #6b7280"><b>Can't see enough · key 7</b><span>The photo does not show the state, for example you can't see inside the container.</span></div>
+  </div>
+  <figure><img src="figures/tool_3_step2.png" alt="Step 2 appears after the blue bin is chosen">
+    <figcaption>Step 2 appears only after you choose the blue bin. If you choose the black bin, there is no Step 2.</figcaption></figure>
+
+  <h3>Keys, legend and help</h3>
+  <table>
+    <tr><th>You do</th><th>What happens</th></tr>
+    <tr><td>Press <span class="key">1</span> <span class="key">2</span> <span class="key">3</span>, then <span class="key">4</span> to <span class="key">7</span></td><td>The card is chosen and pops. The key lights up in the legend, in the help panel and on the card, so you always see what you pressed.</td></tr>
+    <tr><td>Press <span class="key">4</span> to <span class="key">7</span> before Step 1 is answered</td><td>Nothing is saved. The key and the status line shake red: Step 2 is not open yet.</td></tr>
+    <tr><td>Press <span class="key">→</span> or click <b>Next</b></td><td>Your answers are saved and the next photo appears. If you did not answer, a red message asks you to. The Step 1 keys wave once on every new photo.</td></tr>
+    <tr><td>Press <span class="key">←</span> or click <b>Previous</b></td><td>You go back. Your old answers are still selected and you can change them.</td></tr>
+    <tr><td>Press another number</td><td>Your answer changes.</td></tr>
+    <tr><td>Click a key in the <b>legend</b> under the questions</td><td>Same as pressing it. Useful on a tablet without a keyboard.</td></tr>
+    <tr><td>Click the round <b>?</b> button (bottom right)</td><td>A small panel with, in reading order, <b>How it works</b> (the welcome page again), the <b>full guidelines</b> and this <b>demo page</b>; then the keys and Khurram's email for problems.</td></tr>
+    <tr><td>Hover over the photo, click <b>+ − ⟲</b></td><td>Zoom in, zoom out, reset.</td></tr>
+    <tr><td>Click <b>Guidelines</b> (top right)</td><td>The full rules and examples open in a new tab.</td></tr>
+    <tr><td>Click the double arrows (top)</td><td>You jump to a photo you have not answered yet.</td></tr>
+    <tr><td>Look at <b>Progress</b> (top)</td><td>How many photos you have answered, for example 4/120.</td></tr>
+  </table>
+  <figure><img src="figures/tool_12_keys_pressed.png" alt="The key legend while key 1 is pressed">
+    <figcaption>The key legend: Step 1, Step 2 and Photos. Key 1 was just pressed and lights up yellow.</figcaption></figure>
+  <figure><img src="figures/tool_11_keys_blocked.png" alt="Key 4 pressed before Step 1 was answered">
+    <figcaption>Key 4 pressed before Step 1 was answered: the Step 2 keys are grey, the pressed one shakes red, nothing is saved.</figcaption></figure>
+  <figure><img src="figures/tool_10_help_panel.png" alt="The help panel">
+    <figcaption>The help panel behind the round ? button: How it works, the full guidelines, the demo page, the keys, and who to email.</figcaption></figure>
+  <figure><img src="figures/tool_4_labeled_and_zoom.png" alt="Answered photo, zoomed in">
+    <figcaption>An answered photo ("Can't tell": the picture shows several packages, not one main item) with the photo zoomed in.</figcaption></figure>
+  <figure><img src="figures/tool_5_guidelines_page.png" alt="The guidelines page">
+    <figcaption>The Guidelines page. Section 3 quotes the City of Flint and Priority Waste rules word for word.</figcaption></figure>
+  <figure><img src="figures/tool_6_narrow_screen.png" alt="The tool on a narrow screen">
+    <figcaption>On a narrow screen (phone or tablet) the same things stack vertically.</figcaption></figure>
+</section>
+
+<section id="label">
+  <h2><span class="n">5</span>From two answers to one label</h2>
+  <p>The annotator never picks the final label. The computer makes it from the two answers. These four labels are the same four as in our proposal.</p>
+  <table>
+    <tr><th>Step 1</th><th>Step 2</th><th>Final label</th><th>Example</th></tr>
+    <tr><td>Blue bin</td><td>Ready</td><td><code>accepted</code></td><td>Clean, flat cardboard box</td></tr>
+    <tr><td>Blue bin</td><td>Needs prep first</td><td><code>accepted_after_prep</code></td><td>Jar with sauce still inside</td></tr>
+    <tr><td>Blue bin</td><td>Ruined</td><td><code>not_accepted</code></td><td>Greasy pizza box</td></tr>
+    <tr><td>Blue bin</td><td>Can't see enough</td><td><code>cannot_determine</code></td><td>Closed container, can't see if it is empty</td></tr>
+    <tr><td>Black bin</td><td>(not asked)</td><td><code>not_accepted</code></td><td>Charging cable, plastic bag, coffee cup</td></tr>
+    <tr><td>Question mark</td><td>(not asked)</td><td><code>cannot_determine</code></td><td>Blurry photo</td></tr>
+  </table>
+  <p><b>Why two steps?</b> The proposal says the label "is a combination, not a lookup": first what the item is, then what state it is in. Two easy questions are simpler for a person than one hard four-way choice. It also lets us see <i>where</i> people disagree: about the kind of item, or about its state.</p>
+</section>
+
+<section id="see">
+  <h2><span class="n">6</span>Where the answers go and how to see them</h2>
+  <p>Every click is saved automatically in a folder called <code>annotation_output</code>, one sub-folder per annotator. For the <b>shared link</b> that folder is on Khurram's computer (<code>deploy/local_server/annotation_output</code>), so nobody has to send anything. For a <b>zip pack</b> it is next to the tool, and the annotator zips it and sends it to us.</p>
+  <h3>Way 1: in the browser (the admin dashboard)</h3>
+  <p>Open <code>https://bluecart.khurramshafique.com/admin</code> (shared link) or <code>http://localhost:8000/admin</code> (own copy). It asks for an <b>admin key</b>. The key is not a password anyone chose: the tool writes it into a file called <code>admin_api_key.txt</code> the first time anyone opens the admin page, in the folder the tool was started from.</p>
+  <div class="two">
+    <div><b class="t">Key for the shared link</b>In Ubuntu, from the project folder:<pre style="margin:6px 0 0">cat deploy/local_server/admin_api_key.txt</pre>Copy the long text it prints and paste it into the admin page.</div>
+    <div><b class="t">Key for your own copy</b>In the folder where you ran <code>potato start</code>:<pre style="margin:6px 0 0">cat admin_api_key.txt</pre>On Windows, open the file in Notepad instead. Each copy of the tool has its own key.</div>
+  </div>
+  <p>After the key, the <b>Instances</b> tab shows each photo, how many people answered it, the most frequent answer and a disagreement score. The <b>Questions</b> tab shows how often each answer was used. The <b>Annotators</b> tab shows how many photos each person has labeled.</p>
+  <figure><img src="figures/tool_7_admin_instances.png" alt="Admin dashboard, Instances tab"></figure>
+  <h3>Way 2: one page with all labeled photos</h3>
+  <pre>cd ~/workspace-school/bluecart/blue-cart-check
+.venv/bin/python scripts/show_labels.py --returned deploy/local_server        # the shared link
+.venv/bin/python scripts/show_labels.py --returned annotation/packs/internal_01 # a pack</pre>
+  <p>It prints a table and makes <code>labels_review.html</code>. A red border means two people gave different labels. Those are the photos the team should talk about. <code>labeling_time.py</code> gives the seconds per photo from the same files.</p>
+  <figure><img src="figures/tool_9_labels_review.png" alt="Review page with labeled photos">
+    <figcaption>Six photos labeled by the three demo users, three with a red border. On the glass jar they agree it is a blue cart item but not on its state (ready or needs prep). On the tomatoes one of them chose "never the blue cart".</figcaption></figure>
+</section>
+
+<section id="req">
+  <h2><span class="n">7</span>How this meets the Phase 1a requirements</h2>
+  <p>Due <b>Tuesday Oct 6, 2:30 pm</b>. <span class="done">Done</span> · <span class="part">Partly</span> · <span class="todo">Not started</span>. Status as of the morning of Oct 6.</p>
+  <table>
+    <tr><th>What the handout asks</th><th>How our project does it</th><th>Status</th></tr>
+    <tr><td>Collect <b>unlabeled</b> data, stored in a simple way</td><td>Photos in <code>data/images/</code>, one row per photo in <code>data/manifest.csv</code>. No label is written when a photo is collected. Phone location data is removed from every photo.</td><td><span class="part">Partly</span><br>617 photos (77 taken by us, 540 from open datasets), target about 1,200</td></tr>
+    <tr><td>Choose a license; respect licenses of other people's images</td><td>CC BY-NC-SA 4.0 in <code>LICENSE.md</code>, because 360 RealWaste images require it. Every sourced image is credited in <code>attribution.csv</code>.</td><td><span class="done">Done</span></td></tr>
+    <tr><td>README that describes the dataset and how it was collected, with the time to label one item</td><td><code>README.md</code>: 617 images, 77 team and 540 sourced, dates 2026-09-28 to 2026-10-04, median 6 seconds per photo.</td><td><span class="done">Done</span></td></tr>
+    <tr><td>Written guidelines: the job, the labels, clear rules, one example per label, contact</td><td><code>annotation/guidelines.md</code> v1.0, locked Oct 6. City rules quoted word for word, 12 written examples, email and the project Discord link.</td><td><span class="done">Done</span></td></tr>
+    <tr><td>A <b>real annotation tool</b>, one item at a time, with a clean output file (not a spreadsheet)</td><td>Potato, the tool the course recommends, set up with our two steps, icon cards, keys, a welcome page and a help button. It saves a structured file for every annotator. It is hosted at <a href="https://bluecart.khurramshafique.com">bluecart.khurramshafique.com</a>, so classmates only open a link.</td><td><span class="done">Done</span></td></tr>
+    <tr><td>Instructions to install it, run it, and send the result back; test it yourselves</td><td><code>annotation/HOW_TO_ANNOTATE.md</code> for the packs; for the shared link there is nothing to install. Tested from start to end in a browser, and used by Khurram, Hina and Ian on Oct 5.</td><td><span class="done">Done</span></td></tr>
+    <tr><td><b>More than one person</b> labels some of the items</td><td>On the shared link the first 30 photos go to every annotator (up to 10 labels each) and every other photo is labeled by 2 people. The packs do the same with an agreement set. In Phase 2 we measure agreement on the shared photos and check every photo where the two labels differ.</td><td><span class="done">Set up</span><br>agreement is measured in Phase 2</td></tr>
+    <tr><td>One of us labels for at least one hour, with the final rules</td><td>Pilot on the shared link: Hina about 21 minutes (120 photos), Ian about 7 minutes (33), Khurram about 2 minutes (7). Median 6 seconds.</td><td><span class="part">Started</span><br>rules are now locked; one person still needs to reach a full hour</td></tr>
+    <tr><td>A short "changes from proposal" note</td><td><code>CHANGES_FROM_PROPOSAL.md</code>: two-step question, cup and clamshell rules, Potato, 617 images, RealWaste license.</td><td><span class="done">Done</span></td></tr>
+    <tr><td>5-minute presentation: the task, numbers about the data, a live look at the tool</td><td>This page, the video, and the screenshots are the backup if the live tool fails. The slide deck still needs a timed run, and its old "17 seconds" figure should be 6 seconds.</td><td><span class="part">Partly</span></td></tr>
+    <tr><td>Submit: Canvas (PDF or GitHub link), the Google Form, a Discord post with the slides</td><td>Form answers are in <code>docs/GOOGLE_FORM_ANSWERS.md</code>. There is no GitHub remote and no UM Drive link yet. Post the slides in the course channel <code>#project-annotation-tasks</code>. Team contact: <a href="https://discord.gg/2t2DSNyBm">discord.gg/2t2DSNyBm</a>.</td><td><span class="todo">Not started</span></td></tr>
+  </table>
+</section>
+</main>
+</body>
+</html>

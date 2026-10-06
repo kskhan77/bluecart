@@ -1,4 +1,4 @@
-.PHONY: help setup setup-ml test stats explore packs annotate agreement splits check
+.PHONY: help setup setup-ml test stats explore packs annotate labels timing agreement splits check
 PY := .venv/bin/python
 
 help:            ## list targets
@@ -24,6 +24,12 @@ packs:           ## build annotator packs (edit A/B: make packs A=100 B=150)
 
 annotate:        ## run Potato on the internal pack at http://localhost:8000
 	cd annotation/packs/internal_01 && ../../../.venv/bin/potato start config.yaml -p 8000
+
+labels:          ## table + photo review page of the labels given so far
+	$(PY) scripts/show_labels.py
+
+timing:          ## seconds per photo from returned pilot outputs
+	$(PY) scripts/labeling_time.py
 
 agreement:       ## Phase 2: kappa/alpha + majority labels
 	$(PY) scripts/compute_agreement.py

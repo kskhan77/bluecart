@@ -3,8 +3,16 @@ compute_agreement.py (Phase 2): inter-annotator agreement + majority-vote ground
 
 Input: the annotation_output/ folders annotators sent back, copied to
        annotation/returned/<annotator>/annotation_output/...
-Reads every annotations.jsonl under annotation/returned/ (Potato export format:
-{"instance_id", "user_id", "labels": {"label": {"<name>": ...}, "reason": {...}}}).
+The annotation tool asks two questions per photo (Step 1 "cart": what kind of item,
+Step 2 "condition": what state it is in). derive_label() below turns the two answers
+into one of our four labels, and everything else in this script works on that label.
+
+Reads, under annotation/returned/:
+  * every <username>/user_state.json  (Potato's own save file, written on every click)
+  * every exports/jsonl/annotations.jsonl  (Potato export format:
+    {"instance_id", "user_id", "labels": {"label": {"<name>": ...}, "reason": {...}}})
+The export can lag behind the save file, so when both have a label for the same
+(item, annotator) the save file wins.
 
 Reports (Lecture 6/7):
   * Fleiss' kappa on items labeled by ALL annotators (the agreement set)
@@ -29,20 +37,63 @@ REPO = Path(__file__).resolve().parents[1]
 LABELS = ["accepted", "accepted_after_prep", "not_accepted", "cannot_determine"]
 
 
+def derive_label(cart, condition):
+    """Turn the two answers from the annotation tool into one of the four final labels.
+
+    Step 1 (cart):       blue_cart | not_blue_cart | cannot_tell
+    Step 2 (condition):  ready | needs_prep | ruined | cannot_tell   (only asked for blue_cart)
+    """
+    if cart == "not_blue_cart":
+        return "not_accepted"
+    if cart == "cannot_tell":
+        return "cannot_determine"
+    if cart == "blue_cart":
+        return {"ready": "accepted",
+                "needs_prep": "accepted_after_prep",
+                "ruined": "not_accepted",              # e.g. a greasy pizza box
+                "cannot_tell": "cannot_determine"}.get(condition, "")
+    return ""   # Step 1 not answered, or Step 2 still missing: not a finished label
+
+
+def to_row(item, annotator, picked):
+    """picked = {question name: chosen option}. Returns one table row, or None if unfinished."""
+    cart = picked.get("cart", "")
+    # Step 2 only counts for blue cart items. The tool can keep an old Step 2 answer
+    # after the annotator changes Step 1, so we ignore it in every other case.
+    condition = picked.get("condition", "") if cart == "blue_cart" else ""
+    # packs made before the two-step design stored the label directly under "label"
+    label = derive_label(cart, condition) if cart else picked.get("label", "")
+    if label not in LABELS:
+        return None
+    return {"id": item, "annotator": annotator, "label": label,
+            "reason": picked.get("reason", ""), "cart": cart, "condition": condition}
+
+
 def load(returned):
+    """One row per (item, annotator): id, annotator, label, reason, cart, condition."""
     rows = []
-    for f in Path(returned).rglob("annotations.jsonl"):
+    # 1) the export file (may be missing an annotator's most recent labels)
+    for f in sorted(Path(returned).rglob("annotations.jsonl")):
         for line in f.read_text(encoding="utf-8").splitlines():
             if not line.strip():
                 continue
             r = json.loads(line)
-            lab = list((r.get("labels", {}).get("label") or {}).keys())
-            if lab:
-                reason = list((r.get("labels", {}).get("reason") or {}).keys())
-                rows.append({"id": r["instance_id"], "annotator": r["user_id"],
-                             "label": lab[0], "reason": reason[0] if reason else ""})
-    df = pd.DataFrame(rows).drop_duplicates(["id", "annotator"], keep="last")
-    return df
+            picked = {q: next(iter(opts)) for q, opts in (r.get("labels") or {}).items() if opts}
+            row = to_row(r["instance_id"], r["user_id"], picked)
+            if row:
+                rows.append(row)
+    # 2) Potato's save file (always complete). Added last, so it wins below.
+    for f in sorted(Path(returned).rglob("user_state.json")):
+        state = json.loads(f.read_text(encoding="utf-8"))
+        for item, pairs in (state.get("instance_id_to_label_to_value") or {}).items():
+            picked = {}                      # question name -> chosen option
+            for key, _value in pairs:        # key = {"schema": "cart", "name": "blue_cart"}
+                picked[key["schema"]] = key["name"]
+            row = to_row(item, state.get("user_id", f.parent.name), picked)
+            if row:
+                rows.append(row)
+    df = pd.DataFrame(rows, columns=["id", "annotator", "label", "reason", "cart", "condition"])
+    return df.drop_duplicates(["id", "annotator"], keep="last")
 
 
 def fleiss_kappa(counts):
@@ -84,7 +135,7 @@ def main():
     args = ap.parse_args()
     df = load(args.returned)
     if df.empty:
-        raise SystemExit(f"No annotations.jsonl found under {args.returned}")
+        raise SystemExit(f"No annotations (user_state.json / annotations.jsonl) found under {args.returned}")
 
     annots = sorted(df.annotator.unique())
     per_item = df.groupby("id").annotator.nunique()

@@ -1,13 +1,12 @@
 # Blue Cart Check: Dataset (ARI 410/510, Group 2, UM-Flint, Fall 2026)
 
 **Task:** given one phone photo of an everyday item, decide whether it goes in Flint's blue recycling cart under the City of Flint curbside rules (Priority Waste).
-**Labels (assigned by annotators, not included at collection time):** `accepted` · `accepted_after_prep` · `not_accepted` · `cannot_determine`
+**Labels (assigned by annotators, not included at collection time):** `accepted` · `accepted_after_prep` · `not_accepted` · `cannot_determine`. Annotators answer two questions per photo (what kind of item, and what state it is in); the label is computed from the two answers (`annotation/guidelines.md` Section 2).
 
 **Team:** Daud Jan · Hina Kramer · Khurram Shafique · Ian Slackta
-**Dataset link (UM access):** `<GOOGLE DRIVE LINK>`
-**License:** CC BY 4.0 (see `LICENSE.md`)
-
-> TEAM TODO: fill every `<...>` after the final `python scripts/dataset_stats.py` run.
+**Dataset link (UM access):** image files are in this repository (`data/images/`, `data/manifest.csv`). A Google Drive folder shared with University of Michigan accounts is not posted yet. Add that link on this line before the Canvas submission.
+**License:** CC BY-NC-SA 4.0 (see `LICENSE.md`). The RealWaste photos require the non-commercial, share-alike terms.
+**Project Discord:** https://discord.gg/2t2DSNyBm
 
 ---
 
@@ -17,11 +16,13 @@ One instance = **one JPEG photo of a single everyday item** (or a small group of
 ## 2. Size and composition
 | | Count |
 |---|---|
-| Total images | `<N>` |
-| Team-photographed | `<n>` (`<%>`) |
-| Openly licensed (Wikimedia / Openverse / Open Images) | `<n>` (`<%>`) |
-| Category sets: containers / paper / disposables / hard | `<a>` / `<b>` / `<c>` / `<d>` |
-| Collection dates | `<start>` to `<end>` |
+| Total images | 617 |
+| Team-photographed | 77 (12%), all by Ian Slackta, category set `hard` |
+| Sourced | 540 (88%): RealWaste 360, Kaggle Drinking Waste 160, Wikimedia Commons 20 |
+| Category sets: containers / paper / disposables / hard | 340 / 140 / 0 / 137 |
+| Collection dates | 2026-09-28 to 2026-10-04 |
+
+Responsibility sets are written in the `notes` column: Daud Jan 175, Hina Kramer 115, Khurram Shafique 185, Ian Slackta 142. Ian's 142 are his 77 phone photos plus 65 sourced images. The other three sets are sourced images that member is responsible for. There are no `disposables` rows yet, because Khurram's own campus-disposables photos are not in the dataset.
 
 ## 3. Files and format
 ```
@@ -37,6 +38,9 @@ scripts/
   prepare_images.py          EXIF strip + resize + rename + manifest
   dataset_stats.py           descriptive stats + charts
   make_annotation_packs.py   agreement set + per-annotator packs
+  labeling_time.py           seconds per photo from the annotation tool's log
+  show_labels.py             table + photo review page of the labels given so far
+  make_hf_space.py           optional: build the folder for hosting the tool on Hugging Face
   explore_embeddings.py      PCA / k-means / near-duplicate check
   compute_agreement.py       Phase 2: Fleiss kappa, Krippendorff alpha, majority labels
   make_splits.py             group-safe train/val/test split
@@ -48,20 +52,20 @@ scripts/
 | `id` | image ID, `bcc_00001` ... |
 | `image_path` | path relative to `data/` |
 | `width`, `height` | pixels after resizing |
-| `source` | `team`, `wikimedia`, `openverse`, `openimages` |
+| `source` | `team`, `wikimedia`, `openverse`, `openimages`, `realwaste`, `kaggle_drinking_waste` |
 | `source_url` | original URL (sourced images only) |
-| `license` | `CC-BY-4.0` (team) or the source image's license (`CC0-1.0` / `CC-BY-x.x`) |
-| `attribution` | photographer (team) or original author |
-| `capture_date` | date taken (team) or downloaded (sourced) |
+| `license` | `CC-BY-4.0` (team) or the source image's own license (`CC0-1.0`, `CC-BY-x.x`, and for RealWaste `CC-BY-NC-SA-4.0`, see `LICENSE.md`) |
+| `attribution` | photographer (team) or the original author of a sourced image. Never a team member for an image we did not take. If a sourced batch is assigned to a team member's set, that is written in `notes` |
+| `capture_date` | date taken, read from the phone's EXIF "date taken" (team) or date downloaded (sourced). If a team photo has no EXIF date, the file's date is used and `notes` says so |
 | `setting` | `kitchen`, `office`, `bin_station`, `outdoor`, `dining`, `other` |
 | `category_set` | which collection set it belongs to (`containers`, `paper`, `disposables`, `hard`) |
 | `item_count` | number of items in the photo |
 | `item_group_id` | same physical object photographed in several states (e.g. clean/dirty) shares one id; splits keep a group together |
 | `sha1` | hash of the original file, used to drop duplicates |
-| `notes` | free text |
+| `notes` | free text. Entries starting with `REVIEW:` flag a photo that a team member must check (e.g. a person in frame) before release |
 
 ## 4. How the data was collected (reproducible procedure)
-**Team photos (`<%>`).** Each of the four members photographed everyday items from an assigned category set with their own phone camera, at home, in campus kitchens and offices, at UM-Flint paired bin stations and dining areas, between `<dates>`:
+**Team photos (77 images, 12%).** Ian Slackta photographed not-accepted and hard cases with his phone between 2026-09-28 and 2026-09-29. Daud Jan, Hina Kramer, and Khurram Shafique have not added their own phone photos yet. The sets named below are what each person is responsible for. Sourced images in those sets keep the original author in `attribution.csv`:
 - **Daud Jan:** containers (plastic tubs/jugs/bottles, glass jars, cans, foil trays, aerosol cans)
 - **Hina Kramer:** paper and cardboard (boxes flat and unflattened, pizza boxes, newspaper, cartons, paper cups)
 - **Khurram Shafique:** campus disposables (coffee cups, plastic cups and lids, straws, cutlery, packets, styrofoam, takeout containers, water bottles)
@@ -69,26 +73,31 @@ scripts/
 
 Rules followed: one item per photo (except bagged-group shots); vary background and lighting; when an item can appear in two states (clean/dirty, loose/bagged, flat/unflattened), photograph **both** as separate images; no people, faces, names or addresses in frame; items we hold or placed ourselves, never other people's bin contents.
 
-**Openly licensed photos (`<%>`).** Searched Wikimedia Commons, Openverse (license filter: CC0 + CC BY) and Google Open Images (CC BY images tagged e.g. "Bottle", "Tin can") for household items in the same categories. Only CC0/CC BY images were kept. URL, author and license were recorded in `attribution.csv`. Existing material-type tags were **not** used as labels.
+**Sourced photos (540 images, 88%).** URL, author, and license are in `attribution.csv`. Existing material-type tags were **not** used as labels. The proposal named Wikimedia Commons, Openverse, and Open Images. This release uses Wikimedia Commons plus two existing datasets (RealWaste and Kaggle Drinking Waste). Openverse and Open Images were not used.
 
-**Processing.** `scripts/prepare_images.py` applied the EXIF rotation, then removed all metadata (including GPS), resized to 512 px on the long edge, renamed to `bcc_#####.jpg` and dropped byte-identical duplicates. Raw files of the same object in different states were named `object__state.jpg`, which sets a shared `item_group_id`.
+**Images we did not take ourselves (added Oct 4, 2026).** 540 images come from two public datasets and Wikimedia Commons. They were added in two rounds: a first sample with seed 42, and a second sample for the containers set with seed 7. Their own class labels (material type) were not used and are not stored in the manifest; the original file name is kept only in `attribution.csv` so each image can be traced back.
+- **RealWaste** (Sam Single et al., https://github.com/sam-single/realwaste): 360 of its 4,752 images. A random sample per folder with `--sample N --seed 42`: Cardboard 70, Paper 70, Glass 30, Metal 40, Plastic 50, Miscellaneous Trash 30, Food Organics 10, Textile Trash 10, Vegetation 10. Second round with `--seed 7`: Glass 10, Metal 15, Plastic 15. Waste items photographed one at a time at a landfill facility in Australia.
+- **Drinking Waste Classification** (Arkadiy Serezhkin, Kaggle, CC0): 160 of its about 4,828 photos from `rawimgs/` (cans, glass bottles, plastic milk bottles, plastic drink bottles): 25 per folder with seed 42, then 15 per folder with seed 7.
+- **Wikimedia Commons**: 20 photos chosen by hand from the categories "Disposable aluminium foil food containers", "Spray cans", "Cans", "Glass jars", "Plastic food containers" and "Margarine tubs". Only CC0, public domain and CC BY files that show one everyday item and no people were kept. Each has its own author, license and page link in `attribution.csv`.
 
-**Sampling.** All usable photos taken were kept. Photos were removed only if blurry beyond recognition, duplicated, or containing people or personal information (`<n>` removed).
+**Processing.** `scripts/prepare_images.py` read the capture date from each photo, applied the EXIF rotation, then removed all metadata (including GPS), resized to 512 px on the long edge, renamed to `bcc_#####.jpg` and dropped byte-identical duplicates. Raw files of the same object in different states were named `object__state.jpg`, which sets a shared `item_group_id`.
 
-**Missing data.** `<e.g. source_url blank for team photos by design; any other gaps>`
+**Sampling.** For the team photos, every file in `data/raw/ian/` was kept except byte-identical duplicates, which the script skips. No separate count was kept of shots discarded before that folder was handed in. The 540 sourced images are a described sample, not the whole source dataset: RealWaste and Kaggle rows were drawn at random with a fixed seed (seed 42, then seed 7 for the containers round). The 20 Wikimedia photos were chosen by hand (one everyday item, no people, CC0 / public domain / CC BY only).
+
+**Missing data.** `source_url` is blank for team photos on purpose. `setting` is `other` for all 617 rows, because both the team batch and the sourced batches were ingested with that one setting. `item_count` is 1 for every row and was not checked photo by photo on the sourced images. Fourteen team photos had no EXIF date, so `capture_date` is the file date and `notes` says so. Sourced `capture_date` values are the download date (2026-10-04), not the day the original photographer took the picture. Six rows are flagged `REVIEW:` and still included: `bcc_00040` (part of a person at the edge), `bcc_00025`, `bcc_00026`, and `bcc_00073` (looking into a bin), `bcc_00410` and `bcc_00413` (a shoe tip). They were left in because annotators have already started on the live tool.
 
 ## 5. Estimated labeling time
-From our timed internal pilot (`<n>` images, `<k>` annotators): **about `<X>` seconds per image** (median), so roughly **`<Y>` images per hour**, including reading the guidelines at the start. Hard cases (cup vs. tub, residue) take longer.
+From our timed internal pilot on Oct 5, 2026 (160 photos, 3 team annotators, measured with `scripts/labeling_time.py` from the tool's click log): **about 6 seconds per photo** (median; mean 11 s), so roughly **300 to 500 photos per hour** for someone who already knows the rules. Classmates who see the guidelines for the first time will be slower, so we plan with **about 200 photos per hour**, including reading the welcome page. Hard cases (cup vs. tub, residue) take longer.
 
 ## 6. Annotation plan
-About 5 external annotators × 1 hour, plus at least 1 internal annotator.
-- **Agreement set:** `<A>` images labeled by **every** annotator (inter-annotator agreement + majority-vote ground truth in Phase 2).
-- **Coverage:** each annotator also labels `<B>` non-overlapping images.
-- **Result:** about `<A + 6B>` labeled images, `<A>` of them with 6 labels each.
+About 6 external annotators × 1 hour (each student in the class annotates for two other teams), plus the four of us as internal annotators, all on the hosted tool at https://bluecart.khurramshafique.com.
+- **Agreement set:** 30 photos labeled by **every** annotator (up to 10 labels each) for inter-annotator agreement and a majority-vote check in Phase 2.
+- **Coverage with a second opinion:** every other photo is labeled by **2** annotators. Each annotator gets the 30 shared photos and then the next 170 photos that still need a label, 200 in total, about one hour.
+- **Result:** when 7 annotators finish, all 617 photos have 2 labels and the 30 shared ones have up to 10. With only 6 classmates, 540 photos have 2 labels and the team labels the remaining 77. Where the two labels disagree (about a quarter of the photos in our pilot), a team member adds a third label, so every photo ends with a majority.
 
-Why: `<one-sentence justification of the redundancy vs. coverage tradeoff>`
+Why: two labels per photo keep every photo checkable and give the two annotators per image our proposal promised, while fitting the roughly 6 classmate-hours the handout predicts for our class size. Three labels everywhere would need about 9 hours we will not get; one label would leave the disagreements we saw in the pilot undetected.
 
-Generated with `python scripts/make_annotation_packs.py --agreement <A> --batch <B> --external 5 --internal 1 --seed 42`.
+The hosted tool is built with `python scripts/make_hf_space.py --out deploy/local_server --no-backup --shared 30 --per-annotator 200 --annotators 10 --labels-per-photo 2`. The zip packs from `make_annotation_packs.py` remain as the offline alternative.
 
 ## 7. Use of AI tools
-The processing scripts, Potato config and README template were drafted with Claude (Anthropic) and reviewed/tested by the team.
+The processing scripts, Potato config and README template were drafted with Claude (Anthropic) and reviewed/tested by the team. Claude Code also ran the pipeline and the end-to-end test of the annotation tool, and copied the rule wording in the guidelines from the city and hauler pages. No annotation was done by an AI tool. The full log is in `docs/AI_USE_LOG.md`.

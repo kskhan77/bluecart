@@ -2,6 +2,14 @@
 
 Only ONE submission per team. Tick each box as you go.
 
+## Status after the Oct 4 setup session
+- [x] Repo set up in WSL (`.venv`, tests pass, git initialised locally; **not yet on GitHub**)
+- [x] Ian's 77 photos processed into `data/images/` (target 200, minimum 150). Four are flagged `REVIEW:` in `manifest.csv`
+- [x] Potato tested end to end in a browser (keys 1-4, next/back, save, export, timing log)
+- [x] Guidelines Section 3 quotes the city and hauler rules word for word (copied Oct 4)
+- [ ] **Team decisions marked ⚑ in `annotation/guidelines.md`** must be agreed before the pilot
+- [ ] Photos from Daud, Hina and Khurram, plus the sourced CC0/CC-BY images, are still missing
+
 ## Sun Oct 4 (today)
 - [ ] **Everyone:** send your sections by end of day (Ian ✅ done)
 - [ ] **Khurram:** shoot the disposables set (`docs/SHOT_LIST_KHURRAM.md`), run `prepare_images.py`

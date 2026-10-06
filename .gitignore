@@ -3,6 +3,8 @@ data/raw/
 # generated / per-person
 annotation/packs/
 annotation/returned/
+# the Hugging Face Space folder is its own git repository (built by scripts/make_hf_space.py)
+deploy/
 annotation/potato/annotation_output/
 **/project.sqlite
 **/layouts/
