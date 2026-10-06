@@ -36,7 +36,7 @@ Status column last updated **Oct 6, 2026 (morning)**. ✅ done · 🟡 partly ·
 ## Deliverables (§6), all 3 required for full credit
 | # | deliverable | status |
 |---|---|---|
-| 1 | **Canvas:** PDF *or* GitHub link containing (a) dataset link with UM-student access, (b) dataset description (README), (c) license, (d) annotation instructions, (e) changes-from-proposal note, (f) custom-platform note (only if applicable) | ❌ no GitHub repo or Drive link yet |
+| 1 | **Canvas:** PDF *or* GitHub link containing (a) dataset link with UM-student access, (b) dataset description (README), (c) license, (d) annotation instructions, (e) changes-from-proposal note, (f) custom-platform note (only if applicable) | 🟡 GitHub repo pushed Oct 6: https://github.com/kskhan77/bluecart (branches `main` and `dev`; the processed photos are in `data/images/`, so the repo link doubles as the dataset link). Canvas submission itself still to do |
 | 2 | **Google Form:** annotation request | 🟡 answers drafted in `docs/GOOGLE_FORM_ANSWERS.md`; the form itself needs a UM sign-in and is not submitted |
 | 3 | **Discord** `#project-annotation-tasks`: post the slides (PDF or link) and **present in class on Oct 6** | ❌ |
 
