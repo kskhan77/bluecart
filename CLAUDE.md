@@ -62,6 +62,7 @@ Always activate the venv first: `source .venv/bin/activate`
 | build the Hugging Face Space folder (optional hosting, see docs/HUGGINGFACE_HOSTING.md) | `python scripts/make_hf_space.py --backup-repo <hf-name>/blue-cart-check-annotations` |
 | start the PUBLIC tool at https://bluecart.khurramshafique.com (port 8010 + Cloudflare tunnel) | `bash scripts/start_public_tool.sh` |
 | install our login/register page into the Potato in this venv (`annotation/potato/login_page.html`; run after any pip install of potato; `--check`, `--restore`) | `python scripts/patch_login_page.py` |
+| move the public tool to an Azure VM (Azure for Students), same address, accounts and answers kept | `docs/AZURE_HOSTING.md` + `scripts/azure/{setup_vm,migrate,tunnel_vm}.sh` |
 | agreement + majority labels (Phase 2) | `python scripts/compute_agreement.py` |
 | group-safe splits | `python scripts/make_splits.py --test 0.2 --val 0.1` |
 | tests | `pytest -q` |
