@@ -189,11 +189,20 @@ custom_footer_html: |
       --light-bg: #eef3fa; --border: #d6dce8; --input: #d6dce8; --radius: 12px; --border-radius: 12px;
       --heading-color: #14213d; --text-color: #2d3748;
       --font-sans: 'Plus Jakarta Sans', 'Outfit', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+      /* ONE page width for the top bar, the key bar and the content card, so their edges line up */
+      --bcc-w: 1720px; --bcc-gutter: 16px;
     }
     body { background: radial-gradient(1000px 420px at 90% -10%, #dbe7fb 0%, rgba(219, 231, 251, 0) 60%), #eef3fa !important; }
-    .potato-navbar { background: linear-gradient(90deg, #0e1524 0%, #14213d 50%, #1a4a8f 100%) !important; height: auto !important; min-height: 60px; box-shadow: 0 2px 14px rgba(14, 21, 36, 0.35); }
-    .potato-navbar .navbar-brand .task-name { font-weight: 800; letter-spacing: 0.01em; }
-    .potato-navbar .navbar-brand::before { content: "\f1b8"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: #ffb300; margin-right: 10px; font-size: 1.1rem; }
+    /* ---------- top bar: logo badge, two-line title, signed-in person. Same width as the content below. ---------- */
+    .potato-navbar { background: linear-gradient(90deg, #0e1524 0%, #14213d 55%, #1a4a8f 100%) !important; height: auto !important; min-height: 66px; padding: 0 !important; box-shadow: 0 2px 14px rgba(14, 21, 36, 0.35); }
+    .potato-navbar .navbar-inner { max-width: var(--bcc-w); margin: 0 auto; box-sizing: border-box; min-height: 66px; padding: 8px var(--bcc-gutter); align-items: center; }
+    .potato-navbar .navbar-brand { gap: 12px; align-items: center; }
+    .potato-navbar .navbar-brand::before { content: "\f1b8"; font-family: "Font Awesome 6 Free"; font-weight: 900; flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center;
+      width: 42px; height: 42px; border-radius: 13px; background: linear-gradient(135deg, #ffc733 0%, #ffb300 55%, #f08c00 100%); color: #14213d; font-size: 1.3rem;
+      box-shadow: 0 4px 12px rgba(255, 179, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.45); }
+    .potato-navbar .navbar-brand .task-name { display: flex; flex-direction: column; justify-content: center; line-height: 1.2; white-space: normal; overflow: visible; min-width: 0; }
+    .potato-navbar .bcc-brand-name { font-weight: 800; font-size: 1.15rem; color: #fff; letter-spacing: -0.01em; white-space: nowrap; }
+    .potato-navbar .bcc-brand-sub { font-weight: 600; font-size: 0.8rem; color: #9ec1ef; letter-spacing: 0.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .potato-navbar .navbar-divider { background: rgba(255, 255, 255, 0.18) !important; }
     .potato-navbar .nav-control-btn, .potato-navbar .goto-section button, .potato-navbar .goto-section input, .potato-navbar .navbar-end a, .potato-navbar .navbar-end button { border-radius: 999px !important; }
     .potato-navbar .codebook-btn { background: #ffb300 !important; border-color: #ffb300 !important; color: #111 !important; font-weight: 700 !important; }
@@ -211,12 +220,24 @@ custom_footer_html: |
        progress card above the photo (script below); Guidelines lives in the help panel. ---------- */
     .potato-navbar .navbar-center, .potato-navbar .codebook-btn, .potato-navbar .adjudicate-btn { display: none !important; }
     .potato-navbar .navbar-inner { justify-content: space-between; }
-    .potato-navbar .user-pill { display: inline-flex !important; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 999px; padding: 4px 6px 4px 14px; }
-    .potato-navbar .user-pill .username { color: #fff !important; font-weight: 700; }
-    .potato-navbar .user-pill .username::before { content: "\f007"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: #ffb300; margin-right: 8px; }
-    .potato-navbar .user-pill .logout-btn { background: #fff !important; color: #14213d !important; border-radius: 999px !important; padding: 4px 12px !important; font-weight: 700; text-decoration: none; border: 0 !important; }
+    .potato-navbar .user-pill { display: inline-flex !important; align-items: center; gap: 10px; height: 42px; box-sizing: border-box; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.22); border-radius: 999px; padding: 0 5px 0 6px; }
+    .potato-navbar .user-pill .username { color: #fff !important; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; font-size: 0.92rem; }
+    .potato-navbar .user-pill .username::before { content: "\f007"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: #14213d; background: #ffb300; width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.85rem; }
+    .potato-navbar .user-pill .logout-btn { background: #fff !important; color: #14213d !important; border-radius: 999px !important; height: 32px; padding: 0 13px !important; display: inline-flex; align-items: center; font-size: 0.82rem; font-weight: 700; text-decoration: none; border: 0 !important; }
     .potato-navbar .user-pill .logout-btn::before { content: "\f2f5"; font-family: "Font Awesome 6 Free"; font-weight: 900; margin-right: 6px; }
     .potato-navbar .user-pill .logout-btn:hover { background: #ffb300 !important; }
+    /* phones: subtitle off, the title may shorten with "...", and the person is shown as the icon + Logout only */
+    @media (max-width: 640px) {
+      .potato-navbar .bcc-brand-sub { display: none; }
+      .potato-navbar .navbar-brand { flex: 1 1 auto; min-width: 0; gap: 10px; }
+      .potato-navbar .navbar-brand::before { width: 36px; height: 36px; font-size: 1.1rem; border-radius: 11px; }
+      .potato-navbar .bcc-brand-name { font-size: 1.02rem; overflow: hidden; text-overflow: ellipsis; }
+      .potato-navbar .user-pill { height: 38px; gap: 6px; padding: 0 4px; }
+      .potato-navbar .user-pill .username { font-size: 0; gap: 0; max-width: none; }
+      .potato-navbar .user-pill .username::before { font-size: 0.85rem; }
+      .potato-navbar .user-pill .logout-btn { height: 30px; padding: 0 10px !important; }
+    }
+    @media (max-width: 860px) { body > .container-fluid { padding-top: 12px; } }      /* no key bar above the card on phones, so give it its own gap */
 
     /* ---------- progress card above the photo ---------- */
     .bcc-progress { background: #fff; border: 1px solid #d6dce8; border-radius: 14px; padding: 12px 16px; margin: 0 0 12px; box-shadow: 0 6px 18px rgba(20, 33, 61, 0.07); display: flex; flex-direction: column; gap: 8px; text-align: left; }
@@ -289,21 +310,27 @@ custom_footer_html: |
     /* desktop with a keyboard: ONE full-width bar directly under the top menu. The group that works
        right now is bright, the others are dimmed. Previous / Next are real buttons at the end. */
     html.bcc-desktop .bcc-keys {
-      position: sticky; top: 0; z-index: 1800; max-width: none; width: 100%; box-sizing: border-box; margin: 0 0 10px; padding: 6px 18px;
-      display: flex; flex-wrap: nowrap; align-items: center; justify-content: center; gap: 6px 12px;
+      position: sticky; top: 0; z-index: 1800; max-width: none; width: 100%; box-sizing: border-box; margin: 0 0 10px;
+      /* the side padding grows with the window so the bar's content lines up with the title and the content card */
+      padding: 7px max(var(--bcc-gutter), calc((100% - var(--bcc-w)) / 2 + var(--bcc-gutter)));
+      display: flex; flex-wrap: nowrap; align-items: center; justify-content: flex-start; gap: 6px 10px;
       background: #0e1524; color: #fff; border-bottom: 3px solid #ffb300;
       box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28); font-size: 0.9rem;
     }
-    @media (max-width: 1499px) { html.bcc-desktop .bcc-keys { flex-wrap: wrap; } }   /* under 1500 px wide: two tidy rows instead of clipping */
-    html.bcc-desktop .bcc-now { display: inline-flex; align-items: center; white-space: nowrap; color: #ffe6a3; font-weight: 800; font-size: 0.95rem;
-      padding: 4px 12px; border-radius: 999px; background: rgba(255, 179, 0, 0.14); margin-right: 2px; }
+    html.bcc-desktop .bcc-kgroup[data-group="next"] { margin-left: auto; }            /* Previous / Next sit at the right edge, under Logout */
+    html.bcc-desktop .potato-navbar { position: relative !important; }                 /* on desktop the title scrolls away and only the key bar sticks, so the two never overlap */
+    @media (max-width: 1499px) { html.bcc-desktop .bcc-keys { flex-wrap: wrap; justify-content: center; } html.bcc-desktop .bcc-kgroup[data-group="next"] { margin-left: 4px; } }   /* under 1500 px wide: two tidy centred rows instead of clipping */
+    html.bcc-desktop .bcc-now { display: inline-flex; align-items: center; white-space: nowrap; color: #ffe6a3; font-weight: 800; font-size: 0.92rem; height: 40px; box-sizing: border-box;
+      padding: 0 14px; border-radius: 999px; background: rgba(255, 179, 0, 0.14); border: 1px solid rgba(255, 179, 0, 0.35); margin-right: 2px; }
     /* groups are muted by colour, not opacity, so a CHOSEN key can stay bright inside a muted group */
-    html.bcc-desktop .bcc-kgroup { flex-wrap: nowrap; background: transparent; border-color: rgba(255, 255, 255, 0.18); color: rgba(255, 255, 255, 0.5); padding: 3px 8px 3px 10px;
+    html.bcc-desktop .bcc-kgroup { flex-wrap: nowrap; height: 40px; box-sizing: border-box; background: rgba(255, 255, 255, 0.04); border-color: rgba(255, 255, 255, 0.14); color: rgba(255, 255, 255, 0.55); padding: 0 8px 0 5px; gap: 2px;
       transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease; }
-    html.bcc-desktop .bcc-kgroup.bcc-live { background: rgba(255, 255, 255, 0.08); border-color: #ffb300; color: #fff; }
-    html.bcc-desktop .bcc-klabel { color: #9ec1ef; }
-    html.bcc-desktop .bcc-kgroup:not(.bcc-live) .bcc-klabel { color: rgba(158, 193, 239, 0.55); }
-    html.bcc-desktop .bcc-key { color: inherit; font-weight: 700; white-space: nowrap; padding: 2px 6px 2px 2px; }
+    html.bcc-desktop .bcc-kgroup.bcc-live { background: rgba(255, 179, 0, 0.1); border-color: #ffb300; color: #fff; }
+    /* the group name is a small chip: amber while that step is the one to answer */
+    html.bcc-desktop .bcc-klabel { color: #9ec1ef; background: rgba(255, 255, 255, 0.1); border-radius: 999px; padding: 3px 9px; font-size: 0.68rem; margin-right: 6px; transition: background 0.2s ease, color 0.2s ease; }
+    html.bcc-desktop .bcc-kgroup.bcc-live .bcc-klabel { background: #ffb300; color: #14213d; }
+    html.bcc-desktop .bcc-kgroup:not(.bcc-live) .bcc-klabel { color: rgba(158, 193, 239, 0.78); }
+    html.bcc-desktop .bcc-key { color: inherit; font-weight: 700; white-space: nowrap; padding: 2px 7px 2px 2px; }
     html.bcc-desktop .bcc-key:hover { background: rgba(255, 255, 255, 0.12); }
     html.bcc-desktop .bcc-key.bcc-off { opacity: 1; }                   /* the group is muted instead of single keys */
     /* every digit stays black on a white key. Key 3 is gray and key 1 is dark blue, so coloring the digit made it disappear */
@@ -312,7 +339,8 @@ custom_footer_html: |
       background: #fff !important; color: #111 !important; -webkit-text-fill-color: #111 !important;
       border-color: #111 !important; opacity: 1 !important; transition: transform 0.15s ease;
     }
-    html.bcc-desktop .bcc-kgroup:not(.bcc-live) .bcc-key:not(.bcc-chosen) kbd { background: #c9d0dc !important; color: #3a4150 !important; -webkit-text-fill-color: #3a4150 !important; border-color: #3a4150 !important; }
+    /* keys of a step that is not the one to answer now: ghost keys, light on dark, so the live group stands out */
+    html.bcc-desktop .bcc-kgroup:not(.bcc-live) .bcc-key:not(.bcc-chosen) kbd { background: rgba(255, 255, 255, 0.12) !important; color: rgba(255, 255, 255, 0.8) !important; -webkit-text-fill-color: rgba(255, 255, 255, 0.8) !important; border-color: rgba(255, 255, 255, 0.4) !important; }
     /* the answer that is chosen for this photo: the key takes the card's colour, grows, and gets a check mark */
     html.bcc-desktop .bcc-keys .bcc-key.bcc-chosen { color: #fff; }
     html.bcc-desktop .bcc-keys .bcc-key.bcc-chosen kbd { background: var(--c) !important; color: #fff !important; -webkit-text-fill-color: #fff !important; border-color: #fff !important;
@@ -321,13 +349,13 @@ custom_footer_html: |
     .bcc-key.bcc-chosen kbd { background: var(--c); color: #fff; border-color: var(--c); transform: scale(1.12); }   /* tablet legend */
     @keyframes bcc-pop-key { 0% { transform: scale(1); } 50% { transform: scale(1.5); } 100% { transform: scale(1.22); } }
     html.bcc-desktop .bcc-keys kbd.bcc-pop-key { animation: bcc-pop-key 0.4s ease-out; }
-    html.bcc-desktop .bcc-kgroup[data-group="next"] { border: 0; padding: 0; gap: 8px; margin-left: 4px; }
+    html.bcc-desktop .bcc-kgroup[data-group="next"] { border: 0; background: transparent; padding: 0; gap: 8px; }
     html.bcc-desktop .bcc-kgroup[data-group="next"] .bcc-klabel { display: none; }
-    html.bcc-desktop .bcc-kgroup[data-group="next"] .bcc-key { border: 1.5px solid rgba(255, 255, 255, 0.45); border-radius: 999px; padding: 4px 12px 4px 7px; }
-    html.bcc-desktop .bcc-kgroup[data-group="next"] .bcc-key[data-key="arrowright"] { background: #ffb300; color: #111; border-color: #ffb300; }
+    html.bcc-desktop .bcc-kgroup[data-group="next"] .bcc-key { height: 40px; box-sizing: border-box; border: 1.5px solid rgba(255, 255, 255, 0.45); border-radius: 999px; padding: 0 14px 0 7px; color: #fff; }
+    html.bcc-desktop .bcc-kgroup[data-group="next"] .bcc-key[data-key="arrowright"] { background: #ffb300; color: #111; border-color: #ffb300; box-shadow: 0 4px 12px rgba(255, 179, 0, 0.3); }
     html.bcc-desktop .bcc-kgroup[data-group="next"] .bcc-key[data-key="arrowright"]:hover { background: #ffc733; }
-    html.bcc-desktop .bcc-kgroup[data-group="next"].bcc-live .bcc-key[data-key="arrowright"] { box-shadow: 0 0 0 3px rgba(255, 179, 0, 0.35); }
-    #notification-container { top: 110px !important; }
+    html.bcc-desktop .bcc-kgroup[data-group="next"].bcc-live .bcc-key[data-key="arrowright"] { box-shadow: 0 0 0 3px rgba(255, 179, 0, 0.35), 0 4px 12px rgba(255, 179, 0, 0.3); }
+    #notification-container { top: 124px !important; }
 
     /* ---------- phones: a fixed Previous / Next bar at the bottom, no keys (there is no keyboard) ---------- */
     @media (max-width: 860px) {
@@ -520,8 +548,12 @@ custom_footer_html: |
     .bcc-info-pop kbd { display: inline-block; min-width: 1.6em; text-align: center; border: 1px solid #b9c1d1; border-bottom-width: 3px; border-radius: 6px; padding: 0 5px; background: #fff; color: #1f2430; font-weight: 700; font-size: 0.82em; }
 
     /* ---------- page layout ---------- */
+    /* the content card uses the same width as the top bar and the key bar, with small side gutters */
+    body > .container-fluid { max-width: var(--bcc-w) !important; padding-left: var(--bcc-gutter) !important; padding-right: var(--bcc-gutter) !important; }
+    #task_layout.shadcn-card { border-radius: 16px; box-shadow: 0 8px 24px rgba(20, 33, 61, 0.08); }
+    #task_layout > .shadcn-card-content { padding: 18px 20px 20px; }
+    .bcc-credit, .bcc-keys { max-width: calc(var(--bcc-w) - 2 * var(--bcc-gutter)); }
     @media (min-width: 1200px) {
-      .container-fluid { max-width: 1480px !important; }
       #main-content:has(img.display-image) { display: grid !important; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 28px; align-items: start; }
       #main-content > .mb-4 { grid-column: 1; grid-row: 1; margin-bottom: 0 !important; padding-bottom: 0 !important; border-bottom: none !important; }
       #main-content > #annotation-forms { grid-column: 2; grid-row: 1; }
@@ -655,7 +687,16 @@ custom_footer_html: |
     (function () {
       var motionOk = !(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
       var desktopQ = window.matchMedia("(hover: hover) and (pointer: fine) and (min-width: 1000px)");
+      function brand() {                        /* "Blue Cart Check: Which bin..." becomes a name line and a smaller subtitle line */
+        var tn = document.querySelector(".potato-navbar .task-name");
+        if (!tn || tn.querySelector(".bcc-brand-name")) { return; }
+        var t = tn.textContent.trim(), i = t.indexOf(":"), name = i > 0 ? t.slice(0, i) : t, sub = i > 0 ? t.slice(i + 1).trim() : "";
+        tn.textContent = "";
+        var a = document.createElement("span"); a.className = "bcc-brand-name"; a.textContent = name; tn.appendChild(a);
+        if (sub) { var b = document.createElement("span"); b.className = "bcc-brand-sub"; b.textContent = sub; tn.appendChild(b); }
+      }
       function placeBar() {
+        brand();
         var bar = document.querySelector(".bcc-keys");
         var on = desktopQ.matches;
         document.documentElement.classList.toggle("bcc-desktop", on);
