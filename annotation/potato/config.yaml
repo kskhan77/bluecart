@@ -179,7 +179,34 @@ annotation_schemes:
 #  * Step 1 and Step 2 answers are icon cards, the optional reasons are small icon chips
 #  * icons come from Font Awesome, which ships with Potato (no internet needed)
 custom_footer_html: |
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap">
   <style>
+    /* ---------- our look over Potato's default: navy header, blue primary, amber accent, cool page tint.
+       Potato styles everything through CSS variables, so most of the theme is a handful of variable overrides.
+       The font is loaded from Google Fonts when online and falls back to Potato's Outfit offline (zip packs). ---------- */
+    :root {
+      --primary: #1565c0; --primary-color: #1565c0; --secondary-color: #0f4f99; --accent-color: #ffb300; --ring: #1565c0;
+      --light-bg: #eef3fa; --border: #d6dce8; --input: #d6dce8; --radius: 12px; --border-radius: 12px;
+      --heading-color: #14213d; --text-color: #2d3748;
+      --font-sans: 'Plus Jakarta Sans', 'Outfit', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+    body { background: radial-gradient(1000px 420px at 90% -10%, #dbe7fb 0%, rgba(219, 231, 251, 0) 60%), #eef3fa !important; }
+    .potato-navbar { background: linear-gradient(90deg, #0e1524 0%, #14213d 50%, #1a4a8f 100%) !important; height: auto !important; min-height: 60px; box-shadow: 0 2px 14px rgba(14, 21, 36, 0.35); }
+    .potato-navbar .navbar-brand .task-name { font-weight: 800; letter-spacing: 0.01em; }
+    .potato-navbar .navbar-brand::before { content: "\f1b8"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: #ffb300; margin-right: 10px; font-size: 1.1rem; }
+    .potato-navbar .navbar-divider { background: rgba(255, 255, 255, 0.18) !important; }
+    .potato-navbar .nav-control-btn, .potato-navbar .goto-section button, .potato-navbar .goto-section input, .potato-navbar .navbar-end a, .potato-navbar .navbar-end button { border-radius: 999px !important; }
+    .potato-navbar .codebook-btn { background: #ffb300 !important; border-color: #ffb300 !important; color: #111 !important; font-weight: 700 !important; }
+    .potato-navbar .codebook-btn:hover { background: #ffc733 !important; }
+    html.bcc-desktop .bcc-keys { background: #1b2b4b; }
+    form.annotation-form { border-radius: 14px !important; border: 1px solid #d6dce8 !important; box-shadow: 0 6px 18px rgba(20, 33, 61, 0.07); }
+    form.annotation-form legend { color: #14213d; font-weight: 800; }
+    #rules fieldset { background: #eef3fa !important; border-color: #c9d6ea !important; }
+    .shadcn-button-primary, #next-btn { background: #1565c0 !important; border-color: #1565c0 !important; border-radius: 12px !important; font-weight: 700; box-shadow: 0 8px 20px rgba(21, 101, 192, 0.25); }
+    .shadcn-button-primary:hover, #next-btn:hover { background: #0f4f99 !important; }
+    #prev-btn { border-radius: 12px !important; }
+    img.display-image { box-shadow: 0 8px 24px rgba(20, 33, 61, 0.12); }
+
     /* ---------- rules box ---------- */
     #rules fieldset { background: rgba(110, 120, 170, 0.08); border: 1px solid rgba(110, 120, 170, 0.28); border-radius: 10px; padding: 8px 12px 10px; }
     #rules legend { font-size: 0.95rem; }
@@ -483,7 +510,7 @@ custom_footer_html: |
       #cart .shadcn-radio-options, #condition .shadcn-radio-options { gap: 6px; }
       #cart .shadcn-radio-label, #condition .shadcn-radio-label {
         display: grid; grid-template-columns: auto 1fr auto; grid-template-areas: "icon title key" "icon sub key";
-        column-gap: 9px; row-gap: 0; align-items: center; text-align: left; padding: 5px 10px;
+        column-gap: 9px; row-gap: 0; align-items: center; text-align: left; padding: 5px 10px 5px 34px;   /* room for the ? at the left */
       }
       #cart .shadcn-radio-label::before, #condition .shadcn-radio-label::before { grid-area: icon; font-size: 1.45rem; margin: 0; }
       #cart .shadcn-radio-label::after, #condition .shadcn-radio-label::after { grid-area: sub; }
@@ -497,7 +524,7 @@ custom_footer_html: |
       #cart .shadcn-radio-options, #condition .shadcn-radio-options { grid-template-columns: 1fr !important; gap: 6px; }
       #cart .shadcn-radio-label, #condition .shadcn-radio-label {
         display: grid; grid-template-columns: auto 1fr; grid-template-areas: "icon title" "icon sub";
-        column-gap: 12px; row-gap: 0; align-items: center; text-align: left; padding: 8px 14px; font-size: 0.98rem;
+        column-gap: 12px; row-gap: 0; align-items: center; text-align: left; padding: 8px 14px 8px 36px; font-size: 0.98rem;   /* room for the ? at the left */
       }
       #cart .shadcn-radio-label::before, #condition .shadcn-radio-label::before { grid-area: icon; font-size: 1.5rem; margin: 0; }
       #cart .shadcn-radio-label::after, #condition .shadcn-radio-label::after { grid-area: sub; font-size: 0.76rem; }
