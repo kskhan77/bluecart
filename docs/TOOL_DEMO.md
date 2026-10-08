@@ -1,7 +1,7 @@
 # Annotation tool: full walkthrough
 
-**Video (100 seconds):** [`figures/tool_demo.webm`](figures/tool_demo.webm). Open it in Chrome (drag the file into a tab).
-The video and the screenshots below were recorded on Oct 5 on a scratch copy of a pack with throwaway usernames.
+**Tutorial video (two minutes):** [`figures/tool_tutorial.webm`](figures/tool_tutorial.webm). Open it in Chrome (drag the file into a tab).
+It was recorded on the hosted tool; the screenshots below were taken on Oct 7 on a scratch copy with throwaway usernames.
 **The labels picked in them are demo clicks, not real annotations.**
 
 The class uses the hosted copy at https://bluecart.khurramshafique.com (register once with a password; nothing to install).
