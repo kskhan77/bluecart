@@ -272,6 +272,18 @@ custom_footer_html: |
     .bcc-pg-nav input { width: 64px; border: 1px solid #c9d3e6; border-radius: 8px; padding: 3px 8px; font: inherit; font-size: 0.85rem; }
     .bcc-pg-nav .bcc-go { background: #1565c0; color: #fff; border-color: #1565c0; }
     .bcc-pg-nav .bcc-go:hover { background: #0f4f99; }
+    .bcc-pg-nav { display: none !important; }                           /* jump buttons and Go to #: not needed, the arrows and the keys move between photos */
+    .display-field-label, .display-label, .display-field-title { display: none !important; }   /* "Item photo": the picture speaks for itself */
+    /* desktop: the card is a thin strip that sticks right under the key bar (the script moves it there): a 4 px line
+       across the top, then one row with the count at the left and the photo number + Labeled pill at the right */
+    html.bcc-desktop .bcc-progress { position: sticky; top: var(--bcc-keys-h, 54px); z-index: 1790; margin: 0 0 12px;
+      padding: 9px max(var(--bcc-gutter), calc((100% - var(--bcc-w)) / 2 + var(--bcc-gutter))) 4px; border: 0; border-radius: 0; background: #fff;
+      box-shadow: 0 3px 10px rgba(14, 21, 36, 0.12); flex-direction: row; flex-wrap: wrap; align-items: center; gap: 0 18px; }
+    html.bcc-desktop .bcc-pg-bar { position: absolute; left: 0; right: 0; top: 0; height: 4px; border-radius: 0; }
+    html.bcc-desktop .bcc-pg-meta { flex: 1 1 auto; font-size: 0.82rem; justify-content: flex-start; gap: 0 18px; }
+    html.bcc-desktop .bcc-pg-top { order: 3; flex: 0 0 auto; }
+    html.bcc-desktop .bcc-pg-title { display: none; }
+    html.bcc-desktop .bcc-pg-status { font-size: 0.72rem; padding: 1px 9px; }
 
     /* ---------- help button: amber like Next, and it nudges every few seconds until it has been opened once ---------- */
     .bcc-help-btn { background: #ffb300 !important; color: #111 !important; }
@@ -323,16 +335,25 @@ custom_footer_html: |
     /* desktop with a keyboard: ONE full-width bar directly under the top menu. The group that works
        right now is bright, the others are dimmed. Previous / Next are real buttons at the end. */
     html.bcc-desktop .bcc-keys {
-      position: sticky; top: 0; z-index: 1800; max-width: none; width: 100%; box-sizing: border-box; margin: 0 0 10px;
+      position: sticky; top: 0; z-index: 1800; max-width: none; width: 100%; box-sizing: border-box; margin: 0;
       /* the side padding grows with the window so the bar's content lines up with the title and the content card */
       padding: 7px max(var(--bcc-gutter), calc((100% - var(--bcc-w)) / 2 + var(--bcc-gutter)));
       display: flex; flex-wrap: nowrap; align-items: center; justify-content: flex-start; gap: 6px 10px;
       background: #0e1524; color: #fff; border-bottom: 3px solid #ffb300;
       box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28); font-size: 0.9rem;
     }
-    html.bcc-desktop .bcc-kgroup[data-group="next"] { margin-left: auto; }            /* Previous / Next sit at the right edge, under Logout */
+    html.bcc-desktop .bcc-kgroup[data-group="next"] { display: none !important; }      /* desktop: Previous / Next live under the questions; the arrow keys still work */
     html.bcc-desktop .potato-navbar { position: relative !important; }                 /* on desktop the title scrolls away and only the key bar sticks, so the two never overlap */
-    @media (max-width: 1499px) { html.bcc-desktop .bcc-keys { flex-wrap: wrap; justify-content: center; } html.bcc-desktop .bcc-kgroup[data-group="next"] { margin-left: 4px; } }   /* under 1500 px wide: two tidy centred rows instead of clipping */
+    /* narrower desktops: smaller keys and no "Now" pill (the status line says the same), so the bar stays one row down to 1000 px */
+    @media (max-width: 1299px) {
+      html.bcc-desktop .bcc-now { display: none !important; }
+      html.bcc-desktop .bcc-keys { font-size: 0.8rem; gap: 6px; flex-wrap: wrap; }
+      #cart .shadcn-radio-label::after, #condition .shadcn-radio-label::after { display: none; }   /* sub-lines would wrap into 3 lines here; the ? explains each card */
+      html.bcc-desktop .bcc-keys kbd { font-size: 0.9rem; min-width: 1.7em; padding: 1px 5px; }
+      html.bcc-desktop .bcc-kgroup { padding: 0 6px 0 4px; height: 36px; }
+      html.bcc-desktop .bcc-key { padding: 2px 5px 2px 2px; }
+      html.bcc-desktop .bcc-klabel { padding: 2px 7px; font-size: 0.64rem; margin-right: 4px; }
+    }
     html.bcc-desktop .bcc-now { display: inline-flex; align-items: center; white-space: nowrap; color: #ffe6a3; font-weight: 800; font-size: 0.92rem; height: 40px; box-sizing: border-box;
       padding: 0 14px; border-radius: 999px; background: rgba(255, 179, 0, 0.14); border: 1px solid rgba(255, 179, 0, 0.35); margin-right: 2px; }
     /* groups are muted by colour, not opacity, so a CHOSEN key can stay bright inside a muted group */
@@ -595,15 +616,32 @@ custom_footer_html: |
     #task_layout.shadcn-card { border-radius: 16px; box-shadow: 0 8px 24px rgba(20, 33, 61, 0.08); }
     #task_layout > .shadcn-card-content { padding: 18px 20px 20px; }
     .bcc-credit, .bcc-keys { max-width: calc(var(--bcc-w) - 2 * var(--bcc-gutter)); }
-    @media (min-width: 1200px) {
+    @media (min-width: 1000px) {
       #main-content:has(img.display-image) { display: grid !important; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 28px; align-items: start; }
       #main-content > .mb-4 { grid-column: 1; grid-row: 1; margin-bottom: 0 !important; padding-bottom: 0 !important; border-bottom: none !important; }
       #main-content > #annotation-forms { grid-column: 2; grid-row: 1; }
       #main-content > :not(.mb-4):not(#annotation-forms) { grid-column: 1 / -1; grid-row: 2; }
       img.display-image { max-height: 66vh !important; }
     }
-    @media (max-width: 1199px) {
+    @media (max-width: 999px) {
       form#rules { order: 3; }
+    }
+    /* desktop: the rules box moves under the photo (the script does it), so the questions column is short enough for one screen */
+    @media (min-width: 1000px) {
+      #main-content > .mb-4 > form#rules { margin-top: 10px; width: 100% !important; box-sizing: border-box; }
+      .potato-nav #prev-btn, .potato-nav #next-btn { height: 44px; }
+    }
+    @media (min-width: 1000px) and (max-height: 820px) {
+      img.display-image { max-height: 50vh !important; }
+      .potato-nav #prev-btn, .potato-nav #next-btn { height: 40px; padding: 0 18px !important; font-size: 0.95rem; }
+      .bcc-status { padding: 4px 12px; min-height: 0; font-size: 0.9rem; }
+      form.annotation-form legend { font-size: 0.95rem; }
+      #task_layout > .shadcn-card-content { padding: 12px 16px 14px; }
+      html.bcc-desktop .bcc-progress { margin-bottom: 8px; }
+    }
+    @media (min-width: 1000px) and (max-height: 740px) {
+      img.display-image { max-height: 44vh !important; }
+      #rules .display-content { font-size: 0.7rem; }
     }
     @media (max-width: 640px) {
       #condition .shadcn-radio-options, #reason .shadcn-radio-options { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
@@ -648,6 +686,24 @@ custom_footer_html: |
       #cart .bcc-info-btn, #condition .bcc-info-btn { top: 4px; left: 4px; width: 20px; height: 20px; font-size: 0.72rem; line-height: 18px; }
       form#cart, form#condition, form#reason { padding-top: 4px !important; padding-bottom: 6px !important; }
       .bcc-status { font-size: 0.92rem; padding: 6px 12px; }
+    }
+    /* narrow desktops (1000 to 1199 px): last so it wins over the short-window rules above */
+    @media (min-width: 1000px) and (max-width: 1199px) {
+      #main-content:has(img.display-image) { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); column-gap: 16px; }
+      #task_layout > .shadcn-card-content { padding: 12px 14px 14px; }
+      .bcc-status { font-size: 0.8rem; padding: 4px 10px; }
+      form.annotation-form legend { font-size: 0.9rem; }
+      /* Step 1: three short upright cards (icon on top, key at the top right), Step 2: one-line rows */
+      #cart .shadcn-radio-options { gap: 6px; }
+      #cart .shadcn-radio-label { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 16px 4px 5px; font-size: 0.78rem; line-height: 1.15; }
+      #cart .shadcn-radio-label::before { font-size: 1.15rem; margin: 0 0 2px; }
+      #cart .keybinding-badge { position: absolute; top: 4px; right: 5px; margin: 0; font-size: 0.8rem; min-width: 1.5em; }
+      #condition .shadcn-radio-label { font-size: 0.8rem; column-gap: 7px; padding: 4px 8px 4px 30px; }
+      #condition .shadcn-radio-label::before { font-size: 1.15rem; }
+      #condition .keybinding-badge { font-size: 0.85rem; min-width: 1.6em; }
+      #reason .bcc-info-btn { display: none; }                          /* the chips must stay one line each here */
+      #reason .shadcn-radio-options { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 5px; }
+      #reason .shadcn-radio-label { padding: 3px 8px; font-size: 0.78rem; }
     }
   </style>
   <button type="button" class="bcc-help-btn" title="Help" aria-label="Help" aria-expanded="false" aria-controls="bcc-help"><span class="fas fa-circle-question"></span></button>
@@ -708,10 +764,10 @@ custom_footer_html: |
         var cond = document.querySelector("#condition input:checked");
         var text, color = "#8a93a6";
         /* phones have no keys: the hints say "tap" instead of naming keys */
-        var phone = window.matchMedia("(max-width: 860px)").matches;
-        var K1 = phone ? "Tap a card." : "Click a card or press 1, 2 or 3.";
-        var K2 = phone ? "Tap a card." : "Click a card or press 4, 5, 6 or 7.";
-        var NX = phone ? "Tap Next." : "Press &rarr; for the next photo.";
+        var phone = window.matchMedia("(max-width: 860px)").matches, narrow = window.matchMedia("(max-width: 1199px)").matches;
+        var K1 = phone ? "Tap a card." : (narrow ? "Press 1, 2 or 3." : "Click a card or press 1, 2 or 3.");
+        var K2 = phone ? "Tap a card." : (narrow ? "Press 4, 5, 6 or 7." : "Click a card or press 4, 5, 6 or 7.");
+        var NX = phone ? "Tap Next." : (narrow ? "&rarr; next." : "Press &rarr; for the next photo.");
         if (!cart) {
           text = "<b>Start with Step 1.</b>&nbsp;" + K1;
         } else if (cart.value === "not_blue_cart") {
@@ -740,6 +796,7 @@ custom_footer_html: |
       var motionOk = !(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
       var desktopQ = window.matchMedia("(hover: hover) and (pointer: fine) and (min-width: 1000px)");
       var phoneQ = window.matchMedia("(max-width: 860px)");
+      var wideQ = window.matchMedia("(min-width: 1000px)");
       function brand() {                        /* "Blue Cart Check: Which bin..." becomes a name line and a smaller subtitle line */
         var tn = document.querySelector(".potato-navbar .task-name");
         if (!tn || tn.querySelector(".bcc-brand-name")) { return; }
@@ -872,6 +929,12 @@ custom_footer_html: |
           pnav.classList.add("bcc-moved");
         }
         var phone = phoneQ.matches;
+        /* desktop (two columns): the rules box lives under the photo; narrower screens: among the questions as before */
+        var rules = document.querySelector("form#rules"), photoCol = document.querySelector("#main-content > .mb-4");
+        if (rules && photoCol && forms) {
+          if (wideQ.matches) { if (rules.parentNode !== photoCol) { photoCol.appendChild(rules); } }
+          else if (!forms.contains(rules)) { (forms.querySelector(".annotation-forms-layout") || forms).insertBefore(rules, (forms.querySelector(".annotation-forms-layout") || forms).firstChild); }
+        }
         var img = document.querySelector("img.display-image");
         var src = img ? img.getAttribute("src") : null;
         if (src && src !== lastPhoto) {
@@ -1056,8 +1119,13 @@ custom_footer_html: |
         var card = document.querySelector(".bcc-progress");
         /* phones: the card is a thin strip right under the top bar; desktops: the first thing above the photo */
         if (card) {
-          var navEl = document.querySelector(".potato-navbar");
+          var navEl = document.querySelector(".potato-navbar"), keys = document.querySelector(".bcc-keys");
+          var deskBar = document.documentElement.classList.contains("bcc-desktop") && keys && keys.previousElementSibling === navEl;
           if (phoneQ.matches) { if (navEl && card.previousElementSibling !== navEl) { navEl.insertAdjacentElement("afterend", card); } }
+          else if (deskBar) {                      /* desktop: thin strip right under the sticky key bar */
+            if (card.previousElementSibling !== keys) { keys.insertAdjacentElement("afterend", card); }
+            document.documentElement.style.setProperty("--bcc-keys-h", keys.offsetHeight + "px");
+          }
           else if (card.parentNode !== host) { host.insertBefore(card, host.firstChild); }
         }
         if (!card) {
@@ -1102,8 +1170,9 @@ custom_footer_html: |
       }
       /* phones: shorter question titles (the long ones are fine on a desktop) */
       var SHORT = { condition: "Step 2. What state is it in?", reason: "Reason (optional)" };
-      function phoneLegends() {
-        if (!phoneQ.matches) { return; }
+      var narrowQ = window.matchMedia("(max-width: 1199px)");
+      function phoneLegends() {                 /* phones and narrow windows: the long titles would wrap into two lines */
+        if (!phoneQ.matches && !narrowQ.matches) { return; }
         Object.keys(SHORT).forEach(function (id) {
           var lg = document.querySelector("#" + id + " legend"); if (!lg) { return; }
           var tn = null;
