@@ -626,9 +626,14 @@ custom_footer_html: |
     @media (max-width: 999px) {
       form#rules { order: 3; }
     }
-    /* desktop: the rules box moves under the photo (the script does it), so the questions column is short enough for one screen */
+    /* desktop: the rules box is a full-width row under both columns (the script moves it there): the blue list on the
+       left, the never list on the right */
     @media (min-width: 1000px) {
-      #main-content > .mb-4 > form#rules { margin-top: 10px; width: 100% !important; box-sizing: border-box; }
+      #main-content > form#rules { grid-column: 1 / -1; grid-row: 2; margin-top: 14px; width: 100% !important; box-sizing: border-box; }
+      #main-content > form#rules fieldset { background: linear-gradient(135deg, #eef3fa 0%, #f7f9fd 100%) !important; border: 1px solid #c9d6ea !important; border-radius: 14px; padding: 8px 16px 12px; }
+      #main-content > form#rules .display-content { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 28px; row-gap: 6px; }
+      #main-content > form#rules .bcc-how, #main-content > form#rules .bcc-note { grid-column: 1 / -1; }
+      #main-content > form#rules .bcc-row { margin: 0; align-content: flex-start; }
       .potato-nav #prev-btn, .potato-nav #next-btn { height: 44px; }
     }
     @media (min-width: 1000px) and (max-height: 820px) {
@@ -929,10 +934,10 @@ custom_footer_html: |
           pnav.classList.add("bcc-moved");
         }
         var phone = phoneQ.matches;
-        /* desktop (two columns): the rules box lives under the photo; narrower screens: among the questions as before */
-        var rules = document.querySelector("form#rules"), photoCol = document.querySelector("#main-content > .mb-4");
-        if (rules && photoCol && forms) {
-          if (wideQ.matches) { if (rules.parentNode !== photoCol) { photoCol.appendChild(rules); } }
+        /* desktop (two columns): the rules box is a full-width row under both columns; narrower screens: among the questions */
+        var rules = document.querySelector("form#rules"), mainEl = document.querySelector("#main-content");
+        if (rules && mainEl && forms) {
+          if (wideQ.matches) { if (rules.parentNode !== mainEl) { mainEl.appendChild(rules); } }
           else if (!forms.contains(rules)) { (forms.querySelector(".annotation-forms-layout") || forms).insertBefore(rules, (forms.querySelector(".annotation-forms-layout") || forms).firstChild); }
         }
         var img = document.querySelector("img.display-image");
