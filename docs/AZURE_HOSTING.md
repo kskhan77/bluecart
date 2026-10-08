@@ -1,6 +1,21 @@
 # Moving the annotation tool to Azure (Azure for Students)
 
-The tool runs today on Khurram's laptop, reached through a Cloudflare tunnel at https://bluecart.khurramshafique.com.
+**Done on 2026-10-07.** The tool now runs on the Azure VM below; the laptop copy is stopped and its start script refuses to run
+(marker file `deploy/local_server/.hosted_on_azure`). Day-to-day commands:
+
+| | |
+|---|---|
+| VM | `bluecart-vm`, Standard_B2ats_v2 (2 vCPU, 1 GiB), Ubuntu 24.04, North Central US, public IP 20.241.57.138, resource group `bluecart`, subscription "Azure for Students" |
+| Why not B1s | the free B1s size had no capacity in the two US regions the student subscription allows (North Central US, West US); B2ats_v2 costs about $8 a month from the $100 credit |
+| SSH | `ssh bluecart-vm` (alias in `~/.ssh/config`, key `~/.ssh/bluecart-vm`) |
+| Restart the tool | `ssh bluecart-vm 'sudo systemctl restart bluecart'` |
+| Logs | `ssh bluecart-vm 'sudo journalctl -u bluecart -n 50'` and `... -u cloudflared` |
+| Fetch the answers | the rsync line under "Later changes" below |
+| Tunnel | `bluecart-azure` (id 93f35bea…), DNS record moved from the laptop's tunnel; the laptop's `cfde6c21…` tunnel still serves the other sites |
+
+The original move guide follows.
+
+The tool ran on Khurram's laptop until 2026-10-07, reached through a Cloudflare tunnel at https://bluecart.khurramshafique.com.
 Azure for Students gives 750 hours a month of a **B1s** virtual machine free for 12 months, plus $100 credit for the small disk.
 This guide moves the tool to such a VM. **The address stays the same**, and accounts and answers move with it.
 

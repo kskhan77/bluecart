@@ -19,6 +19,16 @@ cd "$(dirname "$0")/.."
 SERVER=deploy/local_server
 PORT=8010
 
+# Since 2026-10-07 the public tool runs on the Azure VM (docs/AZURE_HOSTING.md). Starting a second copy here would
+# collect answers in two places. The marker file is written by the move; pass --force only to run a local fallback.
+if [ -f "$SERVER/.hosted_on_azure" ] && [ "${1:-}" != "--force" ]; then
+  echo "The public tool is hosted on the Azure VM ($(cat "$SERVER/.hosted_on_azure")). Not starting a laptop copy."
+  echo "  restart it there:   ssh bluecart-vm 'sudo systemctl restart bluecart'"
+  echo "  fetch the answers:  rsync -az bluecart-vm:/opt/bluecart/server/annotation_output/ $SERVER/annotation_output/"
+  echo "  local fallback:     bash scripts/start_public_tool.sh --force   (then point the DNS record back, see the guide)"
+  exit 0
+fi
+
 [ -f "$SERVER/config.yaml" ] || { echo "No $SERVER/config.yaml. Build it first:"; echo "  python scripts/make_hf_space.py --out $SERVER --no-backup"; exit 1; }
 [ -f "$SERVER/.secret_key" ] || python3 -c "import secrets; print(secrets.token_urlsafe(32))" > "$SERVER/.secret_key"
 
