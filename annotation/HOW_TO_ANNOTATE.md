@@ -28,7 +28,7 @@ The photo is on the left. On the right are a short summary of the rules, two que
 - Optional: click a reason.
 - Press **→** (or click **Next**) for the next photo. **←** goes back, and your earlier answers are still there.
 - You must answer Step 1, and Step 2 when it is shown, before you can go to the next photo.
-- **Guidelines** (top right) opens the full rules and examples in a new tab.
+- The round **?** button (bottom right) opens the help panel: **Full guidelines** there opens the full rules and examples in a new tab.
 - The **line above Step 1** always tells you what to do next. After you answer, it shows what your answers mean, for example "Your answer: Accepted after prep".
 - Hover over the photo for **+ / − / ⟲** to zoom in, zoom out and reset. Hover over an answer for a one-line reminder.
 - Top bar: **Progress** shows how many photos you have labeled. The two double-arrow buttons jump to the previous / next photo you have not labeled yet. To jump to a specific photo, first answer the one you are on, then type a number in the **#** box and press Enter.

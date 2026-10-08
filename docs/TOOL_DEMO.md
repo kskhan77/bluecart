@@ -29,7 +29,7 @@ Open http://localhost:8000 in Chrome. Stop the tool with Ctrl+C.
 | Log in | Type your uniqname, press Start | No password. The same name later continues where you stopped |
 | Welcome page | Read it once, press **Start labeling** | Explains the task and the two steps, and lists Group 2, the instructor and the teaching assistant. Shown only the first time |
 | Read the rules | Look at "Flint blue-cart rules at a glance" on the right | Icon chips: the kinds Flint takes in the blue cart, and the kinds it never takes |
-| Full rules | Click **Guidelines** (top right) | The full guidelines open in a new tab |
+| Full rules | Round **?** button, then **Full guidelines** | The full guidelines open in a new tab |
 | Step 1: kind of item | Click a card or press its number: **1** blue cart item (blue bin), **2** never the blue cart (black bin), **3** can't tell (question mark) | The chosen card fills with its colour. Step 2 appears only after **1** |
 | Step 2: state | Click a card or press **4** ready, **5** needs prep first, **6** ruined, **7** can't see enough | Only asked for blue cart items |
 | Status line | Read the line above Step 1 | It says what to do next, then what your two answers mean, for example "Your answer: Accepted after prep" |

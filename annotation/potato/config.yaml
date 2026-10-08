@@ -86,7 +86,7 @@ annotation_schemes:
           <span class="bcc-chip"><span class="fas fa-shirt"></span> Hangers</span>
           <span class="bcc-chip"><span class="fas fa-ban"></span> Anything else not on the blue list</span>
         </div>
-        <div class="bcc-note">Judge the <b>main item</b>, exactly as it looks in the photo. Full rules and examples: <b>Guidelines</b> button, top right.</div>
+        <div class="bcc-note">Judge the <b>main item</b>, exactly as it looks in the photo. Full rules and examples: the round <b>?</b> button, then <b>Full guidelines</b>.</div>
 
   # Status line (display only). The small script at the end of custom_footer_html fills it in:
   # what to do next, and what the chosen answers mean as a final label.
@@ -220,6 +220,8 @@ custom_footer_html: |
        progress card above the photo (script below); Guidelines lives in the help panel. ---------- */
     .potato-navbar .navbar-center, .potato-navbar .codebook-btn, .potato-navbar .adjudicate-btn { display: none !important; }
     .potato-nav { display: none !important; }    /* Potato's own Previous / Next under the questions: the key bar (desktop) and the bottom bar (phones) have them */
+    html.bcc-phase .bcc-keys, html.bcc-phase .bcc-progress { display: none !important; }   /* welcome page: nothing to press yet */
+    html.bcc-phase body { padding-bottom: 0 !important; }
     .potato-navbar .navbar-inner { justify-content: space-between; }
     .potato-navbar .user-pill { display: inline-flex !important; align-items: center; gap: 10px; height: 42px; box-sizing: border-box; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.22); border-radius: 999px; padding: 0 5px 0 6px; }
     .potato-navbar .user-pill .username { color: #fff !important; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; font-size: 0.92rem; }
@@ -810,6 +812,8 @@ custom_footer_html: |
       /* a new photo: the Step 1 keys wave. Step 2 appears: its keys wave. Step 2 keys are grey while hidden */
       var lastPhoto = null, step2Was = false;
       function tick() {
+        /* the welcome page (its "Start labeling" form) has no photo: no key bar and no progress card there */
+        document.documentElement.classList.toggle("bcc-phase", !!document.querySelector("form.go"));
         var img = document.querySelector("img.display-image");
         var src = img ? img.getAttribute("src") : null;
         if (src && src !== lastPhoto) {
