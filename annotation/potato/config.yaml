@@ -259,10 +259,20 @@ custom_footer_html: |
     .bcc-pg-title .fas { color: #1565c0; }
     .bcc-pg-status { font-size: 0.78rem; font-weight: 700; padding: 2px 10px; border-radius: 999px; background: #fff3cd; color: #7d4407; border: 1px solid #ffd77a; }
     .bcc-pg-status.labeled { background: #e6f4ea; color: #1f7a3d; border-color: #9fd3ad; }
-    .bcc-pg-bar { height: 12px; border-radius: 999px; background: #e9eef6; overflow: hidden; }
-    .bcc-pg-fill { height: 100%; width: 0; border-radius: 999px; background: linear-gradient(90deg, #1565c0, #1e88e5 60%, #ffb300); transition: width 0.5s ease; position: relative; overflow: hidden; }
-    .bcc-pg-fill::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 100%); transform: translateX(-100%); animation: bcc-shine 3s ease-in-out infinite; }
-    @keyframes bcc-shine { 0% { transform: translateX(-100%); } 55%, 100% { transform: translateX(100%); } }
+    /* the bar: the done part is a slowly flowing band of blues and ambers, a bright beam keeps shooting along it,
+       and a glowing bead sits exactly where the progress ends (its position comes from the --p variable the script sets) */
+    .bcc-pg-bar { height: 12px; border-radius: 999px; background: #dfe6f1; position: relative; }
+    .bcc-pg-fill { height: 100%; width: 0; border-radius: 999px; position: relative; overflow: hidden; transition: width 0.6s ease;
+      background: linear-gradient(90deg, #0d47a1 0%, #1565c0 20%, #29b6f6 42%, #ffb300 66%, #ff8f00 82%, #0d47a1 100%); background-size: 300% 100%;
+      animation: bcc-flow 6s linear infinite; box-shadow: 0 0 10px rgba(41, 182, 246, 0.4); }
+    @keyframes bcc-flow { 0% { background-position: 0% 50%; } 100% { background-position: 300% 50%; } }
+    .bcc-pg-fill::after { content: ""; position: absolute; top: 0; bottom: 0; left: -80px; width: 80px; border-radius: 999px;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.45) 45%, #fff 62%, rgba(255, 255, 255, 0) 100%);
+      animation: bcc-laser 1.7s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+    @keyframes bcc-laser { 0% { left: -80px; opacity: 0; } 10% { opacity: 1; } 85% { opacity: 1; } 100% { left: 100%; opacity: 0; } }
+    .bcc-pg-bar::after { content: ""; position: absolute; top: 50%; left: calc(var(--p, 0%) - 5px); width: 10px; height: 10px; margin-top: -5px; border-radius: 50%;
+      background: #fff; z-index: 1; transition: left 0.6s ease; animation: bcc-glowhead 1.2s ease-in-out infinite alternate; }
+    @keyframes bcc-glowhead { from { box-shadow: 0 0 4px 1px #ffb300, 0 0 10px 3px rgba(255, 179, 0, 0.45); } to { box-shadow: 0 0 8px 3px #ffd54f, 0 0 20px 7px rgba(255, 179, 0, 0.7); } }
     .bcc-pg-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 14px; font-size: 0.88rem; color: #4a5160; }
     .bcc-pg-meta b { color: #14213d; }
     .bcc-pg-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
@@ -474,7 +484,7 @@ custom_footer_html: |
     /* when a photo appears the Step 1 keys wave once; when Step 2 appears its keys wave once */
     @keyframes bcc-wave { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.35); } }
     .bcc-wave { animation: bcc-wave 0.55s ease-in-out; }
-    @media (prefers-reduced-motion: reduce) { .bcc-pressed, .bcc-nope, .bcc-nope-box, .bcc-pop, .bcc-wave, .bcc-help-btn, .bcc-help-btn::after, .bcc-pg-fill::after, .bcc-help-panel.open { animation: none !important; } }
+    @media (prefers-reduced-motion: reduce) { .bcc-pressed, .bcc-nope, .bcc-nope-box, .bcc-pop, .bcc-wave, .bcc-help-btn, .bcc-help-btn::after, .bcc-pg-fill, .bcc-pg-fill::after, .bcc-pg-bar::after, .bcc-help-panel.open { animation: none !important; } }
 
     /* ---------- every question box uses the full column width ---------- */
     #annotation-forms .annotation_schema > * { flex: 1 1 100%; max-width: 100%; }
@@ -1202,6 +1212,7 @@ custom_footer_html: |
           if (done > total) { done = total; }
           var pct = total ? Math.round(100 * done / total) : 0;
           card.querySelector(".bcc-pg-fill").style.width = pct + "%";
+          card.querySelector(".bcc-pg-bar").style.setProperty("--p", pct + "%");
           var txt = "<b>" + done + " of " + total + "</b> labeled · " + pct + "%" + (total && done >= total ? " · all done, thank you!" : "");
           var c = card.querySelector(".bcc-pg-count"); if (c.innerHTML !== txt) { c.innerHTML = txt; }
         }
