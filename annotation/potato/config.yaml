@@ -219,7 +219,17 @@ custom_footer_html: |
     /* ---------- top bar: only the title and the signed-in person. Progress and the jump buttons move into the
        progress card above the photo (script below); Guidelines lives in the help panel. ---------- */
     .potato-navbar .navbar-center, .potato-navbar .codebook-btn, .potato-navbar .adjudicate-btn { display: none !important; }
-    .potato-nav { display: none !important; }    /* Potato's own Previous / Next under the questions: the key bar (desktop) and the bottom bar (phones) have them */
+    /* Potato's own Previous / Next: the script moves them under the questions (end of the right column) on desktops
+       and tablets; phones use the fixed bottom bar instead, and the welcome page has its own Start button */
+    .potato-nav { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex: 1 1 100%; width: 100%; margin: 6px 0 0; padding: 0; }
+    .annotation-forms-layout > .potato-nav { grid-column: 1 / -1; }
+    .potato-nav #prev-btn, .potato-nav #next-btn { height: 46px; padding: 0 22px !important; margin: 0 !important; font-size: 1rem; font-weight: 700; border-radius: 12px !important; display: inline-flex; align-items: center; gap: 8px; }
+    .potato-nav #next-btn { background: #ffb300 !important; border-color: #ffb300 !important; color: #111 !important; box-shadow: 0 6px 16px rgba(255, 179, 0, 0.35); min-width: 170px; justify-content: center; }
+    .potato-nav #next-btn:hover { background: #ffc733 !important; }
+    .potato-nav #prev-btn { background: #fff !important; border: 1.5px solid #c9d3e6 !important; color: #14213d !important; }
+    .potato-nav #prev-btn:hover { background: #eef3fa !important; border-color: #1565c0 !important; }
+    .potato-nav:not(.bcc-moved), html.bcc-phase .potato-nav { display: none !important; }
+    @media (max-width: 860px) { .potato-nav { display: none !important; } }
     html.bcc-phase .bcc-keys, html.bcc-phase .bcc-progress { display: none !important; }   /* welcome page: nothing to press yet */
     html.bcc-phase body { padding-bottom: 0 !important; }
     .potato-navbar .navbar-inner { justify-content: space-between; }
@@ -371,6 +381,31 @@ custom_footer_html: |
       .bcc-kgroup[data-group="next"] .bcc-key[data-key="arrowright"] { background: #ffb300; color: #111; border-color: #ffb300; }
       .bcc-kgroup[data-group="next"] .bcc-key kbd { border: 0 !important; background: transparent !important; color: inherit !important; -webkit-text-fill-color: inherit !important; font-size: 1.15rem; padding: 0; min-width: 0; }
       body { padding-bottom: 84px !important; }
+      /* a complete answer makes the fixed Next button pulse, so the thumb knows where to go */
+      @keyframes bcc-ready { 0%, 100% { box-shadow: 0 0 0 0 rgba(255, 179, 0, 0.75); } 60% { box-shadow: 0 0 0 10px rgba(255, 179, 0, 0); } }
+      .bcc-kgroup[data-group="next"].bcc-live .bcc-key[data-key="arrowright"] { animation: bcc-ready 1.4s ease-out infinite; }
+      /* everything above Step 1 is shorter, so photo + Step 1 fit on one phone screen */
+      .potato-navbar, .potato-navbar .navbar-inner { min-height: 56px; }
+      .bcc-progress { padding: 8px 12px; gap: 5px; margin-bottom: 8px; }
+      .bcc-pg-title { font-size: 0.9rem; }
+      .bcc-pg-bar { height: 9px; }
+      .bcc-pg-meta { font-size: 0.82rem; }
+      .bcc-pg-nav label { display: none; }
+      .bcc-pg-nav button { padding: 3px 9px; font-size: 0.76rem; }
+      #task_layout > .shadcn-card-content { padding: 12px 12px 14px; }
+      /* id-prefixed so these win over the short-window rule further down (phones are short windows too) */
+      #main-content .display-type-image .display-field-content { max-height: 34vh !important; padding: 0 !important; }
+      #main-content img.display-image { max-height: 31vh !important; }
+      .bcc-status { font-size: 0.86rem; min-height: 0; padding: 5px 10px; }
+      .display-field-label, .display-label, .display-field-title { display: none !important; }      /* "Item photo": the picture speaks for itself */
+      #main-content > .mb-4 { margin-bottom: 8px !important; padding-bottom: 0 !important; border-bottom: none !important; }
+      .display-type-image, .display-field, .instance-display { padding: 6px !important; margin: 0 !important; }
+      .bcc-pg-title { display: none; }                                   /* the pill alone is enough on a small screen */
+      .bcc-pg-top { justify-content: flex-end; }
+      .bcc-pg-status { font-size: 0.74rem; padding: 1px 9px; }
+      .bcc-pg-nav { display: none; }                                     /* jump buttons: desktop only; the bottom bar moves between photos */
+      #reason .shadcn-radio-label { font-size: 0.8rem; padding: 6px 30px 6px 10px; line-height: 1.15; }
+      #cart legend, #condition legend, #reason legend { font-size: 0.98rem; }
       .bcc-help-btn { bottom: 96px; right: 16px; width: 52px; height: 52px; }
       .bcc-help-panel { bottom: 158px; right: 16px; }
       #next-btn { margin-right: 0 !important; }
@@ -594,16 +629,21 @@ custom_footer_html: |
       #annotation-forms .annotation_schema { gap: 6px !important; }
       .bcc-status { padding: 4px 12px; min-height: 2em; font-size: 0.92rem; }
     }
-    /* phones: one card per row with the icon on the left, so the titles do not break into three lines */
+    /* phones: Step 1 is one row of three short cards, Step 2 a 2 x 2 grid with the icon on the left. The small
+       sub-lines are dropped (the ? on each card explains it), so the whole question fits under the photo */
     @media (max-width: 640px) {
-      #cart .shadcn-radio-options, #condition .shadcn-radio-options { grid-template-columns: 1fr !important; gap: 6px; }
-      #cart .shadcn-radio-label, #condition .shadcn-radio-label {
-        display: grid; grid-template-columns: auto 1fr; grid-template-areas: "icon title" "icon sub";
-        column-gap: 12px; row-gap: 0; align-items: center; text-align: left; padding: 8px 14px 8px 36px; font-size: 0.98rem;   /* room for the ? at the left */
-      }
-      #cart .shadcn-radio-label::before, #condition .shadcn-radio-label::before { grid-area: icon; font-size: 1.5rem; margin: 0; }
-      #cart .shadcn-radio-label::after, #condition .shadcn-radio-label::after { grid-area: sub; font-size: 0.76rem; }
-      .bcc-status { font-size: 0.92rem; }
+      #cart .shadcn-radio-options { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 6px; }
+      #condition .shadcn-radio-options { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 6px; }
+      #cart .shadcn-radio-label { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+        padding: 24px 4px 8px; min-height: 78px; font-size: 0.84rem; line-height: 1.15; }
+      #cart .shadcn-radio-label::before { font-size: 1.4rem; margin: 0 0 5px; }
+      #condition .shadcn-radio-label { display: grid; grid-template-columns: auto 1fr; grid-template-areas: "icon title"; column-gap: 8px;
+        align-items: center; text-align: left; padding: 9px 8px 9px 30px; font-size: 0.88rem; line-height: 1.15; }
+      #condition .shadcn-radio-label::before { grid-area: icon; font-size: 1.3rem; margin: 0; }
+      #cart .shadcn-radio-label::after, #condition .shadcn-radio-label::after { display: none; }
+      #cart .bcc-info-btn, #condition .bcc-info-btn { top: 4px; left: 4px; width: 20px; height: 20px; font-size: 0.72rem; line-height: 18px; }
+      form#cart, form#condition, form#reason { padding-top: 4px !important; padding-bottom: 6px !important; }
+      .bcc-status { font-size: 0.92rem; padding: 6px 12px; }
     }
   </style>
   <button type="button" class="bcc-help-btn" title="Help" aria-label="Help" aria-expanded="false" aria-controls="bcc-help"><span class="fas fa-circle-question"></span></button>
@@ -663,17 +703,22 @@ custom_footer_html: |
         var cart = document.querySelector("#cart input:checked");
         var cond = document.querySelector("#condition input:checked");
         var text, color = "#8a93a6";
+        /* phones have no keys: the hints say "tap" instead of naming keys */
+        var phone = window.matchMedia("(max-width: 860px)").matches;
+        var K1 = phone ? "Tap a card." : "Click a card or press 1, 2 or 3.";
+        var K2 = phone ? "Tap a card." : "Click a card or press 4, 5, 6 or 7.";
+        var NX = phone ? "Tap Next." : "Press &rarr; for the next photo.";
         if (!cart) {
-          text = "<b>Start with Step 1.</b>&nbsp;Click a card or press 1, 2 or 3.";
+          text = "<b>Start with Step 1.</b>&nbsp;" + K1;
         } else if (cart.value === "not_blue_cart") {
-          text = "<b>Your answer: Not accepted.</b>&nbsp;Never the blue cart. Press &rarr; for the next photo."; color = "#1b1f27";
+          text = "<b>Your answer: Not accepted.</b>&nbsp;Never the blue cart. " + NX; color = "#1b1f27";
         } else if (cart.value === "cannot_tell") {
-          text = "<b>Your answer: Cannot determine.</b>&nbsp;You can't tell what the item is. Press &rarr; for the next photo."; color = "#6b7280";
+          text = "<b>Your answer: Cannot determine.</b>&nbsp;You can't tell what the item is. " + NX; color = "#6b7280";
         } else if (!cond || !STATE[cond.value]) {
-          text = "<b>Blue cart item. Now Step 2:</b>&nbsp;what state is it in? Click a card or press 4, 5, 6 or 7."; color = "#1565c0";
+          text = "<b>Blue cart item. Now Step 2:</b>&nbsp;what state is it in? " + K2; color = "#1565c0";
         } else {
           var s = STATE[cond.value];
-          text = "<b>Your answer: " + s[0] + ".</b>&nbsp;" + s[1] + " Press &rarr; for the next photo."; color = s[2];
+          text = "<b>Your answer: " + s[0] + ".</b>&nbsp;" + s[1] + " " + NX; color = s[2];
         }
         if (box.getAttribute("data-shown") !== text) {
           box.innerHTML = "<span>" + text + "</span>"; box.style.borderColor = color; box.setAttribute("data-shown", text);
@@ -690,6 +735,7 @@ custom_footer_html: |
     (function () {
       var motionOk = !(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
       var desktopQ = window.matchMedia("(hover: hover) and (pointer: fine) and (min-width: 1000px)");
+      var phoneQ = window.matchMedia("(max-width: 860px)");
       function brand() {                        /* "Blue Cart Check: Which bin..." becomes a name line and a smaller subtitle line */
         var tn = document.querySelector(".potato-navbar .task-name");
         if (!tn || tn.querySelector(".bcc-brand-name")) { return; }
@@ -814,9 +860,18 @@ custom_footer_html: |
       function tick() {
         /* the welcome page (its "Start labeling" form) has no photo: no key bar and no progress card there */
         document.documentElement.classList.toggle("bcc-phase", !!document.querySelector("form.go"));
+        /* Potato's Previous / Next buttons go under the questions, as the last thing in the right column */
+        var pnav = document.querySelector(".potato-nav"), forms = document.querySelector("#annotation-forms");
+        if (pnav && forms) {
+          var host = forms.querySelector(".annotation-forms-layout") || forms;
+          if (host.lastElementChild !== pnav) { host.appendChild(pnav); }
+          pnav.classList.add("bcc-moved");
+        }
+        var phone = phoneQ.matches;
         var img = document.querySelector("img.display-image");
         var src = img ? img.getAttribute("src") : null;
         if (src && src !== lastPhoto) {
+          if (phone && lastPhoto !== null && window.scrollY > 0) { window.scrollTo({ top: 0, behavior: "smooth" }); }   /* new photo on a phone: back to the top */
           lastPhoto = src; step2Was = step2Shown();
           if (!document.querySelector("#cart input:checked")) { wave(["1", "2", "3"]); }
         }
@@ -833,7 +888,10 @@ custom_footer_html: |
             if (on && cap && motionOk) { flash([cap], "bcc-pop-key", 420); }
           });
         });
-        if (s2 && !step2Was && !document.querySelector("#condition input:checked")) { wave(["4", "5", "6", "7"]); }
+        if (s2 && !step2Was && !document.querySelector("#condition input:checked")) {
+          wave(["4", "5", "6", "7"]);
+          if (phone) { var c2 = document.querySelector("#condition"); if (c2) { c2.scrollIntoView({ behavior: "smooth", block: "center" }); } }   /* phone: bring Step 2 into view */
+        }
         step2Was = s2;
         /* desktop bar: say which keys work for this photo, and light only that group */
         var now = document.getElementById("bcc-now");
