@@ -43,11 +43,11 @@ You **push** the Space folder to Hugging Face with git, and Hugging Face rebuild
 4. **Space for the tool.** New → Space → name `blue-cart-check` → SDK **Docker** → template **Blank** → hardware **CPU basic** → visibility **Protected** → Create.
 5. **Secrets.** In the Space: Settings → Variables and secrets → New secret. Add three:
 
-   | Secret name | Value |
-   |---|---|
-   | `HF_TOKEN` | the Write token from step 2 (lets the tool save answers to the Dataset) |
-   | `POTATO_SECRET_KEY` | any long random text (keeps logins valid) |
-   | `POTATO_ADMIN_API_KEY` | another long random text (the password for the `/admin` page) |
+  | Secret name | Value |
+  |---|---|
+  | `HF_TOKEN` | the Write token from step 2 (lets the tool save answers to the Dataset) |
+  | `POTATO_SECRET_KEY` | any long random text (keeps logins valid) |
+  | `POTATO_ADMIN_API_KEY` | another long random text (the password for the `/admin` page) |
 
    To make random text in Ubuntu:
    ```bash
@@ -155,7 +155,7 @@ Add Daud, Hina and Ian under Settings → Collaborators.
 |---|---|
 | Creating the Space says a paid plan is required | The account is not PRO yet |
 | `git push` is rejected because of large or binary files | Every file must be under 10 MB (ours are). If Hugging Face still asks for it, install Git LFS, run `git lfs install` and `git lfs track "*.jpg"`, then commit and push again |
-| The Space stays on "Building" or shows an error | Open the **Logs** tab on the Space page. The Dockerfile uses Potato's published image with the tag `latest`. Our config was tested with Potato 2.9.4. The Dockerfile also copies our login page (`login_page.html`) over Potato's `templates/home.html`; if that step fails on a newer image, delete the `RUN python -c ...` line and the Space falls back to Potato's stock login page |
+| The Space stays on "Building" or shows an error | Open the **Logs** tab on the Space page. The Dockerfile uses Potato's published image with the tag `latest`. Our config was tested with Potato 2.9.4. |
 | The link opens but photos do not load | Check that `media/` was pushed: the Space's Files tab should list the JPEGs |
 | No files appear in the Dataset | Check the `HF_TOKEN` secret (it must be a Write token) and the name after `--backup-repo` |
 | An annotator sees fewer photos than `--per-annotator` | The list is used up: enough people have already labeled, or `--annotators` was too small. Rebuild with the right numbers, or raise that person's cap with the + button on the admin Annotators tab |

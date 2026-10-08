@@ -38,7 +38,7 @@ data/manifest.csv       one row per image (schema in README.md §3)
 data/attribution.csv    source/author/license for every non-team image
 annotation/guidelines.md        annotator rules (owner: Hina)
 annotation/HOW_TO_ANNOTATE.md   annotator setup steps
-annotation/potato/welcome.html  welcome page shown once after login (team, instructor and TA names are here and in the page footer in config.yaml); the pack/space scripts also serve it again as media/how_it_works.html for the round help button
+annotation/potato/welcome.html  welcome page shown once after login (team, instructor and TA names are here and in the page footer in config.yaml); the pack/space scripts also serve it again as media/how_it_works.html
 annotation/potato/config.yaml   Potato annotation tool config (tested with potato-annotation 2.9.4). Its rules cheat sheet must stay in sync with guidelines.md
 annotation/packs/       generated per-annotator zips (gitignored)
 annotation/returned/    annotators' annotation_output folders (gitignored until anonymized)
@@ -56,12 +56,12 @@ Always activate the venv first: `source .venv/bin/activate`
 | dataset stats + charts | `python scripts/dataset_stats.py` |
 | PCA / k-means / near-dupes | `python scripts/explore_embeddings.py [--features resnet]` |
 | annotator packs | `python scripts/make_annotation_packs.py --agreement 100 --batch 150 --external 5 --internal 1` |
-| run annotation tool locally | `cd annotation/packs/internal_01 && potato start config.yaml -p 8000` |
+| run the annotation tool on this computer with Potato's own look (builds `deploy/stock_local/`, port 8000 by default) | `bash scripts/run_stock_local.sh [port]` |
+| run a generated pack locally | `cd annotation/packs/internal_01 && potato start config.yaml -p 8001` |
 | see the labels given so far (table + photo review page) | `python scripts/show_labels.py` |
 | seconds per photo (pilot timing) | `python scripts/labeling_time.py` |
 | build the Hugging Face Space folder (optional hosting, see docs/HUGGINGFACE_HOSTING.md) | `python scripts/make_hf_space.py --backup-repo <hf-name>/blue-cart-check-annotations` |
 | the PUBLIC tool at https://bluecart.khurramshafique.com runs on the Azure VM since 2026-10-07 (restart: `ssh bluecart-vm 'sudo systemctl restart bluecart'`; push changes: `bash scripts/azure/migrate.sh bluecart-vm`; the laptop script is only a fallback) | `docs/AZURE_HOSTING.md` |
-| install our login/register page into the Potato in this venv (`annotation/potato/login_page.html`; run after any pip install of potato; `--check`, `--restore`) | `python scripts/patch_login_page.py` |
 | move the public tool to an Azure VM (Azure for Students), same address, accounts and answers kept | `docs/AZURE_HOSTING.md` + `scripts/azure/{setup_vm,migrate,tunnel_vm}.sh` |
 | agreement + majority labels (Phase 2) | `python scripts/compute_agreement.py` |
 | group-safe splits | `python scripts/make_splits.py --test 0.2 --val 0.1` |

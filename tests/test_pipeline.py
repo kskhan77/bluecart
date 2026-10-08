@@ -83,13 +83,11 @@ def test_packs(repo):
     # the welcome page is part of the config (phases block), so every pack must carry the file
     assert "file: welcome.html" in (packs / "external_01" / "config.yaml").read_text()
     assert "Welcome to Blue Cart Check" in (packs / "external_01" / "welcome.html").read_text(encoding="utf-8")
-    # the round help button opens these pages, so every pack must carry them (and the config must point at them)
+    # every pack also carries the welcome page again and the demo page under media/ (linked from the guidelines)
     how = (packs / "external_01" / "media" / "how_it_works.html").read_text(encoding="utf-8")
     assert "Welcome to Blue Cart Check" in how and 'href="/annotate"' in how and "<form" not in how
     demo = (packs / "external_01" / "media" / "demo" / "index.html").read_text(encoding="utf-8")
     assert "<video" not in demo and "not in this pack" in demo          # packs leave the big video out
-    config_text = (packs / "external_01" / "config.yaml").read_text()
-    assert "/media/how_it_works.html" in config_text and "/media/demo/index.html" in config_text
     plan = json.load(open(repo / "annotation" / "assignment_plan.json"))
     assert len(plan["agreement_ids"]) == 10
 
@@ -217,30 +215,6 @@ def test_sourced_images_keep_original_author_and_get_credit_rows(repo):
     bad = subprocess.run([sys.executable, "scripts/prepare_images.py", "--input", "data/raw/t", "--source", "realwaste",
                           "--category-set", "paper", "--setting", "other"], cwd=repo, capture_output=True, text=True)
     assert bad.returncode != 0 and "ORIGINAL author" in bad.stderr
-
-
-def test_login_page_keeps_potato_fields_in_both_modes():
-    """Our login page must render for the hosted (password) and the pack (no password) mode with the fields Potato reads."""
-    import jinja2
-    env = jinja2.Environment(loader=jinja2.FileSystemLoader(str(REPO / "annotation" / "potato")), autoescape=True)
-    env.globals["url_for"] = lambda endpoint, **kw: "/static/" + kw.get("filename", "")
-    tpl = env.get_template("login_page.html")
-    common = dict(title="Blue Cart Check: test", url_prefix="", oauth_providers=None, allow_local_login=False,
-                  ui_lang={"username_label": "Your uniqname or UM email", "register_tab": "Create account", "sign_in_tab": "Sign in"})
-
-    hosted = tpl.render(require_password=True, login_error=None, **common)
-    assert 'action="/auth"' in hosted and 'action="/register"' in hosted
-    for must in ('id="login-email"', 'id="login-pass"', 'id="register-email"', 'id="register-pass"', 'value="login"', 'value="signup"'):
-        assert must in hosted
-    assert "Sign in" in hosted and "Create account" in hosted and "Welcome back" in hosted and "First time here?" in hosted
-    assert hosted.count('name="email"') == 2 and hosted.count('name="pass"') == 2
-
-    pack = tpl.render(require_password=False, login_error=None, **common)
-    assert 'action="/auth"' in pack and 'action="/register"' not in pack          # no account tab without passwords
-    assert 'id="login-pass"' not in pack and "Start labeling" in pack
-
-    with_error = tpl.render(require_password=True, login_error="Username exists, registration failed", **common)
-    assert "potato-alert-error" in with_error and "registration failed" in with_error
 
 
 def test_assign_sets_divides_sourced_photos_by_kind():

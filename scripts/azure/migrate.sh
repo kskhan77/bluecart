@@ -25,18 +25,9 @@ echo "== 2. copying $SERVER to $VM:/opt/bluecart/server  (accounts, answers, pho
 rsync -az --delete --exclude potato.log --exclude 'project.sqlite*' --exclude layouts "$SERVER"/ "$VM":/opt/bluecart/server/
 scp -q scripts/azure/tunnel_vm.sh "$VM":/opt/bluecart/tunnel_vm.sh
 
-echo "== 3. installing our login page in the VM's Potato and (re)starting the service"
+echo "== 3. (re)starting the service"
 ssh "$VM" 'bash -s' <<'EOF'
 set -e
-/opt/bluecart/venv/bin/python - <<'PY'
-import potato, pathlib, shutil
-target = pathlib.Path(potato.__file__).parent / "templates" / "home.html"
-backup = target.with_suffix(".html.orig")
-if not backup.exists():
-    shutil.copy(target, backup)
-shutil.copy("/opt/bluecart/server/login_page.html", target)
-print("login page installed")
-PY
 chmod 600 /opt/bluecart/server/.secret_key
 sudo systemctl restart bluecart
 sleep 5

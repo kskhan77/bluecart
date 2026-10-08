@@ -78,9 +78,6 @@ USER potato
 WORKDIR /app
 COPY --chown=potato:potato . /app
 
-# our login / register page replaces Potato's stock templates/home.html (same fields, nicer words and look)
-RUN python -c "import potato, pathlib, shutil; shutil.copy('/app/login_page.html', pathlib.Path(potato.__file__).parent / 'templates' / 'home.html')"
-
 # Hugging Face sends visitors to port 7860.
 ENV POTATO_CONFIG=config.yaml \\
     PORT=7860 \\
@@ -247,7 +244,6 @@ def main():
         hosted = hosted[:hosted.index("# A Space loses its files")] + "# No Hugging Face backup: this server runs on our own computer.\n"
     (OUT / "config.yaml").write_text(config.replace(LOCAL_TAIL, hosted), encoding="utf-8")
     shutil.copy(POTATO / "welcome.html", OUT / "welcome.html")
-    shutil.copy(POTATO / "login_page.html", OUT / "login_page.html")    # installed into Potato by the Dockerfile / patch_login_page.py
     (OUT / "README.md").write_text(README, encoding="utf-8")
     (OUT / "Dockerfile").write_text(DOCKERFILE.format(version=args.potato_version), encoding="utf-8")
     # never commit answers, accounts or keys if the folder is also run locally for a test

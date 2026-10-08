@@ -82,7 +82,7 @@ def how_it_works_html(welcome):
     body = re.sub(r"<!--.*?-->", "", welcome, count=1, flags=re.S)                     # the note for developers
     body, n = re.subn(r'<form class="go".*?</form>',
                       '<p class="go"><a href="/annotate">Back to the photos <span class="fas fa-arrow-right"></span></a>'
-                      '<small>This page is always one click away: the round <b>?</b> button at the bottom right.</small></p>',
+                      '<small>The <b>Guidelines</b> button at the top of the tool has the full rules with examples.</small></p>',
                       body, flags=re.S)
     if n != 1:
         raise SystemExit("welcome.html: the 'Start labeling' form was not found; update how_it_works_html().")
