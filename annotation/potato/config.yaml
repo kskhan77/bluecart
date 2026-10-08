@@ -207,6 +207,46 @@ custom_footer_html: |
     #prev-btn { border-radius: 12px !important; }
     img.display-image { box-shadow: 0 8px 24px rgba(20, 33, 61, 0.12); }
 
+    /* ---------- top bar: only the title and the signed-in person. Progress and the jump buttons move into the
+       progress card above the photo (script below); Guidelines lives in the help panel. ---------- */
+    .potato-navbar .navbar-center, .potato-navbar .codebook-btn, .potato-navbar .adjudicate-btn { display: none !important; }
+    .potato-navbar .navbar-inner { justify-content: space-between; }
+    .potato-navbar .user-pill { display: inline-flex !important; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 999px; padding: 4px 6px 4px 14px; }
+    .potato-navbar .user-pill .username { color: #fff !important; font-weight: 700; }
+    .potato-navbar .user-pill .username::before { content: "\f007"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: #ffb300; margin-right: 8px; }
+    .potato-navbar .user-pill .logout-btn { background: #fff !important; color: #14213d !important; border-radius: 999px !important; padding: 4px 12px !important; font-weight: 700; text-decoration: none; border: 0 !important; }
+    .potato-navbar .user-pill .logout-btn::before { content: "\f2f5"; font-family: "Font Awesome 6 Free"; font-weight: 900; margin-right: 6px; }
+    .potato-navbar .user-pill .logout-btn:hover { background: #ffb300 !important; }
+
+    /* ---------- progress card above the photo ---------- */
+    .bcc-progress { background: #fff; border: 1px solid #d6dce8; border-radius: 14px; padding: 12px 16px; margin: 0 0 12px; box-shadow: 0 6px 18px rgba(20, 33, 61, 0.07); display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .bcc-pg-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .bcc-pg-title { font-weight: 800; color: #14213d; display: inline-flex; align-items: center; gap: 8px; font-size: 0.98rem; }
+    .bcc-pg-title .fas { color: #1565c0; }
+    .bcc-pg-status { font-size: 0.78rem; font-weight: 700; padding: 2px 10px; border-radius: 999px; background: #fff3cd; color: #7d4407; border: 1px solid #ffd77a; }
+    .bcc-pg-status.labeled { background: #e6f4ea; color: #1f7a3d; border-color: #9fd3ad; }
+    .bcc-pg-bar { height: 12px; border-radius: 999px; background: #e9eef6; overflow: hidden; }
+    .bcc-pg-fill { height: 100%; width: 0; border-radius: 999px; background: linear-gradient(90deg, #1565c0, #1e88e5 60%, #ffb300); transition: width 0.5s ease; position: relative; overflow: hidden; }
+    .bcc-pg-fill::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 100%); transform: translateX(-100%); animation: bcc-shine 3s ease-in-out infinite; }
+    @keyframes bcc-shine { 0% { transform: translateX(-100%); } 55%, 100% { transform: translateX(100%); } }
+    .bcc-pg-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 14px; font-size: 0.88rem; color: #4a5160; }
+    .bcc-pg-meta b { color: #14213d; }
+    .bcc-pg-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+    .bcc-pg-nav button { border: 1px solid #c9d3e6; background: #f7f9fd; color: #14213d; border-radius: 999px; padding: 4px 11px; font: inherit; font-size: 0.82rem; font-weight: 600; cursor: pointer; }
+    .bcc-pg-nav button:hover { background: #e3edfa; border-color: #1565c0; }
+    .bcc-pg-nav label { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; color: #4a5160; }
+    .bcc-pg-nav input { width: 64px; border: 1px solid #c9d3e6; border-radius: 8px; padding: 3px 8px; font: inherit; font-size: 0.85rem; }
+    .bcc-pg-nav .bcc-go { background: #1565c0; color: #fff; border-color: #1565c0; }
+    .bcc-pg-nav .bcc-go:hover { background: #0f4f99; }
+
+    /* ---------- help button: amber like Next, and it nudges every few seconds until it has been opened once ---------- */
+    .bcc-help-btn { background: #ffb300 !important; color: #111 !important; }
+    .bcc-help-btn:hover, .bcc-help-btn[aria-expanded="true"] { background: #ffc733 !important; }
+    @keyframes bcc-nudge { 0%, 100% { transform: translateY(0); } 6% { transform: translateY(-9px) scale(1.07); } 12% { transform: translateY(0); } 18% { transform: translateY(-4px); } 24% { transform: translateY(0); } }
+    @keyframes bcc-halo { 0% { box-shadow: 0 0 0 0 rgba(255, 179, 0, 0.65); } 60%, 100% { box-shadow: 0 0 0 24px rgba(255, 179, 0, 0); } }
+    .bcc-help-btn:not(.bcc-quiet) { animation: bcc-nudge 7s ease-in-out infinite 2s; }
+    .bcc-help-btn:not(.bcc-quiet)::after { content: ""; position: absolute; inset: 0; border-radius: 50%; animation: bcc-halo 7s ease-out infinite 2s; }
+
     /* ---------- rules box ---------- */
     #rules fieldset { background: rgba(110, 120, 170, 0.08); border: 1px solid rgba(110, 120, 170, 0.28); border-radius: 10px; padding: 8px 12px 10px; }
     #rules legend { font-size: 0.95rem; }
@@ -340,7 +380,7 @@ custom_footer_html: |
     /* when a photo appears the Step 1 keys wave once; when Step 2 appears its keys wave once */
     @keyframes bcc-wave { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.35); } }
     .bcc-wave { animation: bcc-wave 0.55s ease-in-out; }
-    @media (prefers-reduced-motion: reduce) { .bcc-pressed, .bcc-nope, .bcc-nope-box, .bcc-pop, .bcc-wave, .bcc-help-btn.bcc-hello, .bcc-help-panel.open { animation: none !important; } }
+    @media (prefers-reduced-motion: reduce) { .bcc-pressed, .bcc-nope, .bcc-nope-box, .bcc-pop, .bcc-wave, .bcc-help-btn, .bcc-help-btn::after, .bcc-pg-fill::after, .bcc-help-panel.open { animation: none !important; } }
 
     /* ---------- every question box uses the full column width ---------- */
     #annotation-forms .annotation_schema > * { flex: 1 1 100%; max-width: 100%; }
@@ -707,16 +747,17 @@ custom_footer_html: |
         if (radio && visible(radio.parentNode)) { radio.click(); } else { flash(caps(k).concat([btn]), "bcc-nope", 420); }
       });
 
-      /* help panel: open and close, Escape closes; the button pulses once per browser session */
+      /* help panel: open and close, Escape closes; the button nudges until it has been opened once in this browser session */
       var helpBtn = document.querySelector(".bcc-help-btn"), panel = document.querySelector(".bcc-help-panel");
-      function setOpen(open) { panel.classList.toggle("open", open); helpBtn.setAttribute("aria-expanded", open ? "true" : "false"); }
+      function setOpen(open) {
+        panel.classList.toggle("open", open); helpBtn.setAttribute("aria-expanded", open ? "true" : "false");
+        if (open) { helpBtn.classList.add("bcc-quiet"); try { sessionStorage.setItem("bcc-help-seen", "1"); } catch (err) {} }
+      }
       if (helpBtn && panel) {
         helpBtn.addEventListener("click", function () { setOpen(!panel.classList.contains("open")); });
         panel.querySelector(".bcc-close").addEventListener("click", function () { setOpen(false); });
         document.addEventListener("keydown", function (e) { if (e.key === "Escape") { setOpen(false); } });
-        try {
-          if (!sessionStorage.getItem("bcc-hello")) { helpBtn.classList.add("bcc-hello"); sessionStorage.setItem("bcc-hello", "1"); }
-        } catch (err) { helpBtn.classList.add("bcc-hello"); }
+        try { if (sessionStorage.getItem("bcc-help-seen") === "1") { helpBtn.classList.add("bcc-quiet"); } } catch (err) {}
         /* the tutorial video ships with the hosted tool only; hide its link where the file is missing (zip packs) */
         var videoLink = panel.querySelector(".bcc-video-link");
         if (videoLink && window.fetch) {
@@ -891,7 +932,53 @@ custom_footer_html: |
         }
         btn.style.display = document.querySelector("#reason input:checked") ? "inline-block" : "none";
       }
-      setInterval(function () { tick(); infoButtons(); clearButton(); }, 150);
+      /* progress card above the photo: shows the numbers Potato keeps in its (hidden) top bar, and its buttons
+         press the hidden top-bar buttons, so nothing about saving or navigation changes */
+      function progressCard() {
+        var host = document.querySelector("#main-content > .mb-4");
+        if (!host) { return; }
+        var card = host.querySelector(".bcc-progress");
+        if (!card) {
+          card = document.createElement("div"); card.className = "bcc-progress";
+          card.innerHTML = '<div class="bcc-pg-top"><span class="bcc-pg-title"><i class="fas fa-chart-simple"></i> Your progress</span><span class="bcc-pg-status"></span></div>' +
+            '<div class="bcc-pg-bar"><div class="bcc-pg-fill"></div></div>' +
+            '<div class="bcc-pg-meta"><span class="bcc-pg-count"></span><span class="bcc-pg-item"></span></div>' +
+            '<div class="bcc-pg-nav"><button type="button" data-act="prev" title="Jump to the previous photo you have not labeled"><i class="fas fa-backward"></i> Previous unlabeled</button>' +
+            '<button type="button" data-act="next" title="Jump to the next photo you have not labeled"><i class="fas fa-forward"></i> Next unlabeled</button>' +
+            '<label>Go to # <input type="number" min="1" aria-label="Photo number"><button type="button" class="bcc-go" data-act="go">Go</button></label></div>';
+          host.insertBefore(card, host.firstChild);
+          card.addEventListener("click", function (e) {
+            var b = e.target.closest && e.target.closest("button"); if (!b) { return; }
+            var act = b.getAttribute("data-act"), t;
+            if (act === "prev") { t = document.getElementById("jump-unannotated-prev-btn"); if (t) { t.click(); } }
+            if (act === "next") { t = document.getElementById("jump-unannotated-btn"); if (t) { t.click(); } }
+            if (act === "go") {
+              var n = card.querySelector("input").value, g = document.getElementById("go_to"), gb = document.getElementById("go-to-btn");
+              if (n && g) { g.value = n; if (gb) { gb.click(); } }
+            }
+          });
+          card.querySelector("input").addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); card.querySelector('[data-act="go"]').click(); } });
+        }
+        /* Potato's own counter and badge refresh only when the next photo loads, so the card also looks at the
+           answers on screen: this photo counts as labeled as soon as Step 1 (and Step 2, when shown) is answered */
+        var pc = document.getElementById("progress-counter"), inum = document.getElementById("instance-number"), st = document.getElementById("annotation-status");
+        var serverLabeled = !!(st && /^labeled/i.test(st.textContent.trim()));
+        var localLabeled = !!document.querySelector("#cart input:checked") && (!step2Shown() || !!document.querySelector("#condition input:checked"));
+        var m = pc && /(\d+)\s*\/\s*(\d+)/.exec(pc.textContent || "");
+        if (m) {
+          var done = +m[1] + (localLabeled && !serverLabeled ? 1 : 0), total = +m[2];
+          if (done > total) { done = total; }
+          var pct = total ? Math.round(100 * done / total) : 0;
+          card.querySelector(".bcc-pg-fill").style.width = pct + "%";
+          var txt = "<b>" + done + " of " + total + "</b> labeled · " + pct + "%" + (total && done >= total ? " · all done, thank you!" : "");
+          var c = card.querySelector(".bcc-pg-count"); if (c.innerHTML !== txt) { c.innerHTML = txt; }
+        }
+        if (inum) { var it = "photo <b>" + inum.textContent.trim() + "</b>"; var ie = card.querySelector(".bcc-pg-item"); if (ie.innerHTML !== it) { ie.innerHTML = it; } }
+        var s = card.querySelector(".bcc-pg-status"), text = (localLabeled || serverLabeled) ? "Labeled" : "Not labeled";
+        if (s.textContent !== text) { s.textContent = text; }
+        s.classList.toggle("labeled", text === "Labeled");
+      }
+      setInterval(function () { tick(); infoButtons(); clearButton(); progressCard(); }, 150);
     })();
   </script>
 
