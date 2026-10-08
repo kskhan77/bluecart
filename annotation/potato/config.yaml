@@ -13,6 +13,25 @@ annotation_codebook_url: /media/guidelines.html
 ui_language:
   codebook: "Guidelines"
 
+# Dataset card for the admin page "Publish Dataset" (archive, Hugging Face, Zenodo). The archive and the folder inside
+# it are named after pretty_name, so it must not contain ":" or "?": Windows cannot open a zip with such names.
+dataset_metadata:
+  pretty_name: "Blue Cart Check"
+  description: "Phone photos of everyday items, labeled for one question: does this item go in the City of Flint's blue recycling cart? Two-step annotation (the kind of item, then its state as shown) by students of ARI 510, University of Michigan-Flint, Fall 2026. Sourced photos keep their original credits (see attribution.csv in the project repository)."
+  license: "cc-by-nc-sa-4.0"
+  language: [en]
+  version: "1.0.0"
+  keywords: [recycling, waste sorting, image classification, Flint]
+  authors:
+    - name: Khurram Shafique
+      affiliation: University of Michigan-Flint
+    - name: Daud Jan
+      affiliation: University of Michigan-Flint
+    - name: Hina Kramer
+      affiliation: University of Michigan-Flint
+    - name: Ian Slackta
+      affiliation: University of Michigan-Flint
+
 # Welcome page (welcome.html): shown once to every annotator before the first photo.
 phases:
   order: [instructions, annotation]
