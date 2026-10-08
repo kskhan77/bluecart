@@ -58,7 +58,7 @@
 <nav>
   <a href="#project">1 The project</a><a href="#photos">2 The photos</a><a href="#demo">3 Demo video</a>
   <a href="#steps">4 The tool, step by step</a><a href="#label">5 From answers to a label</a>
-  <a href="#see">6 See the answers</a><a href="#req">7 Phase 1a requirements</a>
+  <a href="#see">6 See the answers</a>
 </nav>
 <div class="note"><b>Please note:</b> the video and the screenshots on this page were recorded on Oct 5 on a test copy of the tool, with made-up users
 (<code>demo_user</code>, <code>demo_a</code>, <code>demo_b</code>). The answers picked in them are clicks made to show the buttons.
@@ -196,25 +196,6 @@ They are <b>not</b> real labels.</div>
   <p>It prints a table and makes <code>labels_review.html</code>. A red border means two people gave different labels. Those are the photos the team should talk about. <code>labeling_time.py</code> gives the seconds per photo from the same files.</p>
   <figure><img src="figures/tool_9_labels_review.png" alt="Review page with labeled photos">
     <figcaption>Six photos labeled by the three demo users, three with a red border. On the glass jar they agree it is a blue cart item but not on its state (ready or needs prep). On the tomatoes one of them chose "never the blue cart".</figcaption></figure>
-</section>
-
-<section id="req">
-  <h2><span class="n">7</span>How this meets the Phase 1a requirements</h2>
-  <p>Due <b>Tuesday Oct 6, 2:30 pm</b>. <span class="done">Done</span> · <span class="part">Partly</span> · <span class="todo">Not started</span>. Status as of the morning of Oct 6.</p>
-  <table>
-    <tr><th>What the handout asks</th><th>How our project does it</th><th>Status</th></tr>
-    <tr><td>Collect <b>unlabeled</b> data, stored in a simple way</td><td>Photos in <code>data/images/</code>, one row per photo in <code>data/manifest.csv</code>. No label is written when a photo is collected. Phone location data is removed from every photo.</td><td><span class="part">Partly</span><br>648 photos (108 taken by us, 540 from open datasets), target about 1,200</td></tr>
-    <tr><td>Choose a license; respect licenses of other people's images</td><td>CC BY-NC-SA 4.0 in <code>LICENSE.md</code>, because 360 RealWaste images require it. Every sourced image is credited in <code>attribution.csv</code>.</td><td><span class="done">Done</span></td></tr>
-    <tr><td>README that describes the dataset and how it was collected, with the time to label one item</td><td><code>README.md</code>: 648 images, 108 team and 540 sourced, dates 2026-09-28 to 2026-10-06, median 6 seconds per photo.</td><td><span class="done">Done</span></td></tr>
-    <tr><td>Written guidelines: the job, the labels, clear rules, one example per label, contact</td><td><code>annotation/guidelines.md</code> v1.0, locked Oct 6. City rules quoted word for word, 12 written examples, email and the project Discord link.</td><td><span class="done">Done</span></td></tr>
-    <tr><td>A <b>real annotation tool</b>, one item at a time, with a clean output file (not a spreadsheet)</td><td>Potato, the tool the course recommends, set up with our two steps, icon cards, keys, a welcome page and a help button. It saves a structured file for every annotator. It is hosted at <a href="https://bluecart.khurramshafique.com">bluecart.khurramshafique.com</a>, so classmates only open a link.</td><td><span class="done">Done</span></td></tr>
-    <tr><td>Instructions to install it, run it, and send the result back; test it yourselves</td><td><code>annotation/HOW_TO_ANNOTATE.md</code> for the packs; for the shared link there is nothing to install. Tested from start to end in a browser, and used by Khurram, Hina and Ian on Oct 5.</td><td><span class="done">Done</span></td></tr>
-    <tr><td><b>More than one person</b> labels some of the items</td><td>On the shared link the first 30 photos go to every annotator (up to 10 labels each) and every other photo is labeled by 2 people. The packs do the same with an agreement set. In Phase 2 we measure agreement on the shared photos and check every photo where the two labels differ.</td><td><span class="done">Set up</span><br>agreement is measured in Phase 2</td></tr>
-    <tr><td>One of us labels for at least one hour, with the final rules</td><td>Pilot on the shared link: Hina about 21 minutes (120 photos), Ian about 7 minutes (33), Khurram about 2 minutes (7). Median 6 seconds.</td><td><span class="part">Started</span><br>rules are now locked; one person still needs to reach a full hour</td></tr>
-    <tr><td>A short "changes from proposal" note</td><td><code>CHANGES_FROM_PROPOSAL.md</code>: two-step question, cup and clamshell rules, Potato, 617 images, RealWaste license.</td><td><span class="done">Done</span></td></tr>
-    <tr><td>5-minute presentation: the task, numbers about the data, a live look at the tool</td><td>This page, the video, and the screenshots are the backup if the live tool fails. The slide deck still needs a timed run, and its old "17 seconds" figure should be 6 seconds.</td><td><span class="part">Partly</span></td></tr>
-    <tr><td>Submit: Canvas (PDF or GitHub link), the Google Form, a Discord post with the slides</td><td>Form answers are in <code>docs/GOOGLE_FORM_ANSWERS.md</code>. The project is on GitHub at <a href="https://github.com/kskhan77/bluecart">github.com/kskhan77/bluecart</a> (branches <code>main</code> and <code>dev</code>), photos included, so that link serves as the dataset link too. Post the slides in the course channel <code>#project-annotation-tasks</code>. Team contact: <a href="https://discord.gg/2t2DSNyBm">discord.gg/2t2DSNyBm</a>.</td><td><span class="todo">Not started</span></td></tr>
-  </table>
 </section>
 </main>
 </body>
