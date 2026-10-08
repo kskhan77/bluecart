@@ -233,7 +233,6 @@ def main():
     spec.loader.exec_module(packs)
     guidelines = (REPO / "annotation" / "guidelines.md").read_text(encoding="utf-8")
     (OUT / "media" / "guidelines.html").write_text(packs.guidelines_html(guidelines), encoding="utf-8")
-    packs.add_help_pages(OUT / "media", with_video=True)        # pages behind the round help button
 
     config = (POTATO / "config.yaml").read_text(encoding="utf-8")
     if LOCAL_TAIL not in config:

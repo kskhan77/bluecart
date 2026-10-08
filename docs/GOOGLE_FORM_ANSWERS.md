@@ -51,7 +51,7 @@ Each item is a JPEG photo of a single everyday item (a can, a box, a cable, a cu
 - A web browser. The tool runs online at https://bluecart.khurramshafique.com. Nothing to install and nothing to send back.
 - No special knowledge. They do not need to know Flint or recycling rules: the rules are on screen, and a welcome page explains the two steps.
 - No sensitive content: everyday items only, no people.
-- Works on a laptop or a tablet. Keys 1 to 7 answer; on a tablet the key legend is clickable.
+- Works on a laptop or a tablet. Keys 1 to 7 answer, or click the answers.
 
 ## How they do it
 

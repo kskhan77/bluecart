@@ -56,9 +56,9 @@
 </div></header>
 <main>
 <nav>
-  <a href="#project">1 The project</a><a href="#photos">2 The photos</a><a href="#demo">3 Tutorial video</a>
-  <a href="#steps">4 The tool, step by step</a><a href="#label">5 From answers to a label</a>
-  <a href="#see">6 See the answers</a>
+  <a href="#project">1 The project</a><a href="#photos">2 The photos</a>
+  <a href="#steps">3 The tool, step by step</a><a href="#label">4 From answers to a label</a>
+  <a href="#see">5 See the answers</a>
 </nav>
 <div class="note"><b>Please note:</b> the video and the screenshots on this page were recorded on Oct 5 on a test copy of the tool, with made-up users
 (<code>demo_user</code>, <code>demo_a</code>, <code>demo_b</code>). The answers picked in them are clicks made to show the buttons.
@@ -90,14 +90,8 @@ They are <b>not</b> real labels.</div>
   <p>Daud, Hina, and Khurram can still add their own phone photos with <code>prepare_images.py</code>. That adds rows. It does not change who took the 540 sourced photos.</p>
 </section>
 
-<section id="demo">
-  <h2><span class="n">3</span>Watch the tutorial (two minutes)</h2>
-  <p>Recorded on the hosted tool, with a spotlight on every button as it is used: creating an account, the welcome page, Step 1 and Step 2, the reason and its ? button, going back, the help button. The same video opens from the round ? button inside the tool.</p>
-  <video controls preload="metadata" src="figures/tool_tutorial.webm"></video>
-</section>
-
 <section id="steps">
-  <h2><span class="n">4</span>The tool, step by step</h2>
+  <h2><span class="n">3</span>The tool, step by step</h2>
 
   <h3>Start: two ways to open the tool</h3>
   <div class="two">
@@ -105,11 +99,11 @@ They are <b>not</b> real labels.</div>
     <div><b class="t">Your own copy (the zip pack)</b>Unzip the pack, run <code>potato start config.yaml -p 8000</code>, open <code>http://localhost:8000</code> in Chrome and type your uniqname. No password. If you come back later with the same name, you continue where you stopped. At the end you zip the <code>annotation_output</code> folder and send it to us.</div>
   </div>
   <figure><img src="figures/tool_1_login.png" alt="The login page of the pack version"><figcaption>The sign-in page. On the shared link it also has a Create account tab; the zip packs ask only for a name.</figcaption></figure>
-  <p>The first time, a <b>welcome page</b> explains the task and the two steps on one screen. It also lists Group 2, the instructor and the teaching assistant. Press <b>Start labeling</b> to continue. You can read it again any time: round <b>?</b> button, then <b>How it works</b>.</p>
+  <p>The first time, a <b>welcome page</b> explains the task and the two steps on one screen. It also lists Group 2, the instructor and the teaching assistant. Press <b>Start labeling</b> to continue.</p>
   <figure><img src="figures/tool_1b_welcome.png" alt="The welcome page"></figure>
 
   <h3>What you see</h3>
-  <p>The <b>photo</b> is on the left. On the right, from top to bottom: the <b>rules box</b>, a <b>status line</b>, <b>Step 1</b>, <b>Step 2</b> and an optional <b>reason</b>. The status line always says what to do next, and after you answer it shows what your two answers mean. Under the questions is the <b>key legend</b>, and at the bottom right the round <b>help button</b>.</p>
+  <p>The <b>photo</b> is on the left. On the right, from top to bottom: the <b>rules box</b>, <b>Step 1</b>, <b>Step 2</b> (only after a blue cart answer) and an optional <b>reason</b>. Hover over an answer for a one-line reminder of what it means. The top bar shows your progress, the photo number, jump buttons and the <b>Guidelines</b> button.</p>
   <figure><img src="figures/tool_2_photo_and_rules.png" alt="The annotation screen">
     <figcaption>The rules box lists the kinds of items Flint takes in the blue cart, and the kinds it never takes.</figcaption></figure>
 
@@ -131,29 +125,20 @@ They are <b>not</b> real labels.</div>
   <figure><img src="figures/tool_3_step2.png" alt="Step 2 appears after the blue bin is chosen">
     <figcaption>Step 2 appears only after you choose the blue bin. If you choose the black bin, there is no Step 2.</figcaption></figure>
 
-  <h3>Keys, legend and help</h3>
+  <h3>Keys and buttons</h3>
   <table>
     <tr><th>You do</th><th>What happens</th></tr>
-    <tr><td>Press <span class="key">1</span> <span class="key">2</span> <span class="key">3</span>, then <span class="key">4</span> to <span class="key">7</span></td><td>The card is chosen and pops. The key lights up in the legend, in the help panel and on the card, so you always see what you pressed.</td></tr>
-    <tr><td>Press <span class="key">4</span> to <span class="key">7</span> before Step 1 is answered</td><td>Nothing is saved. The key and the status line shake red: Step 2 is not open yet.</td></tr>
-    <tr><td>Press <span class="key">→</span> or click <b>Next</b></td><td>Your answers are saved and the next photo appears. If you did not answer, a red message asks you to. The Step 1 keys wave once on every new photo.</td></tr>
+    <tr><td>Press <span class="key">1</span> <span class="key">2</span> <span class="key">3</span>, then <span class="key">4</span> to <span class="key">7</span></td><td>The answer is selected, the same as clicking it. Keys 4 to 7 do nothing until Step 1 is "blue cart item".</td></tr>
+    <tr><td>Press <span class="key">→</span> or click <b>Next</b></td><td>Your answers are saved and the next photo appears. If a required step is unanswered, a red message asks for it.</td></tr>
     <tr><td>Press <span class="key">←</span> or click <b>Previous</b></td><td>You go back. Your old answers are still selected and you can change them.</td></tr>
     <tr><td>Press another number</td><td>Your answer changes.</td></tr>
-    <tr><td>Click a key in the <b>legend</b> under the questions</td><td>Same as pressing it. Useful on a tablet without a keyboard.</td></tr>
-    <tr><td>Click the round <b>?</b> button (bottom right)</td><td>A small panel with, in reading order, <b>How it works</b> (the welcome page again), the <b>full guidelines</b> and this <b>demo page</b>; then the keys and Khurram's email for problems.</td></tr>
     <tr><td>Hover over the photo, click <b>+ − ⟲</b></td><td>Zoom in, zoom out, reset.</td></tr>
-    <tr><td>Round <b>?</b> button, then <b>Full guidelines</b></td><td>The full rules and examples open in a new tab.</td></tr>
+    <tr><td>Click <b>Guidelines</b> (top right)</td><td>The full rules and examples open in a new tab.</td></tr>
     <tr><td>Click the double arrows (top)</td><td>You jump to a photo you have not answered yet.</td></tr>
     <tr><td>Look at <b>Progress</b> (top)</td><td>How many photos you have answered, for example 4/120.</td></tr>
   </table>
-  <figure><img src="figures/tool_12_keys_pressed.png" alt="The key legend while key 1 is pressed">
-    <figcaption>The key bar under the title. The pill at the left says what to do now, the step chip turns amber for the step to answer, and the keys chosen for this photo (1 and 5) take the colour of their cards with a check mark. Previous and Next sit at the right.</figcaption></figure>
-  <figure><img src="figures/tool_11_keys_blocked.png" alt="Key 4 pressed before Step 1 was answered">
-    <figcaption>Key 4 pressed before Step 1 was answered: the Step 2 keys are dimmed, the pressed one shakes red, nothing is saved.</figcaption></figure>
-  <figure><img src="figures/tool_10_help_panel.png" alt="The help panel">
-    <figcaption>The help panel behind the round ? button: How it works, the tutorial video, the full guidelines, the demo page, the keys, and who to email.</figcaption></figure>
   <figure><img src="figures/tool_4_labeled_and_zoom.png" alt="Answered photo, zoomed in">
-    <figcaption>An answered photo (food scraps: "Never the blue cart") zoomed in with the + button on the picture. The progress card above the photo switches to Labeled the moment the answer is given.</figcaption></figure>
+    <figcaption>An answered photo (food scraps: "Never the blue cart") zoomed in with the + button on the picture. The top bar shows it as labeled once the answer is saved.</figcaption></figure>
   <figure><img src="figures/tool_5_guidelines_page.png" alt="The guidelines page">
     <figcaption>The Guidelines page. Section 3 quotes the City of Flint and Priority Waste rules word for word.</figcaption></figure>
   <figure><img src="figures/tool_6_narrow_screen.png" alt="The tool on a narrow screen">
@@ -161,7 +146,7 @@ They are <b>not</b> real labels.</div>
 </section>
 
 <section id="label">
-  <h2><span class="n">5</span>From two answers to one label</h2>
+  <h2><span class="n">4</span>From two answers to one label</h2>
   <p>The annotator never picks the final label. The computer makes it from the two answers. These four labels are the same four as in our proposal.</p>
   <table>
     <tr><th>Step 1</th><th>Step 2</th><th>Final label</th><th>Example</th></tr>
@@ -176,7 +161,7 @@ They are <b>not</b> real labels.</div>
 </section>
 
 <section id="see">
-  <h2><span class="n">6</span>Where the answers go and how to see them</h2>
+  <h2><span class="n">5</span>Where the answers go and how to see them</h2>
   <p>Every click is saved automatically in a folder called <code>annotation_output</code>, one sub-folder per annotator. For the <b>shared link</b> that folder is on Khurram's computer (<code>deploy/local_server/annotation_output</code>), so nobody has to send anything. For a <b>zip pack</b> it is next to the tool, and the annotator zips it and sends it to us.</p>
   <h3>Way 1: in the browser (the admin dashboard)</h3>
   <p>Open <code>https://bluecart.khurramshafique.com/admin</code> (shared link) or <code>http://localhost:8000/admin</code> (own copy). It asks for an <b>admin key</b>. The key is not a password anyone chose: the tool writes it into a file called <code>admin_api_key.txt</code> the first time anyone opens the admin page, in the folder the tool was started from.</p>

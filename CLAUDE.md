@@ -38,7 +38,7 @@ data/manifest.csv       one row per image (schema in README.md §3)
 data/attribution.csv    source/author/license for every non-team image
 annotation/guidelines.md        annotator rules (owner: Hina)
 annotation/HOW_TO_ANNOTATE.md   annotator setup steps
-annotation/potato/welcome.html  welcome page shown once after login (team, instructor and TA names are here and in the page footer in config.yaml); the pack/space scripts also serve it again as media/how_it_works.html
+annotation/potato/welcome.html  welcome page shown once after login (team, instructor and TA names are here)
 annotation/potato/config.yaml   Potato annotation tool config (tested with potato-annotation 2.9.4). Its rules cheat sheet must stay in sync with guidelines.md
 annotation/packs/       generated per-annotator zips (gitignored)
 annotation/returned/    annotators' annotation_output folders (gitignored until anonymized)

@@ -83,11 +83,6 @@ def test_packs(repo):
     # the welcome page is part of the config (phases block), so every pack must carry the file
     assert "file: welcome.html" in (packs / "external_01" / "config.yaml").read_text()
     assert "Welcome to Blue Cart Check" in (packs / "external_01" / "welcome.html").read_text(encoding="utf-8")
-    # every pack also carries the welcome page again and the demo page under media/ (linked from the guidelines)
-    how = (packs / "external_01" / "media" / "how_it_works.html").read_text(encoding="utf-8")
-    assert "Welcome to Blue Cart Check" in how and 'href="/annotate"' in how and "<form" not in how
-    demo = (packs / "external_01" / "media" / "demo" / "index.html").read_text(encoding="utf-8")
-    assert "<video" not in demo and "not in this pack" in demo          # packs leave the big video out
     plan = json.load(open(repo / "annotation" / "assignment_plan.json"))
     assert len(plan["agreement_ids"]) == 10
 
@@ -274,8 +269,6 @@ def test_hf_space_folder_puts_the_shared_photos_first(repo):
                                             "private": True, "schedule_minutes": 5}
     assert "sdk: docker" in (space / "README.md").read_text() and (space / "Dockerfile").exists()
     assert (space / "media" / "guidelines.html").exists() and (space / "welcome.html").exists()
-    assert (space / "media" / "how_it_works.html").exists()
-    assert "<video" in (space / "media" / "demo" / "index.html").read_text(encoding="utf-8")   # hosted: video kept
 
     # ask Potato itself which photos it would share, using a minimal stand-in for its item list
     class FakeItem:

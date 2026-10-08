@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# Run the annotation tool on this computer with Potato's ORIGINAL look (no custom theme, no custom login page).
+# Run the annotation tool on this computer with Potato's own look.
 #
 #   bash scripts/run_stock_local.sh            # http://localhost:8000
 #   bash scripts/run_stock_local.sh 8001       # another port
 #
 # What it does:
-#   1. puts Potato's own login page back if an older patch of ours is still in the venv (home.html.orig),
+#   1. makes sure the venv's Potato uses its own login page (restores templates/home.html from home.html.orig if present),
 #   2. builds deploy/stock_local/ from annotation/potato/config.yaml (the plain config on this branch),
 #   3. starts Potato there. Answers stay in deploy/stock_local/annotation_output/ (gitignored).
 set -euo pipefail

@@ -1,7 +1,6 @@
 # Annotation tool: full walkthrough
 
-**Tutorial video (two minutes):** [`figures/tool_tutorial.webm`](figures/tool_tutorial.webm). Open it in Chrome (drag the file into a tab).
-It was recorded on the hosted tool; the screenshots below were taken on Oct 7 on a scratch copy with throwaway usernames.
+The screenshots below were taken on Oct 8 on a scratch copy with throwaway usernames.
 **The labels picked in them are demo clicks, not real annotations.**
 
 The class uses the hosted copy at https://bluecart.khurramshafique.com (register once with a password; nothing to install).
@@ -29,35 +28,30 @@ Open http://localhost:8000 in Chrome. Stop the tool with Ctrl+C.
 | Log in | Type your uniqname, press Start | No password. The same name later continues where you stopped |
 | Welcome page | Read it once, press **Start labeling** | Explains the task and the two steps, and lists Group 2, the instructor and the teaching assistant. Shown only the first time |
 | Read the rules | Look at "Flint blue-cart rules at a glance" on the right | Icon chips: the kinds Flint takes in the blue cart, and the kinds it never takes |
-| Full rules | Round **?** button, then **Full guidelines** | The full guidelines open in a new tab |
 | Step 1: kind of item | Click a card or press its number: **1** blue cart item (blue bin), **2** never the blue cart (black bin), **3** can't tell (question mark) | The chosen card fills with its colour. Step 2 appears only after **1** |
 | Step 2: state | Click a card or press **4** ready, **5** needs prep first, **6** ruined, **7** can't see enough | Only asked for blue cart items |
 | Status line | Read the line above Step 1 | It says what to do next, then what your two answers mean, for example "Your answer: Accepted after prep" |
-| Reason | Click one of the six icon chips | Optional |
+| Reason | Click one of the six reasons | Optional |
 | Next photo | Press **→** or click **Next** | Saved automatically. Blocked with a red message if a required step is unanswered |
 | Go back | Press **←** or click **Previous** | Your earlier answers are still selected |
 | Zoom | Hover over the photo, click **+ − ⟲** | Zoom in, zoom out, reset. Scroll inside the photo box to move around |
 | Hint | Hover over an answer | One-line reminder of what it means |
 | Jump to a photo | Answer the current photo, type a number in the **#** box, press Enter | Goes to that photo. It does not work while the current photo is unanswered |
 | Jump to unlabeled | Click the double-arrow buttons | Goes to the previous / next photo you have not labeled |
-| Key legend | Look under the questions, or click a key there | Three groups: Step 1, Step 2, Photos. A pressed key lights up here, in the help panel and on its card. Clicking a key does the same as pressing it (tablets). The Step 2 keys are grey, and shake red if pressed, until Step 1 is answered |
-| Help | Click the round **?** button (bottom right), Escape closes it | How it works (the welcome page again), the tutorial video, the full guidelines, the demo page, the keys, and Khurram's email |
+| Guidelines | Click **Guidelines** (top right) | The full rules and examples open in a new tab |
 | Finish | Press → on the last photo | "Thank You" page. Answers can no longer be changed |
 
 The four final labels are computed from the two answers (see guidelines Section 2). For example, blue cart item + ruined = `not_accepted`.
 
-Progress card above the photo: **Labeled / Not labeled** is the status of the photo on screen (it changes the moment you answer), **N of M labeled** is how many photos you have labeled, **photo #** is your position in the list. Its buttons jump to the previous or next unlabeled photo or to a photo number. The top bar itself only shows the title and who is signed in.
+Top bar: **Labeled / Not labeled** is the saved status of the photo on screen, **Progress** is how many photos you have labeled, **Instance** is your position in the list, and the double arrows jump to the previous / next photo you have not labeled.
 
 ![Welcome page](figures/tool_1b_welcome.png)
 ![Photo, rules and question](figures/tool_2_photo_and_rules.png)
 ![Step 2 appears after choosing a blue cart item](figures/tool_3_step2.png)
 ![Answered, with the photo zoomed](figures/tool_4_labeled_and_zoom.png)
-![The key bar after answering 1 and 5: the chosen keys take their card colour](figures/tool_12_keys_pressed.png)
-![Key 4 pressed before Step 1 was answered: it shakes, nothing is saved](figures/tool_11_keys_blocked.png)
-![The help panel](figures/tool_10_help_panel.png)
 ![The Guidelines page](figures/tool_5_guidelines_page.png)
 
-On a narrow window the same things stack vertically, questions first. On a short screen (small laptop) the cards become flatter, with the icon on the left:
+On a narrow window the same things stack vertically:
 
 ![Narrow screen](figures/tool_6_narrow_screen.png)
 
