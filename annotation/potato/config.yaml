@@ -263,16 +263,16 @@ custom_footer_html: |
        and a glowing bead sits exactly where the progress ends (its position comes from the --p variable the script sets) */
     .bcc-pg-bar { height: 12px; border-radius: 999px; background: #dfe6f1; position: relative; }
     .bcc-pg-fill { height: 100%; width: 0; border-radius: 999px; position: relative; overflow: hidden; transition: width 0.6s ease;
-      background: linear-gradient(90deg, #0d47a1 0%, #1565c0 20%, #29b6f6 42%, #ffb300 66%, #ff8f00 82%, #0d47a1 100%); background-size: 300% 100%;
-      animation: bcc-flow 6s linear infinite; box-shadow: 0 0 10px rgba(41, 182, 246, 0.4); }
+      background: linear-gradient(90deg, #1e88e5 0%, #00e5ff 16%, #00e676 32%, #ffd600 48%, #ff6d00 64%, #e040fb 80%, #1e88e5 100%); background-size: 300% 100%;
+      animation: bcc-flow 8s linear infinite; box-shadow: 0 0 12px rgba(0, 229, 255, 0.45); }
     @keyframes bcc-flow { 0% { background-position: 0% 50%; } 100% { background-position: 300% 50%; } }
     .bcc-pg-fill::after { content: ""; position: absolute; top: 0; bottom: 0; left: -80px; width: 80px; border-radius: 999px;
-      background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.45) 45%, #fff 62%, rgba(255, 255, 255, 0) 100%);
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.55) 40%, #ffffff 58%, rgba(0, 229, 255, 0.9) 72%, rgba(0, 229, 255, 0) 100%);
       animation: bcc-laser 1.7s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
     @keyframes bcc-laser { 0% { left: -80px; opacity: 0; } 10% { opacity: 1; } 85% { opacity: 1; } 100% { left: 100%; opacity: 0; } }
     .bcc-pg-bar::after { content: ""; position: absolute; top: 50%; left: calc(var(--p, 0%) - 5px); width: 10px; height: 10px; margin-top: -5px; border-radius: 50%;
       background: #fff; z-index: 1; transition: left 0.6s ease; animation: bcc-glowhead 1.2s ease-in-out infinite alternate; }
-    @keyframes bcc-glowhead { from { box-shadow: 0 0 4px 1px #ffb300, 0 0 10px 3px rgba(255, 179, 0, 0.45); } to { box-shadow: 0 0 8px 3px #ffd54f, 0 0 20px 7px rgba(255, 179, 0, 0.7); } }
+    @keyframes bcc-glowhead { from { box-shadow: 0 0 5px 2px #00e5ff, 0 0 14px 5px rgba(0, 229, 255, 0.5); } to { box-shadow: 0 0 8px 3px #ffd54f, 0 0 22px 8px rgba(255, 179, 0, 0.65); } }
     .bcc-pg-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 14px; font-size: 0.88rem; color: #4a5160; }
     .bcc-pg-meta b { color: #14213d; }
     .bcc-pg-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
@@ -292,7 +292,8 @@ custom_footer_html: |
     html.bcc-desktop .bcc-progress { position: sticky; top: var(--bcc-keys-h, 54px); z-index: 1790; margin: 0 0 12px;
       padding: 9px max(var(--bcc-gutter), calc((100% - var(--bcc-w)) / 2 + var(--bcc-gutter))) 4px; border: 0; border-radius: 0; background: #fff;
       box-shadow: 0 3px 10px rgba(14, 21, 36, 0.12); flex-direction: row; flex-wrap: wrap; align-items: center; gap: 0 18px; }
-    html.bcc-desktop .bcc-pg-bar { position: absolute; left: 0; right: 0; top: 0; height: 4px; border-radius: 0; }
+    html.bcc-desktop .bcc-pg-bar { position: absolute; left: 0; right: 0; top: 0; height: 6px; border-radius: 0; background: #d9e1ee; }
+    html.bcc-desktop .bcc-progress { padding-top: 11px; }
     html.bcc-desktop .bcc-pg-meta { flex: 1 1 auto; font-size: 0.82rem; justify-content: flex-start; gap: 0 18px; }
     html.bcc-desktop .bcc-pg-top { order: 3; flex: 0 0 auto; }
     html.bcc-desktop .bcc-pg-title { display: none; }
@@ -356,6 +357,11 @@ custom_footer_html: |
       box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28); font-size: 0.9rem;
     }
     html.bcc-desktop .bcc-kgroup[data-group="next"] { display: none !important; }      /* desktop: Previous / Next live under the questions; the arrow keys still work */
+    /* the Now pill sits at the left; Step 1 and Step 2 each take half of the remaining width with their keys centred,
+       so the bar is balanced on any screen width */
+    html.bcc-desktop .bcc-kgroup[data-group="step1"], html.bcc-desktop .bcc-kgroup[data-group="step2"] { flex: 1 1 0; justify-content: center; gap: 4px 10px; padding: 0 10px; }
+    html.bcc-desktop .bcc-keys { gap: 6px 14px; }
+    html.bcc-desktop .bcc-now { min-width: 250px; justify-content: center; }
     html.bcc-desktop .potato-navbar { position: relative !important; }                 /* on desktop the title scrolls away and only the key bar sticks, so the two never overlap */
     /* narrower desktops: smaller keys and no "Now" pill (the status line says the same), so the bar stays one row down to 1000 px */
     @media (max-width: 1299px) {
@@ -363,7 +369,7 @@ custom_footer_html: |
       html.bcc-desktop .bcc-keys { font-size: 0.8rem; gap: 6px; flex-wrap: wrap; }
       #cart .shadcn-radio-label::after, #condition .shadcn-radio-label::after { display: none; }   /* sub-lines would wrap into 3 lines here; the ? explains each card */
       html.bcc-desktop .bcc-keys kbd { font-size: 0.9rem; min-width: 1.7em; padding: 1px 5px; }
-      html.bcc-desktop .bcc-kgroup { padding: 0 6px 0 4px; height: 36px; }
+      html.bcc-desktop .bcc-kgroup, html.bcc-desktop .bcc-kgroup[data-group="step1"], html.bcc-desktop .bcc-kgroup[data-group="step2"] { padding: 0 6px 0 4px; height: 36px; gap: 2px 4px; }
       html.bcc-desktop .bcc-key { padding: 2px 5px 2px 2px; }
       html.bcc-desktop .bcc-klabel { padding: 2px 7px; font-size: 0.64rem; margin-right: 4px; }
     }
