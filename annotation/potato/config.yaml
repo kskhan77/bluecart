@@ -273,6 +273,9 @@ custom_footer_html: |
     .bcc-pg-nav .bcc-go { background: #1565c0; color: #fff; border-color: #1565c0; }
     .bcc-pg-nav .bcc-go:hover { background: #0f4f99; }
     .bcc-pg-nav { display: none !important; }                           /* jump buttons and Go to #: not needed, the arrows and the keys move between photos */
+    .bcc-pg-jump { display: none; align-items: center; border: 1px solid #ffb300; background: #fff8e1; color: #7d4407; border-radius: 999px; padding: 2px 11px; font: inherit; font-size: 0.78rem; font-weight: 700; cursor: pointer; }
+    .bcc-pg-jump:hover { background: #ffecb3; }
+    @media (max-width: 860px) { .bcc-pg-jump { font-size: 0.68rem; padding: 1px 8px; flex: 1 1 100%; justify-content: center; margin-top: 2px; } }
     .display-field-label, .display-label, .display-field-title { display: none !important; }   /* "Item photo": the picture speaks for itself */
     /* desktop: the card is a thin strip that sticks right under the key bar (the script moves it there): a 4 px line
        across the top, then one row with the count at the left and the photo number + Labeled pill at the right */
@@ -842,6 +845,31 @@ custom_footer_html: |
         return !!(t && t.tagName && (t.tagName === "TEXTAREA" || (t.tagName === "INPUT" && t.type !== "radio" && t.type !== "checkbox")));
       }
       function visible(el) { return !!(el && el.offsetParent !== null && getComputedStyle(el).visibility !== "hidden"); }
+      /* At the END of the list with photos still unlabeled behind, Potato's own Next has nowhere to go and just reloads
+         the same photo. Here → and Next jump to the next unlabeled photo instead (Potato's jump wraps around). */
+      function endState() {
+        var pc = document.getElementById("progress-counter"), inum = document.getElementById("instance-number");
+        var m = pc && /(\d+)\s*\/\s*(\d+)/.exec(pc.textContent || ""), n = inum && /(\d+)/.exec(inum.textContent || "");
+        if (!m || !n) { return { atEnd: false, left: 0 }; }
+        var total = +m[2], done = +m[1], st = document.getElementById("annotation-status");
+        var serverLabeled = !!(st && /^labeled/i.test(st.textContent.trim()));
+        var localLabeled = !!document.querySelector("#cart input:checked") && (!step2Shown() || !!document.querySelector("#condition input:checked"));
+        if (localLabeled && !serverLabeled) { done += 1; }
+        return { atEnd: +n[1] >= total, left: Math.max(0, total - done) };
+      }
+      function jumpAhead() {
+        if (typeof jumpToUnannotated === "function") { flash(caps("arrowright"), "bcc-pressed", 450); jumpToUnannotated(); }
+      }
+      document.addEventListener("keydown", function (e) {
+        if ((e.key || "") !== "ArrowRight" || typing(e)) { return; }
+        var es = endState(); if (!es.atEnd || es.left <= 0) { return; }
+        e.preventDefault(); e.stopImmediatePropagation(); jumpAhead();
+      }, true);
+      document.addEventListener("click", function (e) {
+        var b = e.target && e.target.closest && e.target.closest("#next-btn"); if (!b) { return; }
+        var es = endState(); if (!es.atEnd || es.left <= 0) { return; }
+        e.preventDefault(); e.stopImmediatePropagation(); jumpAhead();
+      }, true);
       function step2Shown() {                   /* Potato hides a conditional question with the class display-logic-hidden */
         var c = document.querySelector("#condition");
         var wrap = c && c.closest && c.closest(".display-logic-container");
@@ -988,6 +1016,8 @@ custom_footer_html: |
           var mode = "step1", msg = "Now: press 1, 2 or 3";
           if (cart && cart.value === "blue_cart" && s2 && !cond) { mode = "step2"; msg = "Now: press 4, 5, 6 or 7"; }
           else if (cart && (cart.value !== "blue_cart" || cond)) { mode = "next"; msg = "Now: → for the next photo"; }
+          var es = endState();
+          if (mode === "next" && es.atEnd && es.left > 0) { msg = "Now: → jumps to the next unlabeled photo (" + es.left + " left)"; }
           if (now.textContent !== msg) { now.textContent = msg; }
           Array.prototype.forEach.call(document.querySelectorAll(".bcc-kgroup"), function (g) {
             g.classList.toggle("bcc-live", g.getAttribute("data-group") === mode);
@@ -1175,6 +1205,12 @@ custom_footer_html: |
           var txt = "<b>" + done + " of " + total + "</b> labeled · " + pct + "%" + (total && done >= total ? " · all done, thank you!" : "");
           var c = card.querySelector(".bcc-pg-count"); if (c.innerHTML !== txt) { c.innerHTML = txt; }
         }
+        /* last photo of the list with unlabeled photos behind: say so, and offer the jump */
+        var es2 = endState(), jl = card.querySelector(".bcc-pg-jump");
+        if (!jl) { jl = document.createElement("button"); jl.type = "button"; jl.className = "bcc-pg-jump"; jl.addEventListener("click", jumpAhead); card.querySelector(".bcc-pg-meta").appendChild(jl); }
+        var want = (es2.atEnd && es2.left > 0) ? "Last photo in your list. " + es2.left + " still unlabeled: press → or click here to jump to them" : "";
+        if (jl.textContent !== want) { jl.textContent = want; }
+        jl.style.display = want ? "inline-flex" : "none";
         if (inum) { var it = "photo <b>" + inum.textContent.trim() + "</b>"; var ie = card.querySelector(".bcc-pg-item"); if (ie.innerHTML !== it) { ie.innerHTML = it; } }
         var s = card.querySelector(".bcc-pg-status"), text = (localLabeled || serverLabeled) ? "Labeled" : "Not labeled";
         if (s.textContent !== text) { s.textContent = text; }
