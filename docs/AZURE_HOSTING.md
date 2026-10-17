@@ -111,7 +111,7 @@ service. The last line should say `https://bluecart.khurramshafique.com answers:
 Rebuild the folder on the laptop as before, then copy it again:
 
 ```bash
-cd ~/workspace-school/bluecart/blue-cart-check && python scripts/make_hf_space.py --out deploy/local_server --no-backup --shared 30 --per-annotator 200 --annotators 10 --labels-per-photo 2 --keep-photo-list && bash scripts/azure/migrate.sh bluecart-vm
+cd ~/workspace-school/bluecart/blue-cart-check && python scripts/make_hf_space.py --out deploy/local_server --no-backup --shared 30 --per-annotator 200 --annotators 12 --labels-per-photo 10 --keep-photo-list && bash scripts/azure/migrate.sh bluecart-vm
 ```
 
 `migrate.sh` copies the laptop folder over the VM folder, including `annotation_output`. So **before a rebuild, copy the

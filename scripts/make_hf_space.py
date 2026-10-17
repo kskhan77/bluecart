@@ -105,10 +105,8 @@ user_config:
   users: []
 
 # Who gets which photos.
-# Every photo is labeled by {labels} annotator(s), except the {shared} shared photos, which go to
-# {annotators} annotators. Those {shared} are the FIRST lines of data/items.jsonl, and Potato
-# hands photos out from the top, so every annotator gets all of them and then
-# the next photos that still need a label, {per} in total.
+# A photo takes at most {labels} labels, except the {shared} shared photos, which take {annotators}
+# (they are the first lines of data/items.jsonl). Each annotator labels at most {per} photos.
 num_annotators_per_item:
   default: {labels}
   overlap_sample:
@@ -118,6 +116,12 @@ num_annotators_per_item:
 max_annotations_per_user: {per}
 random_seed: {seed}
 
+# How the next photo is chosen for each person.
+#   fixed_order:      everyone walks the list from the top and gets their whole list up front (the first round ran like this)
+#   least_annotated:  photos are handed out one at a time, the one with the fewest labels (and holds) first, so new
+#                     annotators fill the thin spots instead of repeating the first photos; nobody reserves a long list
+assignment_strategy: {strategy}
+{reclaim}
 # A Space loses its files on every restart. Answers are copied to this private
 # Dataset every {minutes} minutes. The token comes from the Space secret HF_TOKEN.
 huggingface_backup:
@@ -148,6 +152,10 @@ def main():
     ap.add_argument("--shared", type=int, default=30, help="photos that every annotator labels")
     ap.add_argument("--per-annotator", type=int, default=120, help="photos per annotator in total (shared + own)")
     ap.add_argument("--annotators", type=int, default=6, help="how many people will label (external + internal)")
+    ap.add_argument("--strategy", choices=["least_annotated", "fixed_order", "random"], default="least_annotated",
+                    help="how Potato picks the next photo for a person (default least_annotated: fewest labels first, one at a time)")
+    ap.add_argument("--reclaim-hours", type=float, default=24,
+                    help="a photo held by someone who stopped goes back to the pool after this many hours (0 = never)")
     ap.add_argument("--labels-per-photo", type=int, default=1,
                     help="how many people label each non-shared photo (1 coverage only, 2 checkable, 3 majority vote)")
     ap.add_argument("--backup-repo", default="YOUR-HF-NAME/blue-cart-check-annotations",
@@ -237,8 +245,11 @@ def main():
     config = (POTATO / "config.yaml").read_text(encoding="utf-8")
     if LOCAL_TAIL not in config:
         raise SystemExit("annotation/potato/config.yaml no longer ends with the expected login block; update LOCAL_TAIL.")
+    reclaim = ("# A photo held by someone who stopped goes back to the pool after this many hours.\n"
+               f"instance_reclaim:\n  enabled: true\n  timeout_hours: {args.reclaim_hours:g}\n") if args.reclaim_hours > 0 else "# instance_reclaim is off: a held photo stays with its holder.\n"
     hosted = HOSTED_TAIL.format(shared=len(shared), annotators=args.annotators, per=args.per_annotator, fraction=repr(fraction),
-                                labels=args.labels_per_photo, seed=args.seed, backup_repo=args.backup_repo, minutes=args.backup_minutes)
+                                labels=args.labels_per_photo, seed=args.seed, backup_repo=args.backup_repo, minutes=args.backup_minutes,
+                                strategy=args.strategy, reclaim=reclaim)
     if args.no_backup:                              # answers stay on this computer's disk
         hosted = hosted[:hosted.index("# A Space loses its files")] + "# No Hugging Face backup: this server runs on our own computer.\n"
     (OUT / "config.yaml").write_text(config.replace(LOCAL_TAIL, hosted), encoding="utf-8")
@@ -249,12 +260,17 @@ def main():
     (OUT / ".gitignore").write_text("annotation_output/\nuser_config.json\nadmin_api_key.txt\nproject.sqlite*\nlayouts/\n", encoding="utf-8")
     with (OUT / "shared_ids.json").open("w", encoding="utf-8") as f:
         json.dump({"seed": args.seed, "shared_ids": shared, "labels_per_photo": args.labels_per_photo,
-                   "per_annotator": args.per_annotator, "annotators": args.annotators}, f, indent=1)
+                   "per_annotator": args.per_annotator, "annotators": args.annotators, "strategy": args.strategy,
+                   "reclaim_hours": args.reclaim_hours}, f, indent=1)
 
     size_mb = sum(p.stat().st_size for p in OUT.rglob("*") if p.is_file() and ".git" not in p.parts) / 1e6
     print(f"Space folder: {OUT}  ({len(ids)} photos, {size_mb:.0f} MB)")
     print(f"  {len(shared)} shared photos for all {args.annotators} annotators, then {args.per_annotator - len(shared)} more each; "
-          f"every other photo is labeled by {args.labels_per_photo} annotator(s)")
+          f"every other photo takes up to {args.labels_per_photo} label(s); strategy {args.strategy}"
+          + (f", stale holds return after {args.reclaim_hours:g} h" if args.reclaim_hours > 0 else ""))
+    if args.strategy == "least_annotated":
+        print(f"  least_annotated: each person gets 3 photos to start, then one at a time, always the photo with the fewest labels; "
+              f"capacity {len(shared) * args.annotators + rest_n * args.labels_per_photo} labels in total")
     print(f"  when all {args.annotators} annotators finish: {len(shared) + covered} of {len(ids)} photos have all their labels"
           + ("" if covered == rest_n else f"; {rest_n - covered} photos stay short (more annotators, or fewer labels per photo)"))
     if covered == rest_n and own_labels > rest_n * args.labels_per_photo:

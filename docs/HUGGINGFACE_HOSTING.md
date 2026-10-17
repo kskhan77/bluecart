@@ -66,7 +66,7 @@ source .venv/bin/activate
 python scripts/make_hf_space.py --backup-repo YOURNAME/blue-cart-check-annotations
 ```
 
-Defaults: 30 shared photos, 120 photos per annotator, 6 annotators, 1 label per photo. Our live setting is `--per-annotator 200 --annotators 10 --labels-per-photo 2` (every photo labeled by two people, see README §6). Change them with `--shared`, `--per-annotator`, `--annotators` and `--labels-per-photo`.
+Defaults: 30 shared photos, 120 photos per annotator, 6 annotators, 1 label per photo. Our live setting since 2026-10-16 is `--per-annotator 200 --annotators 12 --labels-per-photo 10` with the default strategy `least_annotated` (fewest labels first, one photo at a time; see README §6). Change them with `--shared`, `--per-annotator`, `--annotators` and `--labels-per-photo`.
 The script prints a warning while the guidelines still have the team to-do box.
 
 ## Part C: push it to Hugging Face with git

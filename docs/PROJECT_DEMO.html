@@ -95,7 +95,7 @@ They are <b>not</b> real labels.</div>
 
   <h3>Start: two ways to open the tool</h3>
   <div class="two">
-    <div><b class="t">The shared link (what the team uses now)</b>Open <a href="https://bluecart.khurramshafique.com">bluecart.khurramshafique.com</a>, choose <b>Register</b>, pick a username and a password. Nothing to install and nothing to send back: the tool runs on Khurram's computer and the link reaches it through a Cloudflare tunnel. Everyone gets the same 30 photos first, then the next 170 that still need a label, 200 in total. Every photo is labeled by 2 people.</div>
+    <div><b class="t">The shared link (what the team uses now)</b>Open <a href="https://bluecart.khurramshafique.com">bluecart.khurramshafique.com</a>, choose <b>Register</b>, pick a username and a password. Nothing to install and nothing to send back: the tool runs on a small Azure server. In the first round everyone got the same 30 photos first, then the next 170 that still needed a label, 200 in total, two labels per photo. Since Oct 16 the tool hands out the photos with the fewest labels first, one at a time, up to 10 labels per photo.</div>
     <div><b class="t">Your own copy (the zip pack)</b>Unzip the pack, run <code>potato start config.yaml -p 8000</code>, open <code>http://localhost:8000</code> in Chrome and type your uniqname. No password. If you come back later with the same name, you continue where you stopped. At the end you zip the <code>annotation_output</code> folder and send it to us.</div>
   </div>
   <figure><img src="figures/tool_1_login.png" alt="The login page of the pack version"><figcaption>The sign-in page. On the shared link it also has a Create account tab; the zip packs ask only for a name.</figcaption></figure>

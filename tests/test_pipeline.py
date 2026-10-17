@@ -265,6 +265,7 @@ def test_hf_space_folder_puts_the_shared_photos_first(repo):
     config = yaml.safe_load(open(space / "config.yaml"))          # the generated config is valid YAML
     assert config["require_password"] is True and config["max_annotations_per_user"] == 5
     assert config["num_annotators_per_item"]["default"] == 2     # every non-shared photo is labeled twice
+    assert config["assignment_strategy"] == "least_annotated" and config["instance_reclaim"] == {"enabled": True, "timeout_hours": 24}
     assert config["huggingface_backup"] == {"enabled": True, "repo_id": "someone/some-dataset", "repo_type": "dataset",
                                             "private": True, "schedule_minutes": 5}
     assert "sdk: docker" in (space / "README.md").read_text() and (space / "Dockerfile").exists()
