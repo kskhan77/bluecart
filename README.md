@@ -54,6 +54,10 @@ scripts/
   make_hf_space.py           optional: build the folder for hosting the tool on Hugging Face
   explore_embeddings.py      PCA / k-means / near-duplicate check
   compute_agreement.py       Phase 2: Fleiss kappa, Krippendorff alpha, majority labels
+  compile_annotations.py     Phase 2a: the hosted tool's answers as one table (one column per person)
+  agreement_phase2.py        Phase 2a: Krippendorff alpha, percent agreement, majority label + tie list
+  make_adjudication_workbook.py  Phase 2a: Excel sheet for settling disagreements (thumbnails, dropdown)
+  merge_adjudication.py      Phase 2a: filled workbook(s) -> gold_labels.csv (kept private: hidden test labels)
   make_splits.py             group-safe train/val/test split
 ```
 

@@ -283,3 +283,48 @@ def test_hf_space_folder_puts_the_shared_photos_first(repo):
         def get_item(self, i): return self.items[i]
     picked = apply_overlap_sample(FakeItems(), config)
     assert set(picked) == set(shared) and set(picked.values()) == {4}
+
+
+def test_adjudication_workbook_round_trip(tmp_path):
+    """Disputed photos come first in the workbook, and a decision typed into it beats the majority when merged back."""
+    import openpyxl
+    returned = tmp_path / "returned"; returned.mkdir()
+    labels = {"bcc_00001": ["not_accepted"] * 3,                                     # unanimous
+              "bcc_00002": ["accepted"] * 3 + ["not_accepted"] * 2,                  # weak majority (60%)
+              "bcc_00003": ["accepted", "not_accepted"]}                             # tie
+    with (returned / "annotations_long.csv").open("w", newline="") as f:
+        w = csv.writer(f); w.writerow(["photo_id", "person", "account", "cart", "condition", "reason", "final_label"])
+        for pid, labs in labels.items():
+            for i, lab in enumerate(labs):
+                w.writerow([pid, f"p{i}", f"p{i}", "blue_cart" if lab == "accepted" else "not_blue_cart", "", "material" if i == 0 else "", lab])
+    for script in ("agreement_phase2.py", "make_adjudication_workbook.py"):
+        subprocess.run([sys.executable, f"scripts/{script}", "--returned", str(returned)] + (["--no-copy"] if script.startswith("make") else []),
+                       cwd=REPO, check=True, capture_output=True, text=True)
+    book = returned / "adjudication.xlsx"
+    wb = openpyxl.load_workbook(book); ws = wb["Decide"]
+    head = [c.value for c in ws[1]]; col = {h: i + 1 for i, h in enumerate(head)}
+    assert [ws.cell(row=r, column=1).value for r in (2, 3, 4)] == ["bcc_00003", "bcc_00002", "bcc_00001"]
+    assert [ws.cell(row=r, column=col["needs_decision"]).value for r in (2, 3, 4)] == ["YES", "YES", None]
+    assert ws.cell(row=2, column=col["reviewer"]).value and ws.cell(row=4, column=col["reviewer"]).value is None
+    assert len(ws._images) == 3 and ws.cell(row=2, column=col["full photo"]).hyperlink.target.endswith("bcc_00003.jpg")
+    assert wb["Summary"]["A1"].value == "photos" and wb["Read me"]["A1"].value.startswith("Blue Cart Check")
+
+    ws.cell(row=2, column=col["team_decision"]).value = "accepted"          # the tie gets a team decision
+    ws.cell(row=4, column=col["team_decision"]).value = "exclude_photo"     # a unanimous photo is thrown out
+    ws._images = []      # openpyxl cannot re-save pictures it loaded (Excel can); the merge never reads them
+    wb.save(book)
+    out = subprocess.run([sys.executable, "scripts/merge_adjudication.py", "--returned", str(returned), "--strict"],
+                         cwd=REPO, check=True, capture_output=True, text=True).stdout
+    gold = {r["photo_id"]: r for r in csv.DictReader((returned / "gold_labels.csv").open())}
+    assert (gold["bcc_00003"]["label"], gold["bcc_00003"]["source"]) == ("accepted", "team")
+    assert (gold["bcc_00002"]["label"], gold["bcc_00002"]["source"]) == ("accepted", "majority")
+    assert (gold["bcc_00001"]["label"], gold["bcc_00001"]["source"]) == ("exclude_photo", "team")
+    assert "unresolved" not in out
+
+    # a second copy with a different decision for the same photo = conflict, and --strict refuses
+    other = returned / "copy.xlsx"; ws.cell(row=2, column=col["team_decision"]).value = "not_accepted"; wb.save(other)
+    res = subprocess.run([sys.executable, "scripts/merge_adjudication.py", "--returned", str(returned), "--workbook", str(book), str(other), "--strict"],
+                         cwd=REPO, capture_output=True, text=True)
+    assert res.returncode == 1 and "conflicting decisions" in res.stdout
+    gold = {r["photo_id"]: r for r in csv.DictReader((returned / "gold_labels.csv").open())}
+    assert gold["bcc_00003"]["source"] == "unresolved"
