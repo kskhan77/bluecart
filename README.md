@@ -58,6 +58,7 @@ scripts/
   agreement_phase2.py        Phase 2a: Krippendorff alpha, percent agreement, majority label + tie list
   make_adjudication_workbook.py  Phase 2a: Excel sheet for settling disagreements (thumbnails, dropdown)
   merge_adjudication.py      Phase 2a: filled workbook(s) -> gold_labels.csv (kept private: hidden test labels)
+  label_distribution.py      Phase 2a: label counts chart (docs/figures/label_distribution.png) + imbalance numbers
   make_splits.py             group-safe train/val/test split
 ```
 

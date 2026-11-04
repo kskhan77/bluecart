@@ -328,3 +328,22 @@ def test_adjudication_workbook_round_trip(tmp_path):
     assert res.returncode == 1 and "conflicting decisions" in res.stdout
     gold = {r["photo_id"]: r for r in csv.DictReader((returned / "gold_labels.csv").open())}
     assert gold["bcc_00003"]["source"] == "unresolved"
+
+
+def test_label_distribution_chart(tmp_path):
+    """The chart comes from the majority preview until gold labels exist, then from the gold labels."""
+    returned = tmp_path / "returned"; returned.mkdir(); out = tmp_path / "fig.png"
+    cmd = [sys.executable, "scripts/label_distribution.py", "--returned", str(returned), "--out", str(out)]
+    with (returned / "majority_labels.csv").open("w", newline="") as f:
+        w = csv.writer(f); w.writerow(["photo_id", "n_labels", "majority_label", "status", "share", "votes", "team_decision"])
+        for i, lab in enumerate(["accepted"] * 5 + ["not_accepted"] * 3 + ["cannot_determine", ""]):
+            w.writerow([f"bcc_{i:05d}", 3, lab, "tie" if not lab else "majority", "0.67", "", ""])
+    text = subprocess.run(cmd, cwd=REPO, check=True, capture_output=True, text=True).stdout
+    assert out.exists() and Image.open(out).size[0] > 1000
+    assert "majority vote" in text and "| accepted | 5 | 55.6% |" in text and "undecided (tie) | 1" in text
+    with (returned / "gold_labels.csv").open("w", newline="") as f:
+        w = csv.writer(f); w.writerow(["photo_id", "label", "source", "status", "note"])
+        for i, lab in enumerate(["accepted"] * 4 + ["not_accepted"] * 4 + ["exclude_photo", "accepted_after_prep"]):
+            w.writerow([f"bcc_{i:05d}", lab, "team", "majority", ""])
+    text = subprocess.run(cmd, cwd=REPO, check=True, capture_output=True, text=True).stdout
+    assert "adjudicated labels" in text and "1 excluded" in text and "| accepted | 4 | 44.4% |" in text
