@@ -347,3 +347,38 @@ def test_label_distribution_chart(tmp_path):
             w.writerow([f"bcc_{i:05d}", lab, "team", "majority", ""])
     text = subprocess.run(cmd, cwd=REPO, check=True, capture_output=True, text=True).stdout
     assert "adjudicated labels" in text and "1 excluded" in text and "| accepted | 4 | 44.4% |" in text
+
+
+def test_kaggle_files_split_and_scoring(tmp_path):
+    """Group-safe stratified split, the four Kaggle files, and the scorer gives the solution a perfect score."""
+    returned = tmp_path / "returned"; returned.mkdir(); out = tmp_path / "kaggle"
+    labels = ["accepted"] * 20 + ["not_accepted"] * 12 + ["accepted_after_prep"] * 8 + ["cannot_determine"] * 8
+    with (returned / "gold_labels.csv").open("w", newline="") as f:
+        w = csv.writer(f); w.writerow(["photo_id", "label", "source", "status", "note"])
+        for i, lab in enumerate(labels):
+            w.writerow([f"bcc_{i:05d}", lab, "majority", "majority", ""])
+        w.writerow(["bcc_00099", "exclude_photo", "team", "tie", "two items"])
+    with (tmp_path / "manifest.csv").open("w", newline="") as f:
+        w = csv.writer(f); w.writerow(["id", "item_group_id", "source"])
+        for i in range(len(labels)):
+            w.writerow([f"bcc_{i:05d}", "G-pair" if i in (0, 1, 2) else f"G-{i}", "team"])   # one 3-photo group
+        w.writerow(["bcc_00099", "G-99", "team"])
+    text = subprocess.run([sys.executable, "scripts/make_kaggle_files.py", "--returned", str(returned), "--manifest", str(tmp_path / "manifest.csv"),
+                           "--out", str(out), "--no-images"], cwd=REPO, check=True, capture_output=True, text=True).stdout
+    assert text.startswith("FINAL: 48 photos") and "item groups split across sets: 0" in text
+    train = list(csv.DictReader((out / "public" / "train.csv").open())); test = list(csv.DictReader((out / "public" / "test.csv").open()))
+    sol = list(csv.DictReader((out / "private" / "solution.csv").open())); sample = list(csv.DictReader((out / "public" / "sample_submission.csv").open()))
+    assert len(train) + len(test) == 48 and "bcc_00099" not in {r["id"] for r in train + test}
+    assert [r["id"] for r in test] == [r["id"] for r in sol] == [r["id"] for r in sample] and list(sol[0]) == ["id", "label", "Usage"]
+    assert {r["Usage"] for r in sol} == {"Public", "Private"} and {r["label"] for r in sample} == {"accepted"}
+    assert "label" not in test[0]                                                 # test.csv carries no labels
+    splits = {r["id"]: r["split"] for r in csv.DictReader((out / "private" / "splits.csv").open())}
+    assert len({splits[f"bcc_0000{i}"] for i in (0, 1, 2)}) == 1                   # the group stays together
+    assert {r["label"] for r in sol} == set(labels)                                # every class reaches the test set
+    scorer = [sys.executable, "scripts/score_submission.py", "--solution", str(out / "private" / "solution.csv")]
+    perfect = subprocess.run(scorer + [str(out / "private" / "solution.csv")], cwd=REPO, check=True, capture_output=True, text=True).stdout
+    assert "Public 1.0000   Private 1.0000   All 1.0000" in perfect
+    majority = subprocess.run(scorer + [str(out / "public" / "sample_submission.csv")], cwd=REPO, check=True, capture_output=True, text=True).stdout
+    assert "recall on not_accepted 0.0000" in majority and "All 1.0000" not in majority
+    bad = subprocess.run(scorer + [str(out / "public" / "test.csv")], cwd=REPO, capture_output=True, text=True)
+    assert bad.returncode != 0 and "no column 'label'" in bad.stdout + bad.stderr

@@ -59,6 +59,8 @@ scripts/
   make_adjudication_workbook.py  Phase 2a: Excel sheet for settling disagreements (thumbnails, dropdown)
   merge_adjudication.py      Phase 2a: filled workbook(s) -> gold_labels.csv (kept private: hidden test labels)
   label_distribution.py      Phase 2a: label counts chart (docs/figures/label_distribution.png) + imbalance numbers
+  make_kaggle_files.py       Phase 2a: group-safe stratified split + Kaggle files (deploy/kaggle; solution.csv stays private)
+  score_submission.py        Phase 2a: macro-F1 (Public / Private / All), per-class P/R, recall on not_accepted, confusion matrix
   make_splits.py             group-safe train/val/test split
 ```
 
