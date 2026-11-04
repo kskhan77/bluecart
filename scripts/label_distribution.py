@@ -78,7 +78,7 @@ def main():
         print(f"| {k} | {counts[k]} | {100 * counts[k] / decided:.1f}% |")
     if counts["undecided"]:
         print(f"| undecided (tie) | {counts['undecided']} | |")
-    big, small = max(LABELS, key=counts.get), min(LABELS, key=counts.get)
+    big, small = max(LABELS, key=lambda k: counts[k]), min(LABELS, key=lambda k: counts[k])   # counts[k] is 0 for an absent class
     share = counts[big] / decided; f1_big = 2 * share / (1 + share)
     print(f"\nImbalance: {big} has {counts[big]} photos, {small} has {counts[small]}: {counts[big] / max(counts[small], 1):.0f} to 1. "
           f"Classes under 10%: {', '.join(k for k in LABELS if counts[k] / decided < 0.10) or 'none'}.")
