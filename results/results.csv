@@ -8,4 +8,3 @@ random_by_share,none,test,0.3157,0.4783,0.5072,2026-11-04,"seed 42; training sha
 logistic_regression,resnet50,val,0.6454,0.7222,0.7885,2026-11-04,"ResNet-50 IMAGENET1K_V2 features, StandardScaler, class_weight=balanced, C=0.01 chosen on val, refit on train+val"
 logistic_regression,resnet50,test,0.5900,0.8043,0.8043,2026-11-04,"ResNet-50 IMAGENET1K_V2 features, StandardScaler, class_weight=balanced, C=0.01 chosen on val, refit on train+val; Public 0.4572 Private 0.6962"
 llm_claude,pixels (zero-shot),test,0.5412,0.9130,0.8478,2026-11-04,"Claude Fable 5.1 (Claude Agent SDK), zero-shot, prompt models/llm_prompt.txt, ~20 photos per fresh instance; 154 of 154 test photos; Public 0.5021 Private 0.5803"
-llm_claude,pixels (zero-shot),test,0.5412,0.9130,0.8478,2026-11-04,"Claude Fable 5.1 (Claude Agent SDK), zero-shot, prompt models/llm_prompt.txt, ~20 photos per fresh instance; 154 of 154 test photos; Public 0.5021 Private 0.5803"
