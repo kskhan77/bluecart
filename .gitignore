@@ -13,6 +13,7 @@ docs/course/
 # env
 .venv/
 __pycache__/
+models/cache/
 .pytest_cache/
 *.pyc
 .DS_Store

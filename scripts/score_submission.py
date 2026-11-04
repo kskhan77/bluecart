@@ -21,7 +21,9 @@ SHORT = {"accepted": "accepted", "accepted_after_prep": "after_prep", "not_accep
 
 
 def macro_f1(truth, pred):
-    return f1_score(truth, pred, labels=LABELS, average="macro", zero_division=0)
+    """Macro-F1 over the classes present in the truth (all four on the full test set; fewer on a partial file)."""
+    present = [l for l in LABELS if l in set(truth)]
+    return f1_score(truth, pred, labels=present, average="macro", zero_division=0)
 
 
 def score(solution, submission, partial=False):
@@ -43,7 +45,9 @@ def score(solution, submission, partial=False):
     if missing and not partial:
         sys.exit(f"{submission}: {len(missing)} test ids missing (first: {', '.join(missing[:5])}); pass --partial to score a subset")
     m = sol.merge(sub, on="id", suffixes=("_true", "_pred"))
-    out = {"rows": len(m)}
+    undecided = int((~m.label_true.isin(LABELS)).sum())          # preview solution: ties not yet adjudicated
+    m = m[m.label_true.isin(LABELS)]
+    out = {"rows": len(m), "undecided_skipped": undecided}
     for name, part in (("Public", m[m.Usage == "Public"]), ("Private", m[m.Usage == "Private"]), ("All", m)):
         out[name] = macro_f1(part.label_true, part.label_pred) if len(part) else float("nan")
     out["accuracy"] = accuracy_score(m.label_true, m.label_pred)
@@ -61,7 +65,8 @@ def main():
     ap.add_argument("--partial", action="store_true", help="score only the ids present in the submission")
     args = ap.parse_args()
     s = score(args.solution, args.submission, args.partial)
-    print(f"{Path(args.submission).name}: {s['rows']} test photos scored")
+    print(f"{Path(args.submission).name}: {s['rows']} test photos scored"
+          + (f" ({s['undecided_skipped']} skipped: their label is not adjudicated yet, preview score)" if s["undecided_skipped"] else ""))
     print(f"  macro-F1  Public {s['Public']:.4f}   Private {s['Private']:.4f}   All {s['All']:.4f}")
     print(f"  accuracy {s['accuracy']:.4f}   recall on not_accepted {s['recall_not_accepted']:.4f}")
     print(s["per_class"].round(3).to_string()); print(s["confusion"].to_string())

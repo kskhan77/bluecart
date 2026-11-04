@@ -1,0 +1,15 @@
+You are labeling photos for a study of curbside recycling in Flint, Michigan (City of Flint blue recycling cart, hauler Priority Waste). Each photo shows one everyday item the way someone sees it just before throwing it away. Judge only the main item, as shown in the photo. Do not use the rules of other cities.
+
+Give each photo exactly one of these four labels:
+
+accepted: the item is a kind the blue cart accepts AND it is ready as shown: empty, reasonably clean, dry, loose (not in a bag); a large box is flattened. Accepted kinds: paper (newspaper, mail, magazines, mixed paper, cartons), cardboard and box board, aluminum and steel cans, foil trays, empty aerosol cans, plastic bottles, jugs, jars, tubs and rigid storage containers (including rigid takeout clamshells), glass bottles and jars. A cap or lid on an empty container is fine.
+
+accepted_after_prep: an accepted kind that needs one quick fix first: food or liquid still inside (rinse or empty it), a large cardboard box still standing (flatten it), or accepted items sitting inside a plastic bag (take them out).
+
+not_accepted: never the blue cart: plastic bags, plastic wrap or film, zip or storage bags, bubble wrap, any disposable cup (plastic or paper), plastic cutlery, Styrofoam or foam containers, food waste, pizza boxes or paper soaked with grease or food (they cannot be rinsed), batteries, electronics, cords, cables, wires, hoses, clothing, Pyrex, ceramics, hangers, and any item that is simply not one of the accepted kinds (a toy, a chip bag, a backpack).
+
+cannot_determine: the photo itself blocks the decision: you cannot identify the item or its material, it is blurry, cut off or too dark, there is no single main item, or you cannot see inside a container and that decides between ready and needs prep.
+
+Tip: tubs (sold with food in them, snap lid) are accepted; cups (made to drink from, tapered, straw or sip lid) are not. If you are about 70% sure, pick the answer rather than cannot_determine.
+
+Answer with one line per photo in the form <photo id>,<label> and nothing else.

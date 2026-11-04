@@ -382,3 +382,55 @@ def test_kaggle_files_split_and_scoring(tmp_path):
     assert "recall on not_accepted 0.0000" in majority and "All 1.0000" not in majority
     bad = subprocess.run(scorer + [str(out / "public" / "test.csv")], cwd=REPO, capture_output=True, text=True)
     assert bad.returncode != 0 and "no column 'label'" in bad.stdout + bad.stderr
+
+
+def _tiny_kaggle(tmp_path, flip=None):
+    """A 48-photo gold file + manifest -> make_kaggle_files --no-images; returns (out folder, printed text)."""
+    returned = tmp_path / "returned"; returned.mkdir(exist_ok=True); out = tmp_path / "kaggle"
+    labels = ["accepted"] * 20 + ["not_accepted"] * 12 + ["accepted_after_prep"] * 8 + ["cannot_determine"] * 8
+    if flip is not None:
+        labels[flip] = "not_accepted"
+    with (returned / "gold_labels.csv").open("w", newline="") as f:
+        w = csv.writer(f); w.writerow(["photo_id", "label", "source", "status", "note"])
+        for i, lab in enumerate(labels):
+            w.writerow([f"bcc_{i:05d}", lab, "majority", "majority", ""])
+    with (tmp_path / "manifest.csv").open("w", newline="") as f:
+        w = csv.writer(f); w.writerow(["id", "item_group_id", "source"])
+        for i in range(len(labels)):
+            w.writerow([f"bcc_{i:05d}", f"G-{i}", "team"])
+    text = subprocess.run([sys.executable, "scripts/make_kaggle_files.py", "--returned", str(returned), "--manifest", str(tmp_path / "manifest.csv"),
+                           "--out", str(out), "--no-images"], cwd=REPO, check=True, capture_output=True, text=True).stdout
+    return out, text
+
+
+def test_baselines_run_on_any_kaggle_folder_and_the_split_is_reused(tmp_path):
+    out, text = _tiny_kaggle(tmp_path)
+    assert "new split, seed 42" in text
+    first = {r["id"]: (r["split"], r["usage"]) for r in csv.DictReader((out / "private" / "splits.csv").open())}
+    out, text = _tiny_kaggle(tmp_path, flip=0)                       # a label changed after adjudication: same split
+    assert "split reused" in text
+    second = {r["id"]: (r["split"], r["usage"]) for r in csv.DictReader((out / "private" / "splits.csv").open())}
+    assert first == second
+    sol = {r["id"]: r["label"] for r in csv.DictReader((out / "private" / "solution.csv").open())}
+    if "bcc_00000" in sol:
+        assert sol["bcc_00000"] == "not_accepted"                     # the new label went into the files
+
+    results = tmp_path / "results.csv"
+    text = subprocess.run([sys.executable, "models/baseline_dummy.py", "--kaggle", str(out), "--results", str(results)],
+                          cwd=REPO, check=True, capture_output=True, text=True).stdout
+    rows = list(csv.DictReader(results.open()))
+    assert len(rows) == 6 and {r["model"] for r in rows} == {"majority", "random_uniform", "random_by_share"}
+    assert "best dummy on validation" in text and (out / "submissions" / "majority.csv").exists()
+
+    parts = tmp_path / "parts"; parts.mkdir()                        # LLM answers: half the test ids, one bad label
+    ids = list(sol)
+    with (parts / "part_00.csv").open("w", newline="") as f:
+        w = csv.writer(f); w.writerow(["id", "label"])
+        for pid in ids[: len(ids) // 2]:
+            w.writerow([pid, sol[pid]])
+        w.writerow([ids[-1], "maybe"])
+    text = subprocess.run([sys.executable, "models/baseline_llm.py", "--parts", str(parts), "--kaggle", str(out), "--results", str(results), "--name", "llm_test"],
+                          cwd=REPO, check=True, capture_output=True, text=True).stdout
+    assert "WARNING 1 answers are not a valid label" in text and f"{len(ids) // 2} of {len(ids)} test photos" in text
+    llm = [r for r in csv.DictReader(results.open()) if r["model"] == "llm_test"]
+    assert len(llm) == 1 and llm[0]["macro_f1"] == "1.0000" and "partial" in llm[0]["notes"]

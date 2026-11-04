@@ -61,6 +61,9 @@ scripts/
   label_distribution.py      Phase 2a: label counts chart (docs/figures/label_distribution.png) + imbalance numbers
   make_kaggle_files.py       Phase 2a: group-safe stratified split + Kaggle files (deploy/kaggle; solution.csv stays private)
   score_submission.py        Phase 2a: macro-F1 (Public / Private / All), per-class P/R, recall on not_accepted, confusion matrix
+  models/baseline_dummy.py   Phase 2a: majority and random baselines -> Kaggle submissions + results/results.csv
+  models/baseline_lr.py      Phase 2a: ResNet-50 embeddings + logistic regression (the trained benchmark)
+  models/baseline_llm.py     Phase 2a: gathers and scores the zero-shot LLM answers (prompt: models/llm_prompt.txt; write-up: docs/BASELINES.md)
   make_splits.py             group-safe train/val/test split
 ```
 

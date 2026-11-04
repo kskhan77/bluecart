@@ -18,7 +18,9 @@ validation labels only), which may be committed: test labels never leave the pri
 
 Split: StratifiedGroupKFold keeps every item_group_id (the same object photographed in several states) on one side,
 and keeps the label shares equal across train / val / test. The test set is then halved into Public and Private
-rows, again stratified, so both leaderboards see every class.
+rows, again stratified, so both leaderboards see every class. Once private/splits.csv exists the same split is
+reused on every later run (so the baselines stay comparable between the preview and the final labels); pass
+--resplit to draw a new one.
 
     python scripts/make_kaggle_files.py                       # preview or final, depending on gold_labels.csv
     python scripts/make_kaggle_files.py --test 0.25 --val 0.1 --seed 42 --write-repo
@@ -104,6 +106,7 @@ def main():
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--write-repo", action="store_true", help="also write data/splits.csv and data/labels_trainval.csv")
     ap.add_argument("--no-images", action="store_true", help="skip copying and zipping the photos (tests)")
+    ap.add_argument("--resplit", action="store_true", help="draw a new split even though <out>/private/splits.csv exists")
     args = ap.parse_args()
 
     labels, mode = load_labels(Path(args.returned))
@@ -113,16 +116,26 @@ def main():
         sys.exit("labeled photos missing from the manifest: " + ", ".join(df[df.item_group_id.isna()].id))
     df = df.sort_values("id").reset_index(drop=True)
 
-    rest, test = group_split(df, args.test, args.seed)
-    train, val = group_split(rest, args.val / (1 - args.test), args.seed)
-    test = test.assign(usage=public_private(test, args.seed).values)
-    train, val = train.assign(split="train", usage=""), val.assign(split="val", usage="")
-    test = test.assign(split="test")
-    allrows = pd.concat([train, val, test], ignore_index=True).sort_values("id").reset_index(drop=True)
-
     out = Path(args.out); pub, priv = out / "public", out / "private"
     for d in (pub, priv):
         d.mkdir(parents=True, exist_ok=True)
+    previous = priv / "splits.csv"
+    if previous.exists() and not args.resplit:
+        # keep the split that baselines were already run on: only the labels change between preview and final
+        old = pd.read_csv(previous, dtype=str).fillna("")[["id", "split", "usage"]]
+        allrows = df.merge(old, on="id", how="left")
+        if allrows.split.isna().any():
+            sys.exit(f"photos not in the previous split {previous}: " + ", ".join(allrows[allrows.split.isna()].id) + " (pass --resplit)")
+        train, val, test = (allrows[allrows.split == s].reset_index(drop=True) for s in ("train", "val", "test"))
+        split_note = f"split reused from {previous}"
+    else:
+        rest, test = group_split(df, args.test, args.seed)
+        train, val = group_split(rest, args.val / (1 - args.test), args.seed)
+        test = test.assign(usage=public_private(test, args.seed).values)
+        train, val = train.assign(split="train", usage=""), val.assign(split="val", usage="")
+        test = test.assign(split="test")
+        allrows = pd.concat([train, val, test], ignore_index=True).sort_values("id").reset_index(drop=True)
+        split_note = f"new split, seed {args.seed}"
     image = "images/" + allrows.id + ".jpg"
     tv = allrows[allrows.split != "test"]
     tv.assign(image=image[tv.index])[["id", "image", "split", "label"]].to_csv(pub / "train.csv", index=False)
@@ -147,7 +160,7 @@ def main():
         tv[["id", "label"]].to_csv(REPO / "data" / "labels_trainval.csv", index=False)
 
     print(f"{mode.upper()}: {len(allrows)} photos -> train {len(train)}, val {len(val)}, test {len(test)} "
-          f"(Public {int((test.usage == 'Public').sum())}, Private {int((test.usage == 'Private').sum())}); written to {out}")
+          f"(Public {int((test.usage == 'Public').sum())}, Private {int((test.usage == 'Private').sum())}); {split_note}; written to {out}")
     table = pd.crosstab(allrows.split, allrows.stratum).reindex(["train", "val", "test"])
     table.loc["test (Public)"] = test[test.usage == "Public"].stratum.value_counts()
     table.loc["test (Private)"] = test[test.usage == "Private"].stratum.value_counts()
