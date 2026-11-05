@@ -29,8 +29,8 @@ python scripts/score_submission.py deploy/kaggle/private/solution.csv      # mus
 4. Data tab: upload the zip; paste section 3 as the data description.
 5. Evaluation tab: metric **MacroFScore** (Kaggle's name for macro-F1); upload `solution.csv` (its last column `Usage` sets Public/Private rows); upload `sample_submission.csv`; submission limit 5 per day.
 6. Overview: paste sections 2 and 4. Rules page: paste section 5 (participants must accept it before downloading).
-7. Test before launch: submit `solution.csv` as a prediction (score must be 1.00000) and `sample_submission.csv` (score 0.165 on the current split). Delete those test submissions or mark them as benchmarks.
-8. Submit the baselines from step 6 and tick **Benchmark** on them so they show on the leaderboard as reference points.
+7. Test before launch: submit `solution.csv` as a prediction (score must be 1.00000) and `sample_submission.csv` (public score 0.171, private 0.176 on the final labels). Delete those test submissions or mark them as benchmarks.
+8. Submit the baselines from step 6 and tick **Benchmark** on them so they show on the leaderboard as reference points. Expected public / private scores: `random_by_share.csv` 0.230 / 0.234, `lr_resnet50.csv` 0.455 / 0.595, `llm_claude.csv` 0.480 / 0.578.
 9. Launch, then copy the **invitation link** from the launch checklist into the Discord post (#project-competitions) and the slides.
 
 ## 2. Overview (Description)
@@ -55,7 +55,8 @@ app. Missing a `not_accepted` item is the costly mistake, so besides the leaderb
 The photos are 648 single-item pictures: 108 taken by the project team in Flint kitchens, offices and bin stations,
 540 selected from open datasets (RealWaste, Drinking Waste Classification, Wikimedia Commons). 617 of them carry a
 label from the class annotation round: 15 annotators, 3 to 6 labels per photo, Krippendorff's alpha 0.46 on the
-four-way label, disagreements settled by the team against the written guideline. The guideline is public:
+four-way label. The label is the majority vote; the 63 photos with a tied vote were settled by a tiebreak decision
+of the project team against the written guideline. The guideline is public:
 https://github.com/kskhan77/bluecart/blob/main/annotation/guidelines.md
 
 ## 3. Data description
@@ -66,13 +67,13 @@ https://github.com/kskhan77/bluecart/blob/main/annotation/guidelines.md
 - `sample_submission.csv`: `id`, `label`. Exactly the file you upload: one row per test id, label one of the four
   strings above. As given it predicts `accepted` for every photo, which is the majority baseline.
 - `images/`: every photo as JPEG, long side 512 px, no metadata, named `<id>.jpg`. The `image` column holds this path.
-- The class shares are unequal: roughly 55% `accepted`, 33% `not_accepted`, 8% `accepted_after_prep`,
+- The class shares are unequal: roughly 55% `accepted`, 32% `not_accepted`, 9% `accepted_after_prep`,
   4% `cannot_determine`. The small classes are small in the test set too; that is why the metric is macro-F1.
 
 ## 4. Evaluation
 
 Submissions are scored with **macro-F1**: the F1 score of each of the four labels, averaged with equal weight.
-Accuracy would reward a model that always says `accepted` (about 50% accuracy, macro-F1 0.17); macro-F1 makes the
+Accuracy would reward a model that always says `accepted` (about 55% accuracy, macro-F1 0.17); macro-F1 makes the
 two rare labels count as much as the two common ones. The public leaderboard uses half of the test photos; the final
 ranking is the private half, revealed at the end date.
 

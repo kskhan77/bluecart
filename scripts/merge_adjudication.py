@@ -8,6 +8,8 @@ Rule per photo, in this order:
   1. a team_decision in any workbook wins (two different decisions for one photo = conflict, stays unresolved)
   2. otherwise the majority label (status unanimous or majority)
   3. a tie with no decision stays unresolved
+A workbook may also hold one decision column per team member, named "team_decision <name>" (the team did this for
+the ties): the label most members chose is the decision; members who are split evenly = conflict, unresolved.
 Output: <returned>/gold_labels.csv with photo_id, label, source (team / majority / unanimous / unresolved), status,
 note. exclude_photo is kept as a label so the split step can drop those photos. The file holds the labels of the
 future hidden test set, so it stays in the gitignored annotation/returned folder.
@@ -22,6 +24,7 @@ from openpyxl import load_workbook
 
 REPO = Path(__file__).resolve().parents[1]
 DECISIONS = {"accepted", "accepted_after_prep", "not_accepted", "cannot_determine", "exclude_photo"}
+SPLIT = "members split: "        # marks a photo whose per-member decisions are tied
 
 
 def read_decisions(path):
@@ -29,13 +32,25 @@ def read_decisions(path):
     ws = load_workbook(path, data_only=True, read_only=True)["Decide"]
     rows = ws.iter_rows(values_only=True)
     head = [str(h).strip() if h is not None else "" for h in next(rows)]
-    col = {name: head.index(name) for name in ("photo_id", "status", "majority_label", "team_decision", "note")}
+    col = {name: head.index(name) for name in ("photo_id", "status", "majority_label", "note")}
+    # one "team_decision" column, or one per member: "team_decision khurram", "team_decision Hina", ...
+    decision_cols = [i for i, h in enumerate(head) if h == "team_decision" or h.startswith("team_decision ")]
+    if not decision_cols:
+        raise SystemExit(f"{path}: no team_decision column in the Decide sheet")
     out = {}
     for r in rows:
         if not r or r[col["photo_id"]] in (None, ""):
             continue
         get = lambda name: str(r[col[name]]).strip() if r[col[name]] is not None else ""
-        out[get("photo_id")] = (get("status"), get("majority_label"), get("team_decision"), get("note"))
+        votes = [str(r[i]).strip() for i in decision_cols if i < len(r) and r[i] not in (None, "")]
+        decision = ""
+        if votes:
+            ranked = collections.Counter(votes).most_common()
+            if len(ranked) == 1 or ranked[0][1] > ranked[1][1]:
+                decision = ranked[0][0]                          # the label most members chose
+            else:                                               # members split evenly: a conflict, see merge()
+                decision = SPLIT + " / ".join(sorted(k for k, n in ranked if n == ranked[0][1]))
+        out[get("photo_id")] = (get("status"), get("majority_label"), decision, get("note"))
     return out
 
 
@@ -52,6 +67,12 @@ def merge(books):
     rows, problems = [], []
     for pid in sorted(photos):
         p = photos[pid]; bad = [d for d in p["decisions"] if d not in DECISIONS]
+        split = [d for d in bad if d.startswith(SPLIT)]
+        if split:
+            problems.append(f"{pid}: {split[0]}")
+            label, source = "", "unresolved"
+            rows.append({"photo_id": pid, "label": label, "source": source, "status": p["status"], "note": " | ".join(p["notes"])})
+            continue
         if bad:
             problems.append(f"{pid}: unknown decision {bad} (allowed: {sorted(DECISIONS)})")
         if len(p["decisions"]) > 1:

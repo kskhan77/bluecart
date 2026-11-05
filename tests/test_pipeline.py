@@ -434,3 +434,26 @@ def test_baselines_run_on_any_kaggle_folder_and_the_split_is_reused(tmp_path):
     assert "WARNING 1 answers are not a valid label" in text and f"{len(ids) // 2} of {len(ids)} test photos" in text
     llm = [r for r in csv.DictReader(results.open()) if r["model"] == "llm_test"]
     assert len(llm) == 1 and llm[0]["macro_f1"] == "1.0000" and "partial" in llm[0]["notes"]
+
+
+def test_merge_reads_one_decision_column_per_member(tmp_path):
+    """The team gave each member a column ("team_decision <name>") for the ties: the label most members chose is
+    the decision, members split evenly stay unresolved, and a photo nobody decided keeps its majority label."""
+    import importlib.util
+    from pathlib import Path
+    from openpyxl import Workbook
+    script = Path(__file__).resolve().parents[1] / "scripts" / "merge_adjudication.py"
+    spec = importlib.util.spec_from_file_location("merge_adjudication", script)
+    mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
+    wb = Workbook(); ws = wb.active; ws.title = "Decide"
+    ws.append(["photo_id", "status", "majority_label", "team_decision khurram", "note", "team_decision Hina", "team_decision Daud"])
+    ws.append(["bcc_1", "tie", None, "accepted", None, None, None])                      # one member decided
+    ws.append(["bcc_2", "tie", None, "accepted", None, "not_accepted", "not_accepted"])  # two against one
+    ws.append(["bcc_3", "tie", None, "accepted", None, "not_accepted", None])            # split evenly
+    ws.append(["bcc_4", "majority", "not_accepted", None, None, None, None])             # nobody decided
+    book = tmp_path / "ties.xlsx"; wb.save(book)
+    rows, problems = mod.merge({str(book): mod.read_decisions(book)})
+    got = {r["photo_id"]: (r["label"], r["source"]) for r in rows}
+    assert got == {"bcc_1": ("accepted", "team"), "bcc_2": ("not_accepted", "team"),
+                   "bcc_3": ("", "unresolved"), "bcc_4": ("not_accepted", "majority")}
+    assert len(problems) == 1 and "bcc_3" in problems[0]
