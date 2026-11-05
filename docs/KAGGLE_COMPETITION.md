@@ -77,11 +77,12 @@ Accuracy would reward a model that always says `accepted` (about 55% accuracy, m
 two rare labels count as much as the two common ones. The public leaderboard uses half of the test photos; the final
 ranking is the private half, revealed at the end date.
 
-Submission format: a CSV with a header and one row per test photo:
+Submission format: a CSV with a header and one row per test photo. These are the first rows of
+`sample_submission.csv`; replace each label with your model's prediction (one of the four strings):
 
 ```
 id,label
-bcc_00004,not_accepted
+bcc_00004,accepted
 bcc_00005,accepted
 ```
 
