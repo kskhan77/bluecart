@@ -4,6 +4,8 @@ The competition is a **Kaggle Community Competition** ("Machine Learning Competi
 through its invitation link. Everything below is ready to paste; the numbers come from `scripts/make_kaggle_files.py`
 (rerun it after the adjudication and check the printed counts against the ones here).
 
+**Status 2026-11-05:** the competition exists at https://www.kaggle.com/competitions/blue-cart-check (private, unlaunched, host account kskhan77). Done on Kaggle: rules, overview, description and evaluation texts, dataset description, licence CC BY-NC-SA 4.0, metric, solution file, the pre-launch test (answer key 1.00000 on both leaderboards; sample submission 0.17094 public, 0.17647 private, equal to `scripts/score_submission.py`) and four benchmarks. Still open: set the end date (Settings, Key Dates), upload the data zip (Data tab), launch, add the teammates as hosts. The invitation link is on the launch checklist page and in the team Discord; it is not written in this public repository on purpose.
+
 ## 0. Make the files (after `merge_adjudication.py`)
 
 ```bash
@@ -27,7 +29,7 @@ python scripts/score_submission.py deploy/kaggle/private/solution.csv      # mus
 2. Visibility **Private**. Add the other three team members as hosts (full access).
 3. Timeline: launch by the Phase 2a due date; **end date = end of Phase 2b** (when the private leaderboard is revealed). Kaggle shows UTC: Flint is UTC−5 after Nov 1, so a 11:59 pm Flint deadline is 04:59 UTC the next day.
 4. Data tab: upload the zip; paste section 3 as the data description.
-5. Evaluation tab: metric **MacroFScore** (Kaggle's name for macro-F1); upload `solution.csv` (its last column `Usage` sets Public/Private rows); upload `sample_submission.csv`; submission limit 5 per day.
+5. Settings, Evaluation Metric: metric **F1 Score** (Kaggle's wrapper of scikit-learn's `f1_score`), then Edit the hyperparameters and set `average` to `"macro"`. Do not pick the older "F-Score (Macro)": it only accepts numeric labels and fails on our text labels. Upload `solution.csv` (first column = id, last column `Usage` sets the Public/Private rows). The daily limit of 5 submissions is the default under Settings, Scoring.
 6. Overview: paste sections 2 and 4. Rules page: paste section 5 (participants must accept it before downloading).
 7. Test before launch: submit `solution.csv` as a prediction (score must be 1.00000) and `sample_submission.csv` (public score 0.171, private 0.176 on the final labels). Delete those test submissions or mark them as benchmarks.
 8. Submit the baselines from step 6 and tick **Benchmark** on them so they show on the leaderboard as reference points. Expected public / private scores: `random_by_share.csv` 0.230 / 0.234, `lr_resnet50.csv` 0.455 / 0.595, `llm_claude.csv` 0.480 / 0.578.
@@ -103,4 +105,5 @@ bcc_00005,accepted
 The photos and labels are released under **CC BY-NC-SA 4.0** for use in ARI 410/510 only. 360 photos come from
 RealWaste (CC BY-NC-SA 4.0), 160 from Drinking Waste Classification (CC0), 20 from Wikimedia Commons (various free
 licences), 108 were taken by the project team (CC BY 4.0). Per-photo author and licence: `data/attribution.csv` in
-https://github.com/kskhan77/bluecart. The repository holds the photos but no labels.
+https://github.com/kskhan77/bluecart. The repository holds the photos and the train/validation labels, never the
+test labels.
